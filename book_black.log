@@ -1,0 +1,2008 @@
+This is XeTeX, Version 3.141592653-2.6-0.999994 (TeX Live 2022) (preloaded format=xelatex 2022.6.10)  10 JUN 2022 23:33
+entering extended mode
+ restricted \write18 enabled.
+ %&-line parsing enabled.
+**book_black.tex
+(./book_black.tex
+LaTeX2e <2022-06-01> pre-release-0 (develop 2022-6-10 branch)
+L3 programming layer <2022-06-02> (./churchslavichymnsbook.cls
+Document Class: churchslavichymnsbook 2022/05/23 v.0.1
+(/home/user/texlive/2022/texmf-dist/tex/latex/xifthen/xifthen.sty
+Package: xifthen 2015/11/05 v1.4.0 Extended ifthen features
+
+(/home/user/texlive/2022/texmf-dist/tex/latex/tools/calc.sty
+Package: calc 2017/05/25 v4.3 Infix arithmetic (KKT,FJ)
+\calc@Acount=\count181
+\calc@Bcount=\count182
+\calc@Adimen=\dimen138
+\calc@Bdimen=\dimen139
+\calc@Askip=\skip47
+\calc@Bskip=\skip48
+LaTeX Info: Redefining \setlength on input line 80.
+LaTeX Info: Redefining \addtolength on input line 81.
+\calc@Ccount=\count183
+\calc@Cskip=\skip49
+)
+(/home/user/texlive/2022/texmf-dist/tex/latex/base/ifthen.sty
+Package: ifthen 2022/04/13 v1.1d Standard LaTeX ifthen package (DPC)
+)
+(/home/user/texlive/2022/texmf-dist/tex/latex/ifmtarg/ifmtarg.sty
+Package: ifmtarg 2018/04/16 v1.2b check for an empty argument
+))
+(/home/user/texlive/2022/texmf-dist/tex/latex/kvoptions/kvoptions.sty
+Package: kvoptions 2020-10-07 v3.14 Key value format for package options (HO)
+
+(/home/user/texlive/2022/texmf-dist/tex/latex/graphics/keyval.sty
+Package: keyval 2022/05/29 v1.15 key=value parser (DPC)
+\KV@toks@=\toks16
+)
+(/home/user/texlive/2022/texmf-dist/tex/generic/ltxcmds/ltxcmds.sty
+Package: ltxcmds 2020-05-10 v1.25 LaTeX kernel commands for general use (HO)
+)
+(/home/user/texlive/2022/texmf-dist/tex/generic/kvsetkeys/kvsetkeys.sty
+Package: kvsetkeys 2019/12/15 v1.18 Key value parser (HO)
+))
+\pwidth=\skip50
+\pheight=\skip51
+\toppmarg=\skip52
+\botpmarg=\skip53
+\outpmarg=\skip54
+\innpmarg=\skip55
+\Cover=\skip56
+\TrimMm=\skip57
+\BleedMm=\skip58
+
+(/home/user/texlive/2022/texmf-dist/tex/latex/koma-script/scrbook.cls
+Document Class: scrbook 2022/05/01 v3.36 KOMA-Script document class (book)
+(/home/user/texlive/2022/texmf-dist/tex/latex/koma-script/scrkbase.sty
+Package: scrkbase 2022/05/01 v3.36 KOMA-Script package (KOMA-Script-dependent b
+asics and keyval usage)
+
+(/home/user/texlive/2022/texmf-dist/tex/latex/koma-script/scrbase.sty
+Package: scrbase 2022/05/01 v3.36 KOMA-Script package (KOMA-Script-independent 
+basics and keyval usage)
+
+(/home/user/texlive/2022/texmf-dist/tex/latex/koma-script/scrlfile.sty
+Package: scrlfile 2022/05/01 v3.36 KOMA-Script package (file load hooks)
+
+(/home/user/texlive/2022/texmf-dist/tex/latex/koma-script/scrlfile-hook.sty
+Package: scrlfile-hook 2022/05/01 v3.36 KOMA-Script package (using LaTeX hooks)
+
+
+(/home/user/texlive/2022/texmf-dist/tex/latex/koma-script/scrlogo.sty
+Package: scrlogo 2022/05/01 v3.36 KOMA-Script package (logo)
+)))
+Applying: [2021/05/01] Usage of raw or classic option list on input line 252.
+Already applied: [0000/00/00] Usage of raw or classic option list on input line
+ 368.
+))
+(/home/user/texlive/2022/texmf-dist/tex/latex/koma-script/tocbasic.sty
+Package: tocbasic 2022/05/01 v3.36 KOMA-Script package (handling toc-files)
+\scr@dte@tocline@numberwidth=\skip59
+\scr@dte@tocline@numbox=\box51
+)
+Package tocbasic Info: babel extension for `toc' omitted
+(tocbasic)             because of missing \bbl@set@language on input line 137.
+Class scrbook Info: Switching compatibility level to `last'.
+Class scrbook Info: You've used standard option `openright'.
+(scrbook)           This is correct!
+(scrbook)           Internally I'm using `open=right'.
+(scrbook)           If you'd like to set the option with \KOMAoptions,
+(scrbook)           you'd have to use `open=right' there
+(scrbook)           instead of `openright', too.
+Class scrbook Info: File `size20.clo' used to setup font sizes on input line 25
+05.
+
+(/home/user/texlive/2022/texmf-dist/tex/latex/extsizes/size20.clo
+File: size20.clo 1999/11/11 NON-Standard LaTeX file (size option)
+)
+(/home/user/texlive/2022/texmf-dist/tex/latex/koma-script/typearea.sty
+Package: typearea 2022/05/01 v3.36 KOMA-Script package (type area)
+\ta@bcor=\skip60
+\ta@div=\count184
+\ta@hblk=\skip61
+\ta@vblk=\skip62
+\ta@temp=\skip63
+\footheight=\skip64
+
+
+Package typearea Warning: DIV for 20.0pt and used papersize
+(typearea)                not defined!
+(typearea)                Using DIV=calc.
+
+DIV calculation for typearea with good linewidth.
+Package typearea Info: Maybe no optimal type area settings!
+(typearea)             The detected line width is about 27%
+(typearea)             smaller than the heuristically estimated maximum
+(typearea)             limit of typographical good line width.
+(typearea)             You could e.g. increase DIV, decrease fontsize
+(typearea)             or change the papersize.
+Package typearea Info: These are the values describing the layout:
+(typearea)             DIV  = 12
+(typearea)             BCOR = 0.0pt
+(typearea)             \paperwidth      = 597.50793pt
+(typearea)              \textwidth      = 448.13095pt
+(typearea)              DIV departure   = 27%
+(typearea)              \evensidemargin = 27.31467pt
+(typearea)              \oddsidemargin  = -22.47766pt
+(typearea)             \paperheight     = 845.04694pt
+(typearea)              \textheight     = 645.0pt
+(typearea)              \topmargin      = -70.59941pt
+(typearea)              \headheight     = 31.25pt
+(typearea)              \headsep        = 37.5pt
+(typearea)              \topskip        = 20.0pt
+(typearea)              \footskip       = 87.5pt
+(typearea)              \baselineskip   = 25.0pt
+(typearea)              on input line 1744.
+)
+\c@part=\count185
+\c@chapter=\count186
+\c@section=\count187
+\c@subsection=\count188
+\c@subsubsection=\count189
+\c@paragraph=\count190
+\c@subparagraph=\count191
+\scr@dte@chapter@maxnumwidth=\skip65
+Class scrbook Info: using compatibility default `afterindent=bysign'
+(scrbook)           for `\chapter on input line 5737.
+\scr@dte@section@maxnumwidth=\skip66
+Class scrbook Info: using compatibility default `runin=bysign'
+(scrbook)           for `\section on input line 5748.
+Class scrbook Info: using compatibility default `afterindent=bysign'
+(scrbook)           for `\section on input line 5748.
+\scr@dte@part@maxnumwidth=\skip67
+Class scrbook Info: using compatibility default `afterindent=true'
+(scrbook)           for `\part on input line 5757.
+\scr@dte@subsection@maxnumwidth=\skip68
+Class scrbook Info: using compatibility default `runin=bysign'
+(scrbook)           for `\subsection on input line 5767.
+Class scrbook Info: using compatibility default `afterindent=bysign'
+(scrbook)           for `\subsection on input line 5767.
+\scr@dte@subsubsection@maxnumwidth=\skip69
+Class scrbook Info: using compatibility default `runin=bysign'
+(scrbook)           for `\subsubsection on input line 5777.
+Class scrbook Info: using compatibility default `afterindent=bysign'
+(scrbook)           for `\subsubsection on input line 5777.
+\scr@dte@paragraph@maxnumwidth=\skip70
+Class scrbook Info: using compatibility default `runin=bysign'
+(scrbook)           for `\paragraph on input line 5788.
+Class scrbook Info: using compatibility default `afterindent=bysign'
+(scrbook)           for `\paragraph on input line 5788.
+\scr@dte@subparagraph@maxnumwidth=\skip71
+Class scrbook Info: using compatibility default `runin=bysign'
+(scrbook)           for `\subparagraph on input line 5798.
+Class scrbook Info: using compatibility default `afterindent=bysign'
+(scrbook)           for `\subparagraph on input line 5798.
+\abovecaptionskip=\skip72
+\belowcaptionskip=\skip73
+\c@pti@nb@sid@b@x=\box52
+Package tocbasic Info: babel extension for `lof' omitted
+(tocbasic)             because of missing \bbl@set@language on input line 6967.
+
+\scr@dte@figure@maxnumwidth=\skip74
+\c@figure=\count192
+Package tocbasic Info: babel extension for `lot' omitted
+(tocbasic)             because of missing \bbl@set@language on input line 6984.
+
+\scr@dte@table@maxnumwidth=\skip75
+\c@table=\count193
+Class scrbook Info: Redefining `\numberline' on input line 7155.
+\bibindent=\dimen140
+) (/home/user/texlive/2022/texmf-dist/tex/latex/geometry/geometry.sty
+Package: geometry 2020/01/02 v5.9 Page Geometry
+
+(/home/user/texlive/2022/texmf-dist/tex/generic/iftex/ifvtex.sty
+Package: ifvtex 2019/10/25 v1.7 ifvtex legacy package. Use iftex instead.
+
+(/home/user/texlive/2022/texmf-dist/tex/generic/iftex/iftex.sty
+Package: iftex 2022/02/03 v1.0f TeX engine tests
+))
+\Gm@cnth=\count194
+\Gm@cntv=\count195
+\c@Gm@tempcnt=\count196
+\Gm@bindingoffset=\dimen141
+\Gm@wd@mp=\dimen142
+\Gm@odd@mp=\dimen143
+\Gm@even@mp=\dimen144
+\Gm@layoutwidth=\dimen145
+\Gm@layoutheight=\dimen146
+\Gm@layouthoffset=\dimen147
+\Gm@layoutvoffset=\dimen148
+\Gm@dimlist=\toks17
+))
+(./churchslavichymn.sty
+Package: churchslavichymn 2022/06/06 v.0.3
+
+(/home/user/texlive/2022/texmf-dist/tex/latex/oberdiek/ifdraft.sty
+Package: ifdraft 2016/05/16 v1.4 Detect class options draft and final (HO)
+)
+(/home/user/texlive/2022/texmf-dist/tex/generic/iftex/ifluatex.sty
+Package: ifluatex 2019/10/25 v1.5 ifluatex legacy package. Use iftex instead.
+)
+(/home/user/texlive/2022/texmf-dist/tex/latex/l3packages/xparse/xparse.sty
+(/home/user/texlive/2022/texmf-dist/tex/latex/l3kernel/expl3.sty
+Package: expl3 2022-06-02 L3 programming layer (loader) 
+
+(/home/user/texlive/2022/texmf-dist/tex/latex/l3backend/l3backend-xetex.def
+File: l3backend-xetex.def 2022-04-20 L3 backend support: XeTeX
+\g__graphics_track_int=\count197
+\l__pdf_internal_box=\box53
+\g__pdf_backend_object_int=\count198
+\g__pdf_backend_annotation_int=\count199
+\g__pdf_backend_link_int=\count266
+))
+Package: xparse 2022-06-07 L3 Experimental document command parser
+)
+(/home/user/texlive/2022/texmf-dist/tex/latex/tools/indentfirst.sty
+Package: indentfirst 1995/11/23 v1.03 Indent first paragraph (DPC)
+)
+(/home/user/texlive/2022/texmf-dist/tex/generic/xstring/xstring.sty
+(/home/user/texlive/2022/texmf-dist/tex/generic/xstring/xstring.tex
+\integerpart=\count267
+\decimalpart=\count268
+)
+Package: xstring 2021/07/21 v1.84 String manipulations (CT)
+)
+(/home/user/texlive/2022/texmf-dist/tex/latex/fontspec/fontspec.sty
+Package: fontspec 2022/01/15 v2.8a Font selection for XeLaTeX and LuaLaTeX
+
+(/home/user/texlive/2022/texmf-dist/tex/latex/fontspec/fontspec-xetex.sty
+Package: fontspec-xetex 2022/01/15 v2.8a Font selection for XeLaTeX and LuaLaTe
+X
+\l__fontspec_script_int=\count269
+\l__fontspec_language_int=\count270
+\l__fontspec_strnum_int=\count271
+\l__fontspec_tmp_int=\count272
+\l__fontspec_tmpa_int=\count273
+\l__fontspec_tmpb_int=\count274
+\l__fontspec_tmpc_int=\count275
+\l__fontspec_em_int=\count276
+\l__fontspec_emdef_int=\count277
+\l__fontspec_strong_int=\count278
+\l__fontspec_strongdef_int=\count279
+\l__fontspec_tmpa_dim=\dimen149
+\l__fontspec_tmpb_dim=\dimen150
+\l__fontspec_tmpc_dim=\dimen151
+
+(/home/user/texlive/2022/texmf-dist/tex/latex/base/fontenc.sty
+Package: fontenc 2021/04/29 v2.0v Standard LaTeX package
+)
+(/home/user/texlive/2022/texmf-dist/tex/latex/fontspec/fontspec.cfg)))
+(/home/user/texlive/2022/texmf-dist/tex/xelatex/xunicode/xunicode.sty
+File: xunicode.sty 2011/09/09 v0.981 provides access to latin accents and many 
+other characters in Unicode lower plane
+
+(/home/user/texlive/2022/texmf-dist/tex/latex/tipa/t3enc.def
+File: t3enc.def 2001/12/31 T3 encoding
+)
+\tipaTiiicode=\count280
+\tipasavetokens=\toks18
+\tipachecktokens=\toks19
+
+(/home/user/texlive/2022/texmf-dist/tex/latex/graphics/graphicx.sty
+Package: graphicx 2021/09/16 v1.2d Enhanced LaTeX Graphics (DPC,SPQR)
+
+(/home/user/texlive/2022/texmf-dist/tex/latex/graphics/graphics.sty
+Package: graphics 2022/03/10 v1.4e Standard LaTeX Graphics (DPC,SPQR)
+
+(/home/user/texlive/2022/texmf-dist/tex/latex/graphics/trig.sty
+Package: trig 2021/08/11 v1.11 sin cos tan (DPC)
+)
+(/home/user/texlive/2022/texmf-dist/tex/latex/graphics-cfg/graphics.cfg
+File: graphics.cfg 2016/06/04 v1.11 sample graphics configuration
+)
+Package graphics Info: Driver file: xetex.def on input line 107.
+
+(/home/user/texlive/2022/texmf-dist/tex/latex/graphics-def/xetex.def
+File: xetex.def 2022/04/16 v5.0m Graphics/color driver for xetex
+))
+\Gin@req@height=\dimen152
+\Gin@req@width=\dimen153
+))
+(/home/user/texlive/2022/texmf-dist/tex/latex/polyglossia/polyglossia.sty
+Package: polyglossia 2022/04/20 v1.56 Modern multilingual typesetting with XeLa
+TeX and LuaLaTeX
+
+(/home/user/texlive/2022/texmf-dist/tex/latex/etoolbox/etoolbox.sty
+Package: etoolbox 2020/10/05 v2.5k e-TeX tools for LaTeX (JAW)
+\etb@tempcnta=\count281
+)
+(/home/user/texlive/2022/texmf-dist/tex/latex/makecmds/makecmds.sty
+Package: makecmds 2009/09/03 v1.0a extra command making commands
+)
+(/home/user/texlive/2022/texmf-dist/tex/latex/xkeyval/xkeyval.sty
+Package: xkeyval 2020/11/20 v2.8 package option processing (HA)
+
+(/home/user/texlive/2022/texmf-dist/tex/generic/xkeyval/xkeyval.tex
+(/home/user/texlive/2022/texmf-dist/tex/generic/xkeyval/xkvutils.tex
+\XKV@toks=\toks20
+\XKV@tempa@toks=\toks21
+)
+\XKV@depth=\count282
+File: xkeyval.tex 2014/12/03 v2.7a key=value parser (HA)
+))
+(/home/user/texlive/2022/texmf-dist/tex/latex/l3packages/l3keys2e/l3keys2e.sty
+Package: l3keys2e 2022-06-07 LaTeX2e option processing using LaTeX3 keys
+)
+\xpg@normalclass=\XeTeXcharclass1
+(/home/user/texlive/2022/texmf-dist/tex/latex/polyglossia/gloss-latex.lde
+Package: gloss-latex 2021/07/10 vv1.53 polyglossia: module for default language
+
+The property list \polyglossia@langsetup contains the pairs (without outer
+braces):
+>  {latex/script}  =>  {latin}
+>  {latex/lcscript}  =>  {latin}
+>  {latex/scripttag}  =>  {}
+>  {latex/language}  =>  {Latex}
+>  {latex/langtag}  =>  {ENG}
+>  {latex/bcp47}  =>  {}
+>  {latex/hyphennames}  =>  {english}
+>  {latex/direction}  =>  {LR}
+>  {latex/hyphenmins}  =>  {2,3}
+>  {latex/frenchspacing}  =>  {false}
+>  {latex/indentfirst}  =>  {false}
+>  {latex/fontsetup}  =>  {true}
+>  {latex/envname}  =>  {latex}
+>  {latex/babelname}  =>  {latex}
+>  {latex/localnumeral}  =>  {polyglossia@C@localnumeral}
+>  {latex/Localnumeral}  =>  {polyglossia@C@localnumeral}
+>  {latex/DefineCommandsCmd}  =>  {use_none:n}.
+)
+Package polyglossia Info: Default language is latex.
+)
+(/home/user/texlive/2022/texmf-dist/tex/latex/churchslavonic/gloss-churchslavon
+ic.ldf
+File: gloss-churchslavonic.ldf polyglossia: module for Church Slavonic
+The property list \polyglossia@langsetup contains the pairs (without outer
+braces):
+>  {latex/script}  =>  {latin}
+>  {latex/lcscript}  =>  {latin}
+>  {latex/scripttag}  =>  {}
+>  {latex/language}  =>  {Latex}
+>  {latex/langtag}  =>  {ENG}
+>  {latex/bcp47}  =>  {}
+>  {latex/hyphennames}  =>  {english}
+>  {latex/direction}  =>  {LR}
+>  {latex/hyphenmins}  =>  {2,3}
+>  {latex/frenchspacing}  =>  {false}
+>  {latex/indentfirst}  =>  {false}
+>  {latex/fontsetup}  =>  {true}
+>  {latex/envname}  =>  {latex}
+>  {latex/babelname}  =>  {latex}
+>  {latex/localnumeral}  =>  {polyglossia@C@localnumeral}
+>  {latex/Localnumeral}  =>  {polyglossia@C@localnumeral}
+>  {latex/DefineCommandsCmd}  =>  {use_none:n}
+>  {churchslavonic/script}  =>  {Cyrillic}
+>  {churchslavonic/lcscript}  =>  {cyrillic}
+>  {churchslavonic/scripttag}  =>  {cyrl}
+>  {churchslavonic/language}  =>  {Churchslavonic}
+>  {churchslavonic/langtag}  =>  {CHU}
+>  {churchslavonic/bcp47}  =>  {}
+>  {churchslavonic/hyphennames}  =>  {churchslavonic}
+>  {churchslavonic/direction}  =>  {LR}
+>  {churchslavonic/hyphenmins}  =>  {1,2}
+>  {churchslavonic/frenchspacing}  =>  {true}
+>  {churchslavonic/indentfirst}  =>  {false}
+>  {churchslavonic/fontsetup}  =>  {true}
+>  {churchslavonic/envname}  =>  {churchslavonic}
+>  {churchslavonic/babelname}  =>  {churchslavonic}
+>  {churchslavonic/localnumeral}  =>  {polyglossia@C@localnumeral}
+>  {churchslavonic/Localnumeral}  =>  {polyglossia@C@localnumeral}
+>  {churchslavonic/DefineCommandsCmd}  =>  {xpg_define_language_commands:e}.
+ (/home/user/texlive/2022/texmf-dist/tex/latex/polyglossia/babelsh.def
+File: babelsh.def 2019/09/30 Babel common definitions for shorthands
+ Taken verbatim from babel files (2019/09/27 v3.34)
+)
+Package polyglossia Info: Making " an active character on input line 42.
+)
+Package polyglossia Info: Default language is churchslavonic.
+
+(/home/user/texlive/2022/texmf-dist/tex/latex/microtype/microtype.sty
+Package: microtype 2022/03/14 v3.0d Micro-typographical refinements (RS)
+\MT@toks=\toks22
+\MT@tempbox=\box54
+\MT@count=\count283
+LaTeX Info: Redefining \noprotrusionifhmode on input line 1027.
+LaTeX Info: Redefining \leftprotrusion on input line 1028.
+LaTeX Info: Redefining \rightprotrusion on input line 1036.
+LaTeX Info: Redefining \textls on input line 1195.
+\MT@outer@kern=\dimen154
+LaTeX Info: Redefining \textmicrotypecontext on input line 1781.
+\MT@listname@count=\count284
+
+(/home/user/texlive/2022/texmf-dist/tex/latex/microtype/microtype-xetex.def
+File: microtype-xetex.def 2022/03/14 v3.0d Definitions specific to xetex (RS)
+LaTeX Info: Redefining \lsstyle on input line 236.
+)
+Package microtype Info: Loading configuration file microtype.cfg.
+
+(/home/user/texlive/2022/texmf-dist/tex/latex/microtype/microtype.cfg
+File: microtype.cfg 2022/03/14 v3.0d microtype main configuration file (RS)
+))
+(/home/user/texlive/2022/texmf-dist/tex/latex/churchslavonic/churchslavonic.sty
+Package: churchslavonic 2016/04/19 v0.2 Typesetting in Church Slavonic
+(/home/user/texlive/2022/texmf-dist/tex/latex/churchslavonic/cu-num.sty
+Package: cu-num 2016/03/03 v1.0 CU Numerics
+)
+(/home/user/texlive/2022/texmf-dist/tex/latex/churchslavonic/cu-calendar.sty
+Package: cu-calendar 2016/03/30 v1.0 CU Calendars
+
+(/home/user/texlive/2022/texmf-dist/tex/generic/intcalc/intcalc.sty
+Package: intcalc 2019/12/15 v1.3 Expandable calculations with integers (HO)
+))
+(/home/user/texlive/2022/texmf-dist/tex/latex/churchslavonic/cu-util.sty
+Package: cu-util 2016/03/31 v1.0 CU Util
+)
+(/home/user/texlive/2022/texmf-dist/tex/latex/churchslavonic/cu-kinovar.sty
+Package: cu-kinovar 2016/03/31 v1.0 CU Kinovar
+
+(/home/user/texlive/2022/texmf-dist/tex/latex/xcolor/xcolor.sty
+Package: xcolor 2021/10/31 v2.13 LaTeX color extensions (UK)
+
+(/home/user/texlive/2022/texmf-dist/tex/latex/graphics-cfg/color.cfg
+File: color.cfg 2016/01/02 v1.6 sample color configuration
+)
+Package xcolor Info: Driver file: xetex.def on input line 227.
+Package xcolor Info: Model `cmy' substituted by `cmy0' on input line 1352.
+Package xcolor Info: Model `RGB' extended on input line 1368.
+Package xcolor Info: Model `HTML' substituted by `rgb' on input line 1370.
+Package xcolor Info: Model `Hsb' substituted by `hsb' on input line 1371.
+Package xcolor Info: Model `tHsb' substituted by `hsb' on input line 1372.
+Package xcolor Info: Model `HSB' substituted by `hsb' on input line 1373.
+Package xcolor Info: Model `Gray' substituted by `gray' on input line 1374.
+Package xcolor Info: Model `wave' substituted by `hsb' on input line 1375.
+)))
+(/home/user/texlive/2022/texmf-dist/tex/latex/lettrine/lettrine.sty
+File: lettrine.sty 2020-03-14 v2.23 (Daniel Flipo)
+
+(/home/user/texlive/2022/texmf-dist/tex/generic/minifp/minifp.sty
+Package: minifp 2013/12/30 v0.96. Macros for real number operations and a stack
+-based programing language.
+\MFP@loopctr=\count285
+)
+\c@DefaultLines=\count286
+\c@DefaultDepth=\count287
+\DefaultFindent=\dimen155
+\DefaultNindent=\dimen156
+\DefaultSlope=\dimen157
+\DiscardVskip=\dimen158
+\L@lbox=\box55
+\L@tbox=\box56
+\c@L@lines=\count288
+\c@L@depth=\count289
+\L@Pindent=\dimen159
+\L@Findent=\dimen160
+\L@Nindent=\dimen161
+\L@lraise=\dimen162
+\L@first=\dimen163
+\L@next=\dimen164
+\L@slope=\dimen165
+\L@height=\dimen166
+\L@novskip=\dimen167
+\L@target@ht=\dimen168
+\L@target@dp=\dimen169
+\L@target@tht=\dimen170
+\LettrineWidth=\dimen171
+\LettrineHeight=\dimen172
+\LettrineDepth=\dimen173
+\Llist@everypar=\toks23
+
+Loading lettrine.cfg
+(/home/user/texlive/2022/texmf-dist/tex/latex/lettrine/lettrine.cfg))
+(/home/user/texlive/2022/texmf-dist/tex/latex/fwlw/fwlw.sty
+\FirstWordBox=\box57
+\NextWordBox=\box58
+\LastWordBox=\box59
+\LW@box=\box60
+\LW@saved=\box61
+)
+(/home/user/texlive/2022/texmf-dist/tex/latex/tools/xspace.sty
+Package: xspace 2014/10/28 v1.13 Space after command names (DPC,MH)
+)
+(/home/user/texlive/2022/texmf-dist/tex/latex/hyperref/nameref.sty
+Package: nameref 2022-05-17 v2.50 Cross-referencing by name of section
+
+(/home/user/texlive/2022/texmf-dist/tex/latex/refcount/refcount.sty
+Package: refcount 2019/12/15 v3.6 Data extraction from label references (HO)
+
+(/home/user/texlive/2022/texmf-dist/tex/generic/infwarerr/infwarerr.sty
+Package: infwarerr 2019/12/03 v1.5 Providing info/warning/error messages (HO)
+))
+(/home/user/texlive/2022/texmf-dist/tex/generic/gettitlestring/gettitlestring.s
+ty
+Package: gettitlestring 2019/12/15 v1.6 Cleanup title references (HO)
+)
+\c@section@level=\count290
+) (/home/user/texlive/2022/texmf-dist/tex/latex/hyperref/hyperref.sty
+Package: hyperref 2022-05-17 v7.00q Hypertext links for LaTeX
+
+(/home/user/texlive/2022/texmf-dist/tex/generic/pdftexcmds/pdftexcmds.sty
+Package: pdftexcmds 2020-06-27 v0.33 Utility functions of pdfTeX for LuaTeX (HO
+)
+Package pdftexcmds Info: \pdf@primitive is available.
+Package pdftexcmds Info: \pdf@ifprimitive is available.
+Package pdftexcmds Info: \pdfdraftmode not found.
+)
+(/home/user/texlive/2022/texmf-dist/tex/generic/kvdefinekeys/kvdefinekeys.sty
+Package: kvdefinekeys 2019-12-19 v1.6 Define keys (HO)
+)
+(/home/user/texlive/2022/texmf-dist/tex/generic/pdfescape/pdfescape.sty
+Package: pdfescape 2019/12/09 v1.15 Implements pdfTeX's escape features (HO)
+)
+(/home/user/texlive/2022/texmf-dist/tex/latex/hycolor/hycolor.sty
+Package: hycolor 2020-01-27 v1.10 Color options for hyperref/bookmark (HO)
+)
+(/home/user/texlive/2022/texmf-dist/tex/latex/letltxmacro/letltxmacro.sty
+Package: letltxmacro 2019/12/03 v1.6 Let assignment for LaTeX macros (HO)
+)
+(/home/user/texlive/2022/texmf-dist/tex/latex/auxhook/auxhook.sty
+Package: auxhook 2019-12-17 v1.6 Hooks for auxiliary files (HO)
+)
+\@linkdim=\dimen174
+\Hy@linkcounter=\count291
+\Hy@pagecounter=\count292
+
+(/home/user/texlive/2022/texmf-dist/tex/latex/hyperref/pd1enc.def
+File: pd1enc.def 2022-05-17 v7.00q Hyperref: PDFDocEncoding definition (HO)
+)
+(/home/user/texlive/2022/texmf-dist/tex/generic/etexcmds/etexcmds.sty
+Package: etexcmds 2019/12/15 v1.7 Avoid name clashes with e-TeX commands (HO)
+)
+\Hy@SavedSpaceFactor=\count293
+
+(/home/user/texlive/2022/texmf-dist/tex/latex/hyperref/puenc.def
+File: puenc.def 2022-05-17 v7.00q Hyperref: PDF Unicode definition (HO)
+
+(/home/user/texlive/2022/texmf-dist/tex/latex/hyperref/puenc-greekbasic.def
+File: puenc-greekbasic.def 2022-05-17 v7.00q Hyperref: PDF Unicode definition (
+greek block) (HO)
+))
+Package hyperref Info: Option `unicode' set `true' on input line 4020.
+Package hyperref Info: Hyper figures OFF on input line 4139.
+Package hyperref Info: Link nesting OFF on input line 4144.
+Package hyperref Info: Hyper index ON on input line 4147.
+Package hyperref Info: Plain pages OFF on input line 4154.
+Package hyperref Info: Backreferencing OFF on input line 4159.
+Package hyperref Info: Implicit mode ON; LaTeX internals redefined.
+Package hyperref Info: Bookmarks ON on input line 4385.
+\c@Hy@tempcnt=\count294
+
+(/home/user/texlive/2022/texmf-dist/tex/latex/url/url.sty
+\Urlmuskip=\muskip16
+Package: url 2013/09/16  ver 3.4  Verb mode for urls, etc.
+)
+LaTeX Info: Redefining \url on input line 4723.
+\XeTeXLinkMargin=\dimen175
+
+(/home/user/texlive/2022/texmf-dist/tex/generic/bitset/bitset.sty
+Package: bitset 2019/12/09 v1.3 Handle bit-vector datatype (HO)
+
+(/home/user/texlive/2022/texmf-dist/tex/generic/bigintcalc/bigintcalc.sty
+Package: bigintcalc 2019/12/15 v1.5 Expandable calculations on big integers (HO
+)
+))
+\Fld@menulength=\count295
+\Field@Width=\dimen176
+\Fld@charsize=\dimen177
+Package hyperref Info: Hyper figures OFF on input line 6001.
+Package hyperref Info: Link nesting OFF on input line 6006.
+Package hyperref Info: Hyper index ON on input line 6009.
+Package hyperref Info: backreferencing OFF on input line 6016.
+Package hyperref Info: Link coloring OFF on input line 6021.
+Package hyperref Info: Link coloring with OCG OFF on input line 6026.
+Package hyperref Info: PDF/A mode OFF on input line 6031.
+
+(/home/user/texlive/2022/texmf-dist/tex/latex/base/atbegshi-ltx.sty
+Package: atbegshi-ltx 2021/01/10 v1.0c Emulation of the original atbegshi
+package with kernel methods
+)
+\Hy@abspage=\count296
+\c@Item=\count297
+\c@Hfootnote=\count298
+)
+Package hyperref Info: Driver (autodetected): hxetex.
+
+(/home/user/texlive/2022/texmf-dist/tex/latex/hyperref/hxetex.def
+File: hxetex.def 2022-05-17 v7.00q Hyperref driver for XeTeX
+
+(/home/user/texlive/2022/texmf-dist/tex/generic/stringenc/stringenc.sty
+Package: stringenc 2019/11/29 v1.12 Convert strings between diff. encodings (HO
+)
+)
+\pdfm@box=\box62
+\c@Hy@AnnotLevel=\count299
+\HyField@AnnotCount=\count300
+\Fld@listcount=\count301
+\c@bookmark@seq@number=\count302
+
+(/home/user/texlive/2022/texmf-dist/tex/latex/rerunfilecheck/rerunfilecheck.sty
+Package: rerunfilecheck 2019/12/05 v1.9 Rerun checks for auxiliary files (HO)
+(/home/user/texlive/2022/texmf-dist/tex/latex/base/atveryend-ltx.sty
+Package: atveryend-ltx 2020/08/19 v1.0a Emulation of the original atveryend pac
+kage
+with kernel methods
+)
+(/home/user/texlive/2022/texmf-dist/tex/generic/uniquecounter/uniquecounter.sty
+Package: uniquecounter 2019/12/15 v1.4 Provide unlimited unique counter (HO)
+)
+Package uniquecounter Info: New unique counter `rerunfilecheck' on input line 2
+86.
+)
+\Hy@SectionHShift=\skip76
+) (/home/user/texlive/2022/texmf-dist/tex/latex/bookmark/bookmark.sty
+Package: bookmark 2020-11-06 v1.29 PDF bookmarks (HO)
+
+(/home/user/texlive/2022/texmf-dist/tex/latex/bookmark/bkm-dvipdfm.def
+File: bkm-dvipdfm.def 2020-11-06 v1.29 bookmark driver for dvipdfm (HO)
+\BKM@id=\count303
+))
+(/home/user/texlive/2022/texmf-dist/tex/latex/float/float.sty
+Package: float 2001/11/08 v1.3d Float enhancements (AL)
+\c@float@type=\count304
+\float@exts=\toks24
+\float@box=\box63
+\@float@everytoks=\toks25
+\@floatcapt=\box64
+)
+Package polyglossia Info: Default language is churchslavonic.
+
+(/home/user/texlive/2022/texmf-dist/tex/latex/polyglossia/gloss-russian.ldf
+File: gloss-russian.ldf polyglossia: module for russian
+
+(/home/user/texlive/2022/texmf-dist/tex/latex/polyglossia/xpg-cyrillicnumbers.s
+ty
+Package: xpg-cyrillicnumbers 2019/11/15 v0.2 Formatting of Cyrillic alphabetic 
+numbers
+)
+The property list \polyglossia@langsetup contains the pairs (without outer
+braces):
+>  {latex/script}  =>  {latin}
+>  {latex/lcscript}  =>  {latin}
+>  {latex/scripttag}  =>  {}
+>  {latex/language}  =>  {Latex}
+>  {latex/langtag}  =>  {ENG}
+>  {latex/bcp47}  =>  {}
+>  {latex/hyphennames}  =>  {english}
+>  {latex/direction}  =>  {LR}
+>  {latex/hyphenmins}  =>  {2,3}
+>  {latex/frenchspacing}  =>  {false}
+>  {latex/indentfirst}  =>  {false}
+>  {latex/fontsetup}  =>  {true}
+>  {latex/envname}  =>  {latex}
+>  {latex/babelname}  =>  {latex}
+>  {latex/localnumeral}  =>  {polyglossia@C@localnumeral}
+>  {latex/Localnumeral}  =>  {polyglossia@C@localnumeral}
+>  {latex/DefineCommandsCmd}  =>  {use_none:n}
+>  {churchslavonic/script}  =>  {Cyrillic}
+>  {churchslavonic/lcscript}  =>  {cyrillic}
+>  {churchslavonic/scripttag}  =>  {cyrl}
+>  {churchslavonic/language}  =>  {Churchslavonic}
+>  {churchslavonic/langtag}  =>  {CHU}
+>  {churchslavonic/bcp47}  =>  {}
+>  {churchslavonic/hyphennames}  =>  {churchslavonic}
+>  {churchslavonic/direction}  =>  {LR}
+>  {churchslavonic/hyphenmins}  =>  {1,2}
+>  {churchslavonic/frenchspacing}  =>  {true}
+>  {churchslavonic/indentfirst}  =>  {false}
+>  {churchslavonic/fontsetup}  =>  {true}
+>  {churchslavonic/envname}  =>  {churchslavonic}
+>  {churchslavonic/babelname}  =>  {churchslavonic}
+>  {churchslavonic/localnumeral}  =>  {polyglossia@C@localnumeral}
+>  {churchslavonic/Localnumeral}  =>  {polyglossia@C@localnumeral}
+>  {churchslavonic/DefineCommandsCmd}  =>  {xpg_define_language_commands:e}
+>  {russian/script}  =>  {Cyrillic}
+>  {russian/lcscript}  =>  {cyrillic}
+>  {russian/scripttag}  =>  {cyrl}
+>  {russian/language}  =>  {Russian}
+>  {russian/langtag}  =>  {RUS}
+>  {russian/bcp47}  =>  {ru}
+>  {russian/hyphennames}  =>  {russian}
+>  {russian/direction}  =>  {LR}
+>  {russian/hyphenmins}  =>  {2,2}
+>  {russian/frenchspacing}  =>  {true}
+>  {russian/indentfirst}  =>  {true}
+>  {russian/fontsetup}  =>  {true}
+>  {russian/envname}  =>  {russian}
+>  {russian/babelname}  =>  {russian}
+>  {russian/localnumeral}  =>  {russiannumerals}
+>  {russian/Localnumeral}  =>  {Russiannumerals}
+>  {russian/DefineCommandsCmd}  =>  {xpg_define_language_commands:e}.
+Package polyglossia Info: Option: Russian, numerals=arabic.
+) (/home/user/texlive/2022/texmf-dist/tex/latex/polyglossia/gloss-greek.ldf
+File: gloss-greek.ldf polyglossia: module for greek
+The property list \polyglossia@langsetup contains the pairs (without outer
+braces):
+>  {latex/script}  =>  {latin}
+>  {latex/lcscript}  =>  {latin}
+>  {latex/scripttag}  =>  {}
+>  {latex/language}  =>  {Latex}
+>  {latex/langtag}  =>  {ENG}
+>  {latex/bcp47}  =>  {}
+>  {latex/hyphennames}  =>  {english}
+>  {latex/direction}  =>  {LR}
+>  {latex/hyphenmins}  =>  {2,3}
+>  {latex/frenchspacing}  =>  {false}
+>  {latex/indentfirst}  =>  {false}
+>  {latex/fontsetup}  =>  {true}
+>  {latex/envname}  =>  {latex}
+>  {latex/babelname}  =>  {latex}
+>  {latex/localnumeral}  =>  {polyglossia@C@localnumeral}
+>  {latex/Localnumeral}  =>  {polyglossia@C@localnumeral}
+>  {latex/DefineCommandsCmd}  =>  {use_none:n}
+>  {churchslavonic/script}  =>  {Cyrillic}
+>  {churchslavonic/lcscript}  =>  {cyrillic}
+>  {churchslavonic/scripttag}  =>  {cyrl}
+>  {churchslavonic/language}  =>  {Churchslavonic}
+>  {churchslavonic/langtag}  =>  {CHU}
+>  {churchslavonic/bcp47}  =>  {}
+>  {churchslavonic/hyphennames}  =>  {churchslavonic}
+>  {churchslavonic/direction}  =>  {LR}
+>  {churchslavonic/hyphenmins}  =>  {1,2}
+>  {churchslavonic/frenchspacing}  =>  {true}
+>  {churchslavonic/indentfirst}  =>  {false}
+>  {churchslavonic/fontsetup}  =>  {true}
+>  {churchslavonic/envname}  =>  {churchslavonic}
+>  {churchslavonic/babelname}  =>  {churchslavonic}
+>  {churchslavonic/localnumeral}  =>  {polyglossia@C@localnumeral}
+>  {churchslavonic/Localnumeral}  =>  {polyglossia@C@localnumeral}
+>  {churchslavonic/DefineCommandsCmd}  =>  {xpg_define_language_commands:e}
+>  {russian/script}  =>  {Cyrillic}
+>  {russian/lcscript}  =>  {cyrillic}
+>  {russian/scripttag}  =>  {cyrl}
+>  {russian/language}  =>  {Russian}
+>  {russian/langtag}  =>  {RUS}
+>  {russian/bcp47}  =>  {ru}
+>  {russian/hyphennames}  =>  {russian}
+>  {russian/direction}  =>  {LR}
+>  {russian/hyphenmins}  =>  {2,2}
+>  {russian/frenchspacing}  =>  {true}
+>  {russian/indentfirst}  =>  {true}
+>  {russian/fontsetup}  =>  {true}
+>  {russian/envname}  =>  {russian}
+>  {russian/babelname}  =>  {russian}
+>  {russian/localnumeral}  =>  {russiannumerals}
+>  {russian/Localnumeral}  =>  {Russiannumerals}
+>  {russian/DefineCommandsCmd}  =>  {xpg_define_language_commands:e}
+>  {greek/script}  =>  {Greek}
+>  {greek/lcscript}  =>  {greek}
+>  {greek/scripttag}  =>  {grek}
+>  {greek/language}  =>  {Greek}
+>  {greek/langtag}  =>  {ELL}
+>  {greek/bcp47}  =>  {el-monoton}
+>  {greek/hyphennames}  =>  {}
+>  {greek/direction}  =>  {LR}
+>  {greek/hyphenmins}  =>  {2,3}
+>  {greek/frenchspacing}  =>  {true}
+>  {greek/indentfirst}  =>  {true}
+>  {greek/fontsetup}  =>  {true}
+>  {greek/envname}  =>  {greek}
+>  {greek/babelname}  =>  {greek}
+>  {greek/localnumeral}  =>  {greeknumerals}
+>  {greek/Localnumeral}  =>  {Greeknumerals}
+>  {greek/DefineCommandsCmd}  =>  {xpg_define_language_commands:e}.
+
+
+Package polyglossia Warning: No hyphenation patterns were loaded for `greek'
+(polyglossia)                I will use \language=\l@nohyphenation instead on i
+nput line 14.
+
+\l@greek = a dialect from \language\l@nohyphenation 
+(/home/user/texlive/2022/texmf-dist/tex/latex/polyglossia/xgreek-fixes.def)
+
+Package polyglossia Warning: No hyphenation patterns were loaded for `greek'
+(polyglossia)                I will use \language=\l@nohyphenation instead on i
+nput line 97.
+
+\l@greek = a dialect from \language\l@nohyphenation 
+
+Package polyglossia Warning: No hyphenation patterns were loaded for Monotonic 
+Greek
+(polyglossia)                I will use the patterns loaded for \l@greek instea
+d on input line 97.
+
+\l@monogreek = a dialect from \language\l@greek 
+Package polyglossia Info: Option: Monotonic Greek.
+\@attic@num=\count305
+) (/home/user/texlive/2022/texmf-dist/tex/latex/polyglossia/gloss-latin.ldf
+File: gloss-latin.ldf polyglossia: module for Latin v.2.4 2021-10-25
+The property list \polyglossia@langsetup contains the pairs (without outer
+braces):
+>  {latex/script}  =>  {latin}
+>  {latex/lcscript}  =>  {latin}
+>  {latex/scripttag}  =>  {}
+>  {latex/language}  =>  {Latex}
+>  {latex/langtag}  =>  {ENG}
+>  {latex/bcp47}  =>  {}
+>  {latex/hyphennames}  =>  {english}
+>  {latex/direction}  =>  {LR}
+>  {latex/hyphenmins}  =>  {2,3}
+>  {latex/frenchspacing}  =>  {false}
+>  {latex/indentfirst}  =>  {false}
+>  {latex/fontsetup}  =>  {true}
+>  {latex/envname}  =>  {latex}
+>  {latex/babelname}  =>  {latex}
+>  {latex/localnumeral}  =>  {polyglossia@C@localnumeral}
+>  {latex/Localnumeral}  =>  {polyglossia@C@localnumeral}
+>  {latex/DefineCommandsCmd}  =>  {use_none:n}
+>  {churchslavonic/script}  =>  {Cyrillic}
+>  {churchslavonic/lcscript}  =>  {cyrillic}
+>  {churchslavonic/scripttag}  =>  {cyrl}
+>  {churchslavonic/language}  =>  {Churchslavonic}
+>  {churchslavonic/langtag}  =>  {CHU}
+>  {churchslavonic/bcp47}  =>  {}
+>  {churchslavonic/hyphennames}  =>  {churchslavonic}
+>  {churchslavonic/direction}  =>  {LR}
+>  {churchslavonic/hyphenmins}  =>  {1,2}
+>  {churchslavonic/frenchspacing}  =>  {true}
+>  {churchslavonic/indentfirst}  =>  {false}
+>  {churchslavonic/fontsetup}  =>  {true}
+>  {churchslavonic/envname}  =>  {churchslavonic}
+>  {churchslavonic/babelname}  =>  {churchslavonic}
+>  {churchslavonic/localnumeral}  =>  {polyglossia@C@localnumeral}
+>  {churchslavonic/Localnumeral}  =>  {polyglossia@C@localnumeral}
+>  {churchslavonic/DefineCommandsCmd}  =>  {xpg_define_language_commands:e}
+>  {russian/script}  =>  {Cyrillic}
+>  {russian/lcscript}  =>  {cyrillic}
+>  {russian/scripttag}  =>  {cyrl}
+>  {russian/language}  =>  {Russian}
+>  {russian/langtag}  =>  {RUS}
+>  {russian/bcp47}  =>  {ru}
+>  {russian/hyphennames}  =>  {russian}
+>  {russian/direction}  =>  {LR}
+>  {russian/hyphenmins}  =>  {2,2}
+>  {russian/frenchspacing}  =>  {true}
+>  {russian/indentfirst}  =>  {true}
+>  {russian/fontsetup}  =>  {true}
+>  {russian/envname}  =>  {russian}
+>  {russian/babelname}  =>  {russian}
+>  {russian/localnumeral}  =>  {russiannumerals}
+>  {russian/Localnumeral}  =>  {Russiannumerals}
+>  {russian/DefineCommandsCmd}  =>  {xpg_define_language_commands:e}
+>  {greek/script}  =>  {Greek}
+>  {greek/lcscript}  =>  {greek}
+>  {greek/scripttag}  =>  {grek}
+>  {greek/language}  =>  {Greek}
+>  {greek/langtag}  =>  {ELL}
+>  {greek/bcp47}  =>  {el-monoton}
+>  {greek/hyphennames}  =>  {}
+>  {greek/direction}  =>  {LR}
+>  {greek/hyphenmins}  =>  {2,3}
+>  {greek/frenchspacing}  =>  {true}
+>  {greek/indentfirst}  =>  {true}
+>  {greek/fontsetup}  =>  {true}
+>  {greek/envname}  =>  {greek}
+>  {greek/babelname}  =>  {greek}
+>  {greek/localnumeral}  =>  {greeknumerals}
+>  {greek/Localnumeral}  =>  {Greeknumerals}
+>  {greek/DefineCommandsCmd}  =>  {xpg_define_language_commands:e}
+>  {latin/script}  =>  {latin}
+>  {latin/lcscript}  =>  {latin}
+>  {latin/scripttag}  =>  {}
+>  {latin/language}  =>  {Latin}
+>  {latin/langtag}  =>  {LAT}
+>  {latin/bcp47}  =>  {la}
+>  {latin/hyphennames}  =>  {}
+>  {latin/direction}  =>  {LR}
+>  {latin/hyphenmins}  =>  {2,2}
+>  {latin/frenchspacing}  =>  {true}
+>  {latin/indentfirst}  =>  {false}
+>  {latin/fontsetup}  =>  {true}
+>  {latin/envname}  =>  {latin}
+>  {latin/babelname}  =>  {latin}
+>  {latin/localnumeral}  =>  {polyglossia@C@localnumeral}
+>  {latin/Localnumeral}  =>  {polyglossia@C@localnumeral}
+>  {latin/DefineCommandsCmd}  =>  {xpg_define_language_commands:e}.
+
+
+Package polyglossia Warning: No hyphenation patterns were loaded for `latin'
+(polyglossia)                I will use \language=\l@nohyphenation instead on i
+nput line 12.
+
+\l@latin = a dialect from \language\l@nohyphenation 
+\g_polyglossia_latin_question_exclamation_class=\XeTeXcharclass2
+\g_polyglossia_latin_colon_semicolon_class=\XeTeXcharclass3
+\g_polyglossia_latin_opening_guillemet_class=\XeTeXcharclass4
+\g_polyglossia_latin_closing_guillemet_class=\XeTeXcharclass5
+\g_polyglossia_latin_opening_bracket_class=\XeTeXcharclass6
+\g_polyglossia_latin_closing_bracket_class=\XeTeXcharclass7
+
+Package polyglossia Info: Activating Latin language variant "modern" on line
+(polyglossia)             601.
+
+
+Package polyglossia Warning: The hyphenation patterns for modern Latin were
+(polyglossia)                not found on line 601.
+
+\l@latin = a dialect from \language\l@nohyphenation 
+
+Package polyglossia Warning: The hyphenation patterns for modern Latin were
+(polyglossia)                not found on line 601.
+
+\l@latin = a dialect from \language\l@nohyphenation 
+
+Package polyglossia Info: Activating hyphenation patterns for modern Latin on
+(polyglossia)             line 601.
+
+Package polyglossia Info: Making ' an active character on input line 614.
+Package polyglossia Info: Making ^ an active character on input line 615.
+Package polyglossia Info: Making = an active character on input line 616.
+
+Package polyglossia Warning: The hyphenation patterns for modern Latin were
+(polyglossia)                not found on line 1045.
+
+\l@latin = a dialect from \language\l@nohyphenation 
+)
+
+Package fontspec Info: Font family 'NotoSerifSemiBold(0)' created for font
+(fontspec)             'Noto Serif SemiBold' with options [].
+(fontspec)              
+(fontspec)              This font family consists of the following NFSS
+(fontspec)             series/shapes:
+(fontspec)              
+(fontspec)             - 'normal' (m/n) with NFSS spec.: <->"Noto Serif
+(fontspec)             SemiBold/OT:script=latn;language=dflt;"
+(fontspec)             - 'small caps'  (m/sc) with NFSS spec.: <->"Noto Serif
+(fontspec)             SemiBold/OT:script=latn;language=dflt;+smcp;"
+(fontspec)             - 'bold' (b/n) with NFSS spec.: <->"Noto Serif
+(fontspec)             SemiBold/B/OT:script=latn;language=dflt;"
+(fontspec)             - 'bold small caps'  (b/sc) with NFSS spec.: <->"Noto
+(fontspec)             Serif SemiBold/B/OT:script=latn;language=dflt;+smcp;"
+(fontspec)             - 'italic' (m/it) with NFSS spec.: <->"Noto Serif
+(fontspec)             SemiBold/I/OT:script=latn;language=dflt;"
+(fontspec)             - 'italic small caps'  (m/scit) with NFSS spec.:
+(fontspec)             <->"Noto Serif
+(fontspec)             SemiBold/I/OT:script=latn;language=dflt;+smcp;"
+(fontspec)             - 'bold italic' (b/it) with NFSS spec.: <->"Noto Serif
+(fontspec)             SemiBold/BI/OT:script=latn;language=dflt;"
+(fontspec)             - 'bold italic small caps'  (b/scit) with NFSS spec.:
+(fontspec)             <->"Noto Serif
+(fontspec)             SemiBold/BI/OT:script=latn;language=dflt;+smcp;"
+
+
+Package fontspec Info: Font family 'IndictionUnicode.otf(0)' created for font
+(fontspec)             'IndictionUnicode.otf' with options [].
+(fontspec)              
+(fontspec)              This font family consists of the following NFSS
+(fontspec)             series/shapes:
+(fontspec)              
+(fontspec)             - 'normal' (m/n) with NFSS spec.:
+(fontspec)             <->"[IndictionUnicode.otf]/OT:script=latn;language=dflt;
+"
+(fontspec)             - 'small caps'  (m/sc) with NFSS spec.: 
+
+
+Package fontspec Info: Font family 'VertogradUnicode.otf(0)' created for font
+(fontspec)             'VertogradUnicode.otf' with options [].
+(fontspec)              
+(fontspec)              This font family consists of the following NFSS
+(fontspec)             series/shapes:
+(fontspec)              
+(fontspec)             - 'normal' (m/n) with NFSS spec.:
+(fontspec)             <->"[VertogradUnicode.otf]/OT:script=DFLT;language=dflt;
+"
+(fontspec)             - 'small caps'  (m/sc) with NFSS spec.: 
+
+
+Package fontspec Info: Could not resolve font "Orthodox.tt eRoos/B" (it
+(fontspec)             probably doesn't exist).
+
+
+Package fontspec Info: Font family 'Orthodox.tteRoos(0)' created for font
+(fontspec)             'Orthodox.tt eRoos' with options [].
+(fontspec)              
+(fontspec)              This font family consists of the following NFSS
+(fontspec)             series/shapes:
+(fontspec)              
+(fontspec)             - 'normal' (m/n) with NFSS spec.: <->"Orthodox.tt
+(fontspec)             eRoos/OT:language=dflt;"
+(fontspec)             - 'small caps'  (m/sc) with NFSS spec.: 
+(fontspec)             - 'italic' (m/it) with NFSS spec.: <->"Orthodox.tt
+(fontspec)             eRoos/I/OT:language=dflt;"
+(fontspec)             - 'italic small caps'  (m/scit) with NFSS spec.: 
+(fontspec)             - 'bold italic' (b/it) with NFSS spec.: <->"Orthodox.tt
+(fontspec)             eRoos/BI/OT:language=dflt;"
+(fontspec)             - 'bold italic small caps'  (b/scit) with NFSS spec.: 
+
+
+Package fontspec Info: Could not resolve font "Valaam/BI" (it probably doesn't
+(fontspec)             exist).
+
+
+Package fontspec Info: Could not resolve font "Valaam/B" (it probably doesn't
+(fontspec)             exist).
+
+
+Package fontspec Info: Could not resolve font "Valaam/I" (it probably doesn't
+(fontspec)             exist).
+
+
+Package fontspec Info: Font family 'Valaam(0)' created for font 'Valaam' with
+(fontspec)             options [].
+(fontspec)              
+(fontspec)              This font family consists of the following NFSS
+(fontspec)             series/shapes:
+(fontspec)              
+(fontspec)             - 'normal' (m/n) with NFSS spec.:
+(fontspec)             <->"Valaam/OT:language=dflt;"
+(fontspec)             - 'small caps'  (m/sc) with NFSS spec.: 
+
+
+Package fontspec Info: Could not resolve font "Bukvica UCS/BI" (it probably
+(fontspec)             doesn't exist).
+
+
+Package fontspec Info: Could not resolve font "Bukvica UCS/B" (it probably
+(fontspec)             doesn't exist).
+
+
+Package fontspec Info: Could not resolve font "Bukvica UCS/I" (it probably
+(fontspec)             doesn't exist).
+
+
+Package fontspec Info: Font family 'BukvicaUCS(0)' created for font 'Bukvica
+(fontspec)             UCS' with options [].
+(fontspec)              
+(fontspec)              This font family consists of the following NFSS
+(fontspec)             series/shapes:
+(fontspec)              
+(fontspec)             - 'normal' (m/n) with NFSS spec.: <->"Bukvica
+(fontspec)             UCS/OT:language=dflt;"
+(fontspec)             - 'small caps'  (m/sc) with NFSS spec.: 
+
+
+Package fontspec Info: Font family 'NotoSerifBlack(0)' created for font 'Noto
+(fontspec)             Serif Black' with options [].
+(fontspec)              
+(fontspec)              This font family consists of the following NFSS
+(fontspec)             series/shapes:
+(fontspec)              
+(fontspec)             - 'normal' (m/n) with NFSS spec.: <->"Noto Serif
+(fontspec)             Black/OT:script=latn;language=dflt;"
+(fontspec)             - 'small caps'  (m/sc) with NFSS spec.: <->"Noto Serif
+(fontspec)             Black/OT:script=latn;language=dflt;+smcp;"
+(fontspec)             - 'bold' (b/n) with NFSS spec.: <->"Noto Serif
+(fontspec)             Black/B/OT:script=latn;language=dflt;"
+(fontspec)             - 'bold small caps'  (b/sc) with NFSS spec.: <->"Noto
+(fontspec)             Serif Black/B/OT:script=latn;language=dflt;+smcp;"
+(fontspec)             - 'italic' (m/it) with NFSS spec.: <->"Noto Serif
+(fontspec)             Black/I/OT:script=latn;language=dflt;"
+(fontspec)             - 'italic small caps'  (m/scit) with NFSS spec.:
+(fontspec)             <->"Noto Serif
+(fontspec)             Black/I/OT:script=latn;language=dflt;+smcp;"
+(fontspec)             - 'bold italic' (b/it) with NFSS spec.: <->"Noto Serif
+(fontspec)             Black/BI/OT:script=latn;language=dflt;"
+(fontspec)             - 'bold italic small caps'  (b/scit) with NFSS spec.:
+(fontspec)             <->"Noto Serif
+(fontspec)             Black/BI/OT:script=latn;language=dflt;+smcp;"
+
+
+Package fontspec Info: Font family 'PonomarUnicode.otf(0)' created for font
+(fontspec)             'PonomarUnicode.otf' with options [Script =
+(fontspec)             Cyrillic,Ligatures = TeX,HyphenChar = _].
+(fontspec)              
+(fontspec)              This font family consists of the following NFSS
+(fontspec)             series/shapes:
+(fontspec)              
+(fontspec)             - 'normal' (m/n) with NFSS spec.:
+(fontspec)             <->"[PonomarUnicode.otf]/OT:script=cyrl;language=dflt;ma
+pping=tex-text;"
+(fontspec)             - 'small caps'  (m/sc) with NFSS spec.: 
+(fontspec)             and font adjustment code:
+(fontspec)             \tex_hyphenchar:D \font =`_\scan_stop: 
+
+
+Package fontspec Info: Font family 'PonomarUnicode.otf(1)' created for font
+(fontspec)             'PonomarUnicode.otf' with options
+(fontspec)             [Script=Cyrillic,Ligatures=TeX,HyphenChar="005F,LetterSp
+ace=10.0].
+(fontspec)              
+(fontspec)              This font family consists of the following NFSS
+(fontspec)             series/shapes:
+(fontspec)              
+(fontspec)             - 'normal' (m/n) with NFSS spec.:
+(fontspec)             <->"[PonomarUnicode.otf]/OT:script=cyrl;language=dflt;le
+tterspace=10.0;mapping=tex-text;"
+(fontspec)             - 'small caps'  (m/sc) with NFSS spec.: 
+(fontspec)             and font adjustment code:
+(fontspec)             \tex_hyphenchar:D \font ="005F\scan_stop: 
+
+
+Package fontspec Info: Font family 'PonomarUnicode.otf(2)' created for font
+(fontspec)             'PonomarUnicode.otf' with options
+(fontspec)             [Script=Cyrillic,Ligatures=TeX,HyphenChar="005F,FakeBold
+=2].
+(fontspec)              
+(fontspec)              This font family consists of the following NFSS
+(fontspec)             series/shapes:
+(fontspec)              
+(fontspec)             - 'normal' (m/n) with NFSS spec.:
+(fontspec)             <->"[PonomarUnicode.otf]/OT:script=cyrl;language=dflt;em
+bolden=2;mapping=tex-text;"
+(fontspec)             - 'small caps'  (m/sc) with NFSS spec.: 
+(fontspec)             and font adjustment code:
+(fontspec)             \tex_hyphenchar:D \font ="005F\scan_stop: 
+
+\mylength=\skip77
+
+############ BOOK ####################
+(/home/user/texlive/2022/texmf-dist/tex/latex/koma-script/scrlayer-scrpage.sty
+Package: scrlayer-scrpage 2022/05/01 v3.36 KOMA-Script package (end user interf
+ace for scrlayer)
+
+(/home/user/texlive/2022/texmf-dist/tex/latex/koma-script/scrlayer.sty
+Package: scrlayer 2022/05/01 v3.36 KOMA-Script package (defining layers and pag
+e styles)
+Package scrlayer Info: patching LaTeX kernel macro \pagestyle on input line 213
+4.
+)
+Package scrbase Info: Unknown processing state.
+(scrbase)             Processing option `markcase=ignoreuppercase'
+(scrbase)             of member `.scrlayer-scrpage.sty' of family
+(scrbase)             `KOMA' doesn't set
+(scrbase)             a valid state. This will be interpreted
+(scrbase)             as \FamilyKeyStateProcessed on input line 632.
+Package scrlayer-scrpage Info: Makeing stand-alone element `pagehead' from
+(scrlayer-scrpage)             alias to `pageheadfoot' on input line 1089.
+)
+1: section
+1: chapter
+1: chapter
+1: section
+1: section
+1: chapter
+1: chapter
+1: section
+\len@section@font=\skip78
+\len@subsection@font=\skip79
+\len@subsubsection@font=\skip80
+\HangP=\skip81
+\NarrowIndent=\skip82
+) (./book_black.aux)
+\openout1 = `book_black.aux'.
+
+LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 22.
+LaTeX Font Info:    ... okay on input line 22.
+LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 22.
+LaTeX Font Info:    ... okay on input line 22.
+LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 22.
+LaTeX Font Info:    ... okay on input line 22.
+LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 22.
+LaTeX Font Info:    ... okay on input line 22.
+LaTeX Font Info:    Checking defaults for TS1/cmr/m/n on input line 22.
+LaTeX Font Info:    Trying to load font information for TS1+cmr on input line 2
+2.
+
+(/home/user/texlive/2022/texmf-dist/tex/latex/base/ts1cmr.fd
+File: ts1cmr.fd 2019/12/16 v2.5j Standard LaTeX font definitions
+)
+LaTeX Font Info:    ... okay on input line 22.
+LaTeX Font Info:    Checking defaults for TU/lmr/m/n on input line 22.
+LaTeX Font Info:    ... okay on input line 22.
+LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 22.
+LaTeX Font Info:    ... okay on input line 22.
+LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 22.
+LaTeX Font Info:    ... okay on input line 22.
+LaTeX Font Info:    Checking defaults for T3/cmr/m/n on input line 22.
+LaTeX Font Info:    Trying to load font information for T3+cmr on input line 22
+.
+
+(/home/user/texlive/2022/texmf-dist/tex/latex/tipa/t3cmr.fd
+File: t3cmr.fd 2001/12/31 TIPA font definitions
+)
+LaTeX Font Info:    ... okay on input line 22.
+LaTeX Font Info:    Checking defaults for PD1/pdf/m/n on input line 22.
+LaTeX Font Info:    ... okay on input line 22.
+LaTeX Font Info:    Checking defaults for PU/pdf/m/n on input line 22.
+LaTeX Font Info:    ... okay on input line 22.
+Package scrbase Info: activating churchslavonic \partname on input line 22.
+Package scrbase Info: activating churchslavonic \chaptername on input line 22.
+Package scrbase Info: activating churchslavonic \appendixname on input line 22.
+
+Package scrbase Info: activating churchslavonic \figurename on input line 22.
+Package scrbase Info: activating churchslavonic \tablename on input line 22.
+Package scrbase Info: activating churchslavonic \contentsname on input line 22.
+
+Package scrbase Info: activating churchslavonic \listfigurename on input line 2
+2.
+Package scrbase Info: activating churchslavonic \listtablename on input line 22
+.
+Package scrbase Info: activating churchslavonic \bibname on input line 22.
+Package scrbase Info: activating churchslavonic \indexname on input line 22.
+
+*geometry* driver: auto-detecting
+*geometry* detected driver: xetex
+*geometry* verbose mode - [ preamble ] result:
+* driver: xetex
+* paper: custom
+* layout: <same size as paper>
+* layoutoffset:(h,v)=(0.0pt,0.0pt)
+* modes: includehead includefoot twoside 
+* h-part:(L,W,R)=(56.9055pt, 483.69687pt, 56.9055pt)
+* v-part:(T,H,B)=(48.36958pt, 739.77176pt, 56.9055pt)
+* \paperwidth=597.50787pt
+* \paperheight=845.04684pt
+* \textwidth=483.69687pt
+* \textheight=660.29506pt
+* \oddsidemargin=-15.36449pt
+* \evensidemargin=-15.36449pt
+* \topmargin=-23.9004pt
+* \headheight=31.25pt
+* \headsep=10.7267pt
+* \topskip=20.0pt
+* \footskip=37.5pt
+* \marginparwidth=74.68849pt
+* \marginparsep=12.8401pt
+* \columnsep=10.0pt
+* \skip\footins=16.0pt plus 6.0pt minus 3.0pt
+* \hoffset=0.0pt
+* \voffset=0.0pt
+* \mag=1000
+* \@twocolumnfalse
+* \@twosidetrue
+* \@mparswitchtrue
+* \@reversemarginfalse
+* (1in=72.27pt=25.4mm, 1cm=28.453pt)
+
+
+Package fontspec Info: Adjusting the maths setup (use [no-math] to avoid
+(fontspec)             this).
+
+\symlegacymaths=\mathgroup4
+LaTeX Font Info:    Overwriting symbol font `legacymaths' in version `bold'
+(Font)                  OT1/cmr/m/n --> OT1/cmr/bx/n on input line 22.
+LaTeX Font Info:    Redeclaring math accent \acute on input line 22.
+LaTeX Font Info:    Redeclaring math accent \grave on input line 22.
+LaTeX Font Info:    Redeclaring math accent \ddot on input line 22.
+LaTeX Font Info:    Redeclaring math accent \tilde on input line 22.
+LaTeX Font Info:    Redeclaring math accent \bar on input line 22.
+LaTeX Font Info:    Redeclaring math accent \breve on input line 22.
+LaTeX Font Info:    Redeclaring math accent \check on input line 22.
+LaTeX Font Info:    Redeclaring math accent \hat on input line 22.
+LaTeX Font Info:    Redeclaring math accent \dot on input line 22.
+LaTeX Font Info:    Redeclaring math accent \mathring on input line 22.
+LaTeX Font Info:    Redeclaring math symbol \colon on input line 22.
+LaTeX Font Info:    Redeclaring math symbol \Gamma on input line 22.
+LaTeX Font Info:    Redeclaring math symbol \Delta on input line 22.
+LaTeX Font Info:    Redeclaring math symbol \Theta on input line 22.
+LaTeX Font Info:    Redeclaring math symbol \Lambda on input line 22.
+LaTeX Font Info:    Redeclaring math symbol \Xi on input line 22.
+LaTeX Font Info:    Redeclaring math symbol \Pi on input line 22.
+LaTeX Font Info:    Redeclaring math symbol \Sigma on input line 22.
+LaTeX Font Info:    Redeclaring math symbol \Upsilon on input line 22.
+LaTeX Font Info:    Redeclaring math symbol \Phi on input line 22.
+LaTeX Font Info:    Redeclaring math symbol \Psi on input line 22.
+LaTeX Font Info:    Redeclaring math symbol \Omega on input line 22.
+LaTeX Font Info:    Redeclaring math symbol \mathdollar on input line 22.
+LaTeX Font Info:    Redeclaring symbol font `operators' on input line 22.
+LaTeX Font Info:    Encoding `OT1' has changed to `TU' for symbol font
+(Font)              `operators' in the math version `normal' on input line 22.
+LaTeX Font Info:    Overwriting symbol font `operators' in version `normal'
+(Font)                  OT1/cmr/m/n --> TU/lmr/m/n on input line 22.
+LaTeX Font Info:    Encoding `OT1' has changed to `TU' for symbol font
+(Font)              `operators' in the math version `bold' on input line 22.
+LaTeX Font Info:    Overwriting symbol font `operators' in version `bold'
+(Font)                  OT1/cmr/bx/n --> TU/lmr/m/n on input line 22.
+LaTeX Font Info:    Overwriting symbol font `operators' in version `normal'
+(Font)                  TU/lmr/m/n --> TU/lmr/m/n on input line 22.
+LaTeX Font Info:    Overwriting math alphabet `\mathit' in version `normal'
+(Font)                  OT1/cmr/m/it --> TU/lmr/m/it on input line 22.
+LaTeX Font Info:    Overwriting math alphabet `\mathbf' in version `normal'
+(Font)                  OT1/cmr/bx/n --> TU/lmr/b/n on input line 22.
+LaTeX Font Info:    Overwriting math alphabet `\mathsf' in version `normal'
+(Font)                  OT1/cmss/m/n --> TU/lmss/m/n on input line 22.
+LaTeX Font Info:    Overwriting math alphabet `\mathtt' in version `normal'
+(Font)                  OT1/cmtt/m/n --> TU/lmtt/m/n on input line 22.
+LaTeX Font Info:    Overwriting symbol font `operators' in version `bold'
+(Font)                  TU/lmr/m/n --> TU/lmr/b/n on input line 22.
+LaTeX Font Info:    Overwriting math alphabet `\mathit' in version `bold'
+(Font)                  OT1/cmr/bx/it --> TU/lmr/b/it on input line 22.
+LaTeX Font Info:    Overwriting math alphabet `\mathsf' in version `bold'
+(Font)                  OT1/cmss/bx/n --> TU/lmss/b/n on input line 22.
+LaTeX Font Info:    Overwriting math alphabet `\mathtt' in version `bold'
+(Font)                  OT1/cmtt/m/n --> TU/lmtt/b/n on input line 22.
+The property list \__xpg_alias contains the pairs (without outer braces):
+>  {latex/target}  =>  {latex}
+>  {churchslavonic/target}  =>  {churchslavonic}
+>  {russian/target}  =>  {russian}
+>  {ru/target}  =>  {russian}
+>  {ru-luna1918/target}  =>  {russian}
+>  {ru-luna1918/options}  =>  {spelling=modern}
+>  {ru-petr1708/target}  =>  {russian}
+>  {ru-petr1708/options}  =>  {spelling=old}
+>  {greek/target}  =>  {greek}
+>  {grc/target}  =>  {greek}
+>  {grc/variant}  =>  {ancient}
+>  {grc/options}  =>  {variant=ancient}
+>  {el-polyton/target}  =>  {greek}
+>  {el-polyton/options}  =>  {varant=polytonic}
+>  {el-monoton/target}  =>  {greek}
+>  {el-monoton/variant}  =>  {monotonic}
+>  {el-monoton/options}  =>  {variant=monotonic}
+>  {el/target}  =>  {greek}
+>  {polutonikogreek/target}  =>  {greek}
+>  {polutonikogreek/variant}  =>  {polytonic}
+>  {polutonikogreek/options}  =>  {variant=polytonic}
+>  {latin/target}  =>  {latin}
+>  {la/target}  =>  {latin}
+>  {la-x-classic/target}  =>  {latin}
+>  {la-x-classic/variant}  =>  {classic}
+>  {la-x-classic/options}  =>  {variant=classic}
+>  {la-x-ecclesia/target}  =>  {latin}
+>  {la-x-ecclesia/variant}  =>  {ecclesiastic}
+>  {la-x-ecclesia/options}  =>  {variant=ecclesiastic}
+>  {la-x-medieval/target}  =>  {latin}
+>  {la-x-medieval/variant}  =>  {medieval}
+>  {la-x-medieval/options}  =>  {variant=medieval}
+>  {classiclatin/target}  =>  {latin}
+>  {classiclatin/variant}  =>  {classic}
+>  {classiclatin/options}  =>  {variant=classic}
+>  {ecclesiasticlatin/target}  =>  {latin}
+>  {ecclesiasticlatin/variant}  =>  {ecclesiastic}
+>  {ecclesiasticlatin/options}  =>  {variant=ecclesiastic}
+>  {medievallatin/target}  =>  {latin}
+>  {medievallatin/variant}  =>  {medieval}
+>  {medievallatin/options}  =>  {variant=medieval}.
+LaTeX Info: Redefining \microtypecontext on input line 22.
+Package microtype Info: Applying patch `item' on input line 22.
+Package microtype Info: Applying patch `toc' on input line 22.
+Package microtype Info: Applying patch `eqnum' on input line 22.
+Package microtype Info: Applying patch `footnote' on input line 22.
+Package microtype Info: Character protrusion enabled (level 2).
+Package microtype Info: Using default protrusion set `alltext'.
+Package microtype Info: No adjustment of tracking.
+Package microtype Info: No adjustment of spacing.
+Package microtype Info: No adjustment of kerning.
+
+(/home/user/texlive/2022/texmf-dist/tex/latex/microtype/mt-LatinModernRoman.cfg
+File: mt-LatinModernRoman.cfg 2021/02/21 v1.1 microtype config. file: Latin Mod
+ern Roman (RS)
+)
+Package hyperref Info: Link coloring OFF on input line 22.
+Package microtype Info: Loading generic protrusion settings for font family
+(microtype)             `PonomarUnicode.otf' (encoding: TU).
+(microtype)             For optimal results, create family-specific settings.
+(microtype)             See the microtype manual for details.
+Package microtype Info: Character `\k A' is missing
+(microtype)             in font `\TU/PonomarUnicode.otf(0)/m/n/20.74'.
+(microtype)             Ignoring protrusion settings for this character.
+Package microtype Info: Character `\u A' is missing
+(microtype)             in font `\TU/PonomarUnicode.otf(0)/m/n/20.74'.
+(microtype)             Ignoring protrusion settings for this character.
+Package microtype Info: Character `\k a' is missing
+(microtype)             in font `\TU/PonomarUnicode.otf(0)/m/n/20.74'.
+(microtype)             Ignoring protrusion settings for this character.
+Package microtype Info: Character `\u a' is missing
+(microtype)             in font `\TU/PonomarUnicode.otf(0)/m/n/20.74'.
+(microtype)             Ignoring protrusion settings for this character.
+Package microtype Info: Character `\'C' is missing
+(microtype)             in font `\TU/PonomarUnicode.otf(0)/m/n/20.74'.
+(microtype)             Ignoring protrusion settings for this character.
+Package microtype Info: Character `\v C' is missing
+(microtype)             in font `\TU/PonomarUnicode.otf(0)/m/n/20.74'.
+(microtype)             Ignoring protrusion settings for this character.
+Package microtype Info: Character `\'c' is missing
+(microtype)             in font `\TU/PonomarUnicode.otf(0)/m/n/20.74'.
+(microtype)             Ignoring protrusion settings for this character.
+Package microtype Info: Character `\v c' is missing
+(microtype)             in font `\TU/PonomarUnicode.otf(0)/m/n/20.74'.
+(microtype)             Ignoring protrusion settings for this character.
+Package microtype Info: Character `\v D' is missing
+(microtype)             in font `\TU/PonomarUnicode.otf(0)/m/n/20.74'.
+(microtype)             Ignoring protrusion settings for this character.
+Package microtype Info: Character `\v d' is missing
+(microtype)             in font `\TU/PonomarUnicode.otf(0)/m/n/20.74'.
+(microtype)             Ignoring protrusion settings for this character.
+Package microtype Info: Character `\dj ' is missing
+(microtype)             in font `\TU/PonomarUnicode.otf(0)/m/n/20.74'.
+(microtype)             Ignoring protrusion settings for this character.
+Package microtype Info: Character `\k E' is missing
+(microtype)             in font `\TU/PonomarUnicode.otf(0)/m/n/20.74'.
+(microtype)             Ignoring protrusion settings for this character.
+Package microtype Info: Character `\v E' is missing
+(microtype)             in font `\TU/PonomarUnicode.otf(0)/m/n/20.74'.
+(microtype)             Ignoring protrusion settings for this character.
+Package microtype Info: Character `\k e' is missing
+(microtype)             in font `\TU/PonomarUnicode.otf(0)/m/n/20.74'.
+(microtype)             Ignoring protrusion settings for this character.
+Package microtype Info: Character `\v e' is missing
+(microtype)             in font `\TU/PonomarUnicode.otf(0)/m/n/20.74'.
+(microtype)             Ignoring protrusion settings for this character.
+Package microtype Info: Character `\u G' is missing
+(microtype)             in font `\TU/PonomarUnicode.otf(0)/m/n/20.74'.
+(microtype)             Ignoring protrusion settings for this character.
+Package microtype Info: Character `\u g' is missing
+(microtype)             in font `\TU/PonomarUnicode.otf(0)/m/n/20.74'.
+(microtype)             Ignoring protrusion settings for this character.
+Package microtype Info: Character `\.I' is missing
+(microtype)             in font `\TU/PonomarUnicode.otf(0)/m/n/20.74'.
+(microtype)             Ignoring protrusion settings for this character.
+Package microtype Info: Character `\L ' is missing
+(microtype)             in font `\TU/PonomarUnicode.otf(0)/m/n/20.74'.
+(microtype)             Ignoring protrusion settings for this character.
+Package microtype Info: Character `\'L' is missing
+(microtype)             in font `\TU/PonomarUnicode.otf(0)/m/n/20.74'.
+(microtype)             Ignoring protrusion settings for this character.
+Package microtype Info: Character `\v L' is missing
+(microtype)             in font `\TU/PonomarUnicode.otf(0)/m/n/20.74'.
+(microtype)             Ignoring protrusion settings for this character.
+Package microtype Info: Character `\l ' is missing
+(microtype)             in font `\TU/PonomarUnicode.otf(0)/m/n/20.74'.
+(microtype)             Ignoring protrusion settings for this character.
+Package microtype Info: Character `\'l' is missing
+(microtype)             in font `\TU/PonomarUnicode.otf(0)/m/n/20.74'.
+(microtype)             Ignoring protrusion settings for this character.
+Package microtype Info: Character `\v l' is missing
+(microtype)             in font `\TU/PonomarUnicode.otf(0)/m/n/20.74'.
+(microtype)             Ignoring protrusion settings for this character.
+Package microtype Info: Character `\'N' is missing
+(microtype)             in font `\TU/PonomarUnicode.otf(0)/m/n/20.74'.
+(microtype)             Ignoring protrusion settings for this character.
+Package microtype Info: Character `\v N' is missing
+(microtype)             in font `\TU/PonomarUnicode.otf(0)/m/n/20.74'.
+(microtype)             Ignoring protrusion settings for this character.
+Package microtype Info: Character `\'n' is missing
+(microtype)             in font `\TU/PonomarUnicode.otf(0)/m/n/20.74'.
+(microtype)             Ignoring protrusion settings for this character.
+Package microtype Info: Character `\v n' is missing
+(microtype)             in font `\TU/PonomarUnicode.otf(0)/m/n/20.74'.
+(microtype)             Ignoring protrusion settings for this character.
+Package microtype Info: Character `\H O' is missing
+(microtype)             in font `\TU/PonomarUnicode.otf(0)/m/n/20.74'.
+(microtype)             Ignoring protrusion settings for this character.
+Package microtype Info: Character `\H o' is missing
+(microtype)             in font `\TU/PonomarUnicode.otf(0)/m/n/20.74'.
+(microtype)             Ignoring protrusion settings for this character.
+Package microtype Info: Character `\'R' is missing
+(microtype)             in font `\TU/PonomarUnicode.otf(0)/m/n/20.74'.
+(microtype)             Ignoring protrusion settings for this character.
+Package microtype Info: Character `\v R' is missing
+(microtype)             in font `\TU/PonomarUnicode.otf(0)/m/n/20.74'.
+(microtype)             Ignoring protrusion settings for this character.
+Package microtype Info: Character `\'r' is missing
+(microtype)             in font `\TU/PonomarUnicode.otf(0)/m/n/20.74'.
+(microtype)             Ignoring protrusion settings for this character.
+Package microtype Info: Character `\v r' is missing
+(microtype)             in font `\TU/PonomarUnicode.otf(0)/m/n/20.74'.
+(microtype)             Ignoring protrusion settings for this character.
+Package microtype Info: Character `\'S' is missing
+(microtype)             in font `\TU/PonomarUnicode.otf(0)/m/n/20.74'.
+(microtype)             Ignoring protrusion settings for this character.
+Package microtype Info: Character `\c S' is missing
+(microtype)             in font `\TU/PonomarUnicode.otf(0)/m/n/20.74'.
+(microtype)             Ignoring protrusion settings for this character.
+Package microtype Info: Character `\v S' is missing
+(microtype)             in font `\TU/PonomarUnicode.otf(0)/m/n/20.74'.
+(microtype)             Ignoring protrusion settings for this character.
+Package microtype Info: Character `\'s' is missing
+(microtype)             in font `\TU/PonomarUnicode.otf(0)/m/n/20.74'.
+(microtype)             Ignoring protrusion settings for this character.
+Package microtype Info: Character `\c s' is missing
+(microtype)             in font `\TU/PonomarUnicode.otf(0)/m/n/20.74'.
+(microtype)             Ignoring protrusion settings for this character.
+Package microtype Info: Character `\v s' is missing
+(microtype)             in font `\TU/PonomarUnicode.otf(0)/m/n/20.74'.
+(microtype)             Ignoring protrusion settings for this character.
+Package microtype Info: Character `\c T' is missing
+(microtype)             in font `\TU/PonomarUnicode.otf(0)/m/n/20.74'.
+(microtype)             Ignoring protrusion settings for this character.
+Package microtype Info: Character `\v T' is missing
+(microtype)             in font `\TU/PonomarUnicode.otf(0)/m/n/20.74'.
+(microtype)             Ignoring protrusion settings for this character.
+Package microtype Info: Character `\c t' is missing
+(microtype)             in font `\TU/PonomarUnicode.otf(0)/m/n/20.74'.
+(microtype)             Ignoring protrusion settings for this character.
+Package microtype Info: Character `\v t' is missing
+(microtype)             in font `\TU/PonomarUnicode.otf(0)/m/n/20.74'.
+(microtype)             Ignoring protrusion settings for this character.
+Package microtype Info: Character `\H U' is missing
+(microtype)             in font `\TU/PonomarUnicode.otf(0)/m/n/20.74'.
+(microtype)             Ignoring protrusion settings for this character.
+Package microtype Info: Character `\r U' is missing
+(microtype)             in font `\TU/PonomarUnicode.otf(0)/m/n/20.74'.
+(microtype)             Ignoring protrusion settings for this character.
+Package microtype Info: Character `\H u' is missing
+(microtype)             in font `\TU/PonomarUnicode.otf(0)/m/n/20.74'.
+(microtype)             Ignoring protrusion settings for this character.
+Package microtype Info: Character `\r u' is missing
+(microtype)             in font `\TU/PonomarUnicode.otf(0)/m/n/20.74'.
+(microtype)             Ignoring protrusion settings for this character.
+Package microtype Info: Character `\"Y' is missing
+(microtype)             in font `\TU/PonomarUnicode.otf(0)/m/n/20.74'.
+(microtype)             Ignoring protrusion settings for this character.
+Package microtype Info: Character `\'Z' is missing
+(microtype)             in font `\TU/PonomarUnicode.otf(0)/m/n/20.74'.
+(microtype)             Ignoring protrusion settings for this character.
+Package microtype Info: Character `\.Z' is missing
+(microtype)             in font `\TU/PonomarUnicode.otf(0)/m/n/20.74'.
+(microtype)             Ignoring protrusion settings for this character.
+Package microtype Info: Character `\v Z' is missing
+(microtype)             in font `\TU/PonomarUnicode.otf(0)/m/n/20.74'.
+(microtype)             Ignoring protrusion settings for this character.
+Package microtype Info: Character `\'z' is missing
+(microtype)             in font `\TU/PonomarUnicode.otf(0)/m/n/20.74'.
+(microtype)             Ignoring protrusion settings for this character.
+Package microtype Info: Character `\.z' is missing
+(microtype)             in font `\TU/PonomarUnicode.otf(0)/m/n/20.74'.
+(microtype)             Ignoring protrusion settings for this character.
+Package microtype Info: Character `\v z' is missing
+(microtype)             in font `\TU/PonomarUnicode.otf(0)/m/n/20.74'.
+(microtype)             Ignoring protrusion settings for this character.
+ (./СлужбаГосподу.tex
+File: crossblack.png Graphic file (type bmp)
+<crossblack.png>
+Package microtype Info: Loading generic protrusion settings for font family
+(microtype)             `BukvicaUCS' (encoding: TU).
+(microtype)             For optimal results, create family-specific settings.
+(microtype)             See the microtype manual for details.
+Package microtype Info: Character `1' has a width of 0pt 
+(microtype)             in font `TU/BukvicaUCS(0)/m/n/20.74'.
+(microtype)             Ignoring protrusion settings for this character.
+Package microtype Info: Character `4' has a width of 0pt 
+(microtype)             in font `TU/BukvicaUCS(0)/m/n/20.74'.
+(microtype)             Ignoring protrusion settings for this character.
+Package microtype Info: Character `7' is missing
+(microtype)             in font `\TU/BukvicaUCS(0)/m/n/20.74'.
+(microtype)             Ignoring protrusion settings for this character.
+Package microtype Info: Character `.' is missing
+(microtype)             in font `\TU/BukvicaUCS(0)/m/n/20.74'.
+(microtype)             Ignoring protrusion settings for this character.
+Package microtype Info: Character `,' is missing
+(microtype)             in font `\TU/BukvicaUCS(0)/m/n/20.74'.
+(microtype)             Ignoring protrusion settings for this character.
+Package microtype Info: Character `:' is missing
+(microtype)             in font `\TU/BukvicaUCS(0)/m/n/20.74'.
+(microtype)             Ignoring protrusion settings for this character.
+Package microtype Info: Character `;' is missing
+(microtype)             in font `\TU/BukvicaUCS(0)/m/n/20.74'.
+(microtype)             Ignoring protrusion settings for this character.
+Package microtype Info: Character `!' is missing
+(microtype)             in font `\TU/BukvicaUCS(0)/m/n/20.74'.
+(microtype)             Ignoring protrusion settings for this character.
+Package microtype Info: Character `?' is missing
+(microtype)             in font `\TU/BukvicaUCS(0)/m/n/20.74'.
+(microtype)             Ignoring protrusion settings for this character.
+Package microtype Info: Character `~ (= ~)' has a width of 0pt 
+(microtype)             in font `TU/BukvicaUCS(0)/m/n/20.74'.
+(microtype)             Ignoring protrusion settings for this character.
+Package microtype Info: Character `*' is missing
+(microtype)             in font `\TU/BukvicaUCS(0)/m/n/20.74'.
+(microtype)             Ignoring protrusion settings for this character.
+Package microtype Info: Character `(' is missing
+(microtype)             in font `\TU/BukvicaUCS(0)/m/n/20.74'.
+(microtype)             Ignoring protrusion settings for this character.
+Package microtype Info: Character `)' is missing
+(microtype)             in font `\TU/BukvicaUCS(0)/m/n/20.74'.
+(microtype)             Ignoring protrusion settings for this character.
+Package microtype Info: Character `-' is missing
+(microtype)             in font `\TU/BukvicaUCS(0)/m/n/20.74'.
+(microtype)             Ignoring protrusion settings for this character.
+Package microtype Info: Character `\textendash ' is missing
+(microtype)             in font `\TU/BukvicaUCS(0)/m/n/20.74'.
+(microtype)             Ignoring protrusion settings for this character.
+Package microtype Info: Character `\textemdash ' is missing
+(microtype)             in font `\TU/BukvicaUCS(0)/m/n/20.74'.
+(microtype)             Ignoring protrusion settings for this character.
+Package microtype Info: Character `\textquoteleft ' is missing
+(microtype)             in font `\TU/BukvicaUCS(0)/m/n/20.74'.
+(microtype)             Ignoring protrusion settings for this character.
+Package microtype Info: Character `\textquoteright ' is missing
+(microtype)             in font `\TU/BukvicaUCS(0)/m/n/20.74'.
+(microtype)             Ignoring protrusion settings for this character.
+Package microtype Info: Character `\textquotedblleft ' is missing
+(microtype)             in font `\TU/BukvicaUCS(0)/m/n/20.74'.
+(microtype)             Ignoring protrusion settings for this character.
+Package microtype Info: Character `\textquotedblright ' is missing
+(microtype)             in font `\TU/BukvicaUCS(0)/m/n/20.74'.
+(microtype)             Ignoring protrusion settings for this character.
+Package microtype Info: Character `\AE ' is missing
+(microtype)             in font `\TU/BukvicaUCS(0)/m/n/20.74'.
+(microtype)             Ignoring protrusion settings for this character.
+Package microtype Info: Character `\quotesinglbase ' is missing
+(microtype)             in font `\TU/BukvicaUCS(0)/m/n/20.74'.
+(microtype)             Ignoring protrusion settings for this character.
+Package microtype Info: Character `\quotedblbase ' is missing
+(microtype)             in font `\TU/BukvicaUCS(0)/m/n/20.74'.
+(microtype)             Ignoring protrusion settings for this character.
+Package microtype Info: Character `\guillemotleft ' is missing
+(microtype)             in font `\TU/BukvicaUCS(0)/m/n/20.74'.
+(microtype)             Ignoring protrusion settings for this character.
+Package microtype Info: Character `\guillemotright ' is missing
+(microtype)             in font `\TU/BukvicaUCS(0)/m/n/20.74'.
+(microtype)             Ignoring protrusion settings for this character.
+Package microtype Info: Character `\textexclamdown ' is missing
+(microtype)             in font `\TU/BukvicaUCS(0)/m/n/20.74'.
+(microtype)             Ignoring protrusion settings for this character.
+Package microtype Info: Character `\textquestiondown ' is missing
+(microtype)             in font `\TU/BukvicaUCS(0)/m/n/20.74'.
+(microtype)             Ignoring protrusion settings for this character.
+Package microtype Info: Character `\textless ' is missing
+(microtype)             in font `\TU/BukvicaUCS(0)/m/n/20.74'.
+(microtype)             Ignoring protrusion settings for this character.
+Package microtype Info: Character `\textgreater ' is missing
+(microtype)             in font `\TU/BukvicaUCS(0)/m/n/20.74'.
+(microtype)             Ignoring protrusion settings for this character.
+Package microtype Info: Character `1' has a width of 0pt 
+(microtype)             in font `TU/BukvicaUCS(0)/m/n/146.24632'.
+(microtype)             Ignoring protrusion settings for this character.
+Package microtype Info: Character `4' has a width of 0pt 
+(microtype)             in font `TU/BukvicaUCS(0)/m/n/146.24632'.
+(microtype)             Ignoring protrusion settings for this character.
+Package microtype Info: Character `7' is missing
+(microtype)             in font `\TU/BukvicaUCS(0)/m/n/146.24632'.
+(microtype)             Ignoring protrusion settings for this character.
+Package microtype Info: Character `.' is missing
+(microtype)             in font `\TU/BukvicaUCS(0)/m/n/146.24632'.
+(microtype)             Ignoring protrusion settings for this character.
+Package microtype Info: Character `,' is missing
+(microtype)             in font `\TU/BukvicaUCS(0)/m/n/146.24632'.
+(microtype)             Ignoring protrusion settings for this character.
+Package microtype Info: Character `:' is missing
+(microtype)             in font `\TU/BukvicaUCS(0)/m/n/146.24632'.
+(microtype)             Ignoring protrusion settings for this character.
+Package microtype Info: Character `;' is missing
+(microtype)             in font `\TU/BukvicaUCS(0)/m/n/146.24632'.
+(microtype)             Ignoring protrusion settings for this character.
+Package microtype Info: Character `!' is missing
+(microtype)             in font `\TU/BukvicaUCS(0)/m/n/146.24632'.
+(microtype)             Ignoring protrusion settings for this character.
+Package microtype Info: Character `?' is missing
+(microtype)             in font `\TU/BukvicaUCS(0)/m/n/146.24632'.
+(microtype)             Ignoring protrusion settings for this character.
+Package microtype Info: Character `~ (= ~)' has a width of 0pt 
+(microtype)             in font `TU/BukvicaUCS(0)/m/n/146.24632'.
+(microtype)             Ignoring protrusion settings for this character.
+Package microtype Info: Character `*' is missing
+(microtype)             in font `\TU/BukvicaUCS(0)/m/n/146.24632'.
+(microtype)             Ignoring protrusion settings for this character.
+Package microtype Info: Character `(' is missing
+(microtype)             in font `\TU/BukvicaUCS(0)/m/n/146.24632'.
+(microtype)             Ignoring protrusion settings for this character.
+Package microtype Info: Character `)' is missing
+(microtype)             in font `\TU/BukvicaUCS(0)/m/n/146.24632'.
+(microtype)             Ignoring protrusion settings for this character.
+Package microtype Info: Character `-' is missing
+(microtype)             in font `\TU/BukvicaUCS(0)/m/n/146.24632'.
+(microtype)             Ignoring protrusion settings for this character.
+Package microtype Info: Character `\textendash ' is missing
+(microtype)             in font `\TU/BukvicaUCS(0)/m/n/146.24632'.
+(microtype)             Ignoring protrusion settings for this character.
+Package microtype Info: Character `\textemdash ' is missing
+(microtype)             in font `\TU/BukvicaUCS(0)/m/n/146.24632'.
+(microtype)             Ignoring protrusion settings for this character.
+Package microtype Info: Character `\textquoteleft ' is missing
+(microtype)             in font `\TU/BukvicaUCS(0)/m/n/146.24632'.
+(microtype)             Ignoring protrusion settings for this character.
+Package microtype Info: Character `\textquoteright ' is missing
+(microtype)             in font `\TU/BukvicaUCS(0)/m/n/146.24632'.
+(microtype)             Ignoring protrusion settings for this character.
+Package microtype Info: Character `\textquotedblleft ' is missing
+(microtype)             in font `\TU/BukvicaUCS(0)/m/n/146.24632'.
+(microtype)             Ignoring protrusion settings for this character.
+Package microtype Info: Character `\textquotedblright ' is missing
+(microtype)             in font `\TU/BukvicaUCS(0)/m/n/146.24632'.
+(microtype)             Ignoring protrusion settings for this character.
+Package microtype Info: Character `\AE ' is missing
+(microtype)             in font `\TU/BukvicaUCS(0)/m/n/146.24632'.
+(microtype)             Ignoring protrusion settings for this character.
+Package microtype Info: Character `\quotesinglbase ' is missing
+(microtype)             in font `\TU/BukvicaUCS(0)/m/n/146.24632'.
+(microtype)             Ignoring protrusion settings for this character.
+Package microtype Info: Character `\quotedblbase ' is missing
+(microtype)             in font `\TU/BukvicaUCS(0)/m/n/146.24632'.
+(microtype)             Ignoring protrusion settings for this character.
+Package microtype Info: Character `\guillemotleft ' is missing
+(microtype)             in font `\TU/BukvicaUCS(0)/m/n/146.24632'.
+(microtype)             Ignoring protrusion settings for this character.
+Package microtype Info: Character `\guillemotright ' is missing
+(microtype)             in font `\TU/BukvicaUCS(0)/m/n/146.24632'.
+(microtype)             Ignoring protrusion settings for this character.
+Package microtype Info: Character `\textexclamdown ' is missing
+(microtype)             in font `\TU/BukvicaUCS(0)/m/n/146.24632'.
+(microtype)             Ignoring protrusion settings for this character.
+Package microtype Info: Character `\textquestiondown ' is missing
+(microtype)             in font `\TU/BukvicaUCS(0)/m/n/146.24632'.
+(microtype)             Ignoring protrusion settings for this character.
+Package microtype Info: Character `\textless ' is missing
+(microtype)             in font `\TU/BukvicaUCS(0)/m/n/146.24632'.
+(microtype)             Ignoring protrusion settings for this character.
+Package microtype Info: Character `\textgreater ' is missing
+(microtype)             in font `\TU/BukvicaUCS(0)/m/n/146.24632'.
+(microtype)             Ignoring protrusion settings for this character.
+Package microtype Info: Character `1' has a width of 0pt 
+(microtype)             in font `TU/BukvicaUCS(0)/m/n/146.10126'.
+(microtype)             Ignoring protrusion settings for this character.
+Package microtype Info: Character `4' has a width of 0pt 
+(microtype)             in font `TU/BukvicaUCS(0)/m/n/146.10126'.
+(microtype)             Ignoring protrusion settings for this character.
+Package microtype Info: Character `7' is missing
+(microtype)             in font `\TU/BukvicaUCS(0)/m/n/146.10126'.
+(microtype)             Ignoring protrusion settings for this character.
+Package microtype Info: Character `.' is missing
+(microtype)             in font `\TU/BukvicaUCS(0)/m/n/146.10126'.
+(microtype)             Ignoring protrusion settings for this character.
+Package microtype Info: Character `,' is missing
+(microtype)             in font `\TU/BukvicaUCS(0)/m/n/146.10126'.
+(microtype)             Ignoring protrusion settings for this character.
+Package microtype Info: Character `:' is missing
+(microtype)             in font `\TU/BukvicaUCS(0)/m/n/146.10126'.
+(microtype)             Ignoring protrusion settings for this character.
+Package microtype Info: Character `;' is missing
+(microtype)             in font `\TU/BukvicaUCS(0)/m/n/146.10126'.
+(microtype)             Ignoring protrusion settings for this character.
+Package microtype Info: Character `!' is missing
+(microtype)             in font `\TU/BukvicaUCS(0)/m/n/146.10126'.
+(microtype)             Ignoring protrusion settings for this character.
+Package microtype Info: Character `?' is missing
+(microtype)             in font `\TU/BukvicaUCS(0)/m/n/146.10126'.
+(microtype)             Ignoring protrusion settings for this character.
+Package microtype Info: Character `~ (= ~)' has a width of 0pt 
+(microtype)             in font `TU/BukvicaUCS(0)/m/n/146.10126'.
+(microtype)             Ignoring protrusion settings for this character.
+Package microtype Info: Character `*' is missing
+(microtype)             in font `\TU/BukvicaUCS(0)/m/n/146.10126'.
+(microtype)             Ignoring protrusion settings for this character.
+Package microtype Info: Character `(' is missing
+(microtype)             in font `\TU/BukvicaUCS(0)/m/n/146.10126'.
+(microtype)             Ignoring protrusion settings for this character.
+Package microtype Info: Character `)' is missing
+(microtype)             in font `\TU/BukvicaUCS(0)/m/n/146.10126'.
+(microtype)             Ignoring protrusion settings for this character.
+Package microtype Info: Character `-' is missing
+(microtype)             in font `\TU/BukvicaUCS(0)/m/n/146.10126'.
+(microtype)             Ignoring protrusion settings for this character.
+Package microtype Info: Character `\textendash ' is missing
+(microtype)             in font `\TU/BukvicaUCS(0)/m/n/146.10126'.
+(microtype)             Ignoring protrusion settings for this character.
+Package microtype Info: Character `\textemdash ' is missing
+(microtype)             in font `\TU/BukvicaUCS(0)/m/n/146.10126'.
+(microtype)             Ignoring protrusion settings for this character.
+Package microtype Info: Character `\textquoteleft ' is missing
+(microtype)             in font `\TU/BukvicaUCS(0)/m/n/146.10126'.
+(microtype)             Ignoring protrusion settings for this character.
+Package microtype Info: Character `\textquoteright ' is missing
+(microtype)             in font `\TU/BukvicaUCS(0)/m/n/146.10126'.
+(microtype)             Ignoring protrusion settings for this character.
+Package microtype Info: Character `\textquotedblleft ' is missing
+(microtype)             in font `\TU/BukvicaUCS(0)/m/n/146.10126'.
+(microtype)             Ignoring protrusion settings for this character.
+Package microtype Info: Character `\textquotedblright ' is missing
+(microtype)             in font `\TU/BukvicaUCS(0)/m/n/146.10126'.
+(microtype)             Ignoring protrusion settings for this character.
+Package microtype Info: Character `\AE ' is missing
+(microtype)             in font `\TU/BukvicaUCS(0)/m/n/146.10126'.
+(microtype)             Ignoring protrusion settings for this character.
+Package microtype Info: Character `\quotesinglbase ' is missing
+(microtype)             in font `\TU/BukvicaUCS(0)/m/n/146.10126'.
+(microtype)             Ignoring protrusion settings for this character.
+Package microtype Info: Character `\quotedblbase ' is missing
+(microtype)             in font `\TU/BukvicaUCS(0)/m/n/146.10126'.
+(microtype)             Ignoring protrusion settings for this character.
+Package microtype Info: Character `\guillemotleft ' is missing
+(microtype)             in font `\TU/BukvicaUCS(0)/m/n/146.10126'.
+(microtype)             Ignoring protrusion settings for this character.
+Package microtype Info: Character `\guillemotright ' is missing
+(microtype)             in font `\TU/BukvicaUCS(0)/m/n/146.10126'.
+(microtype)             Ignoring protrusion settings for this character.
+Package microtype Info: Character `\textexclamdown ' is missing
+(microtype)             in font `\TU/BukvicaUCS(0)/m/n/146.10126'.
+(microtype)             Ignoring protrusion settings for this character.
+Package microtype Info: Character `\textquestiondown ' is missing
+(microtype)             in font `\TU/BukvicaUCS(0)/m/n/146.10126'.
+(microtype)             Ignoring protrusion settings for this character.
+Package microtype Info: Character `\textless ' is missing
+(microtype)             in font `\TU/BukvicaUCS(0)/m/n/146.10126'.
+(microtype)             Ignoring protrusion settings for this character.
+Package microtype Info: Character `\textgreater ' is missing
+(microtype)             in font `\TU/BukvicaUCS(0)/m/n/146.10126'.
+(microtype)             Ignoring protrusion settings for this character.
+Package lettrine.sty Info: Targeted height = 123.93834pt
+(lettrine.sty)             (for loversize=0, accent excluded),
+(lettrine.sty)             Lettrine height = 159.39647pt (Ї) loversize=0.18;
+(lettrine.sty)             reported on input line 22.
+
+
+LaTeX Font Warning: Font shape `TU/PonomarUnicode.otf(0)/m/sl' undefined
+(Font)              using `TU/PonomarUnicode.otf(0)/m/n' instead on input line 
+30.
+
+
+LaTeX Font Warning: Font shape `TU/PonomarUnicode.otf(2)/m/sl' undefined
+(Font)              using `TU/PonomarUnicode.otf(2)/m/n' instead on input line 
+30.
+
+LaTeX Font Info:    External font `cmex10' loaded for size
+(Font)              <14.4> on input line 30.
+LaTeX Font Info:    External font `cmex10' loaded for size
+(Font)              <7> on input line 30.
+(/home/user/texlive/2022/texmf-dist/tex/latex/microtype/mt-cmr.cfg
+File: mt-cmr.cfg 2013/05/19 v2.2 microtype config. file: Computer Modern Roman 
+(RS)
+) [1
+
+]
+[2] [3] [4] [5] [6]
+
+Package scrlayer-scrpage Warning: \footheight to low.
+(scrlayer-scrpage)                At least 31.29665pt needed,
+(scrlayer-scrpage)                but only 31.25pt found.
+(scrlayer-scrpage)                I'll enlarge \footheight, for further
+(scrlayer-scrpage)                processing, but you should do this yourself,
+(scrlayer-scrpage)                e.g., using
+(scrlayer-scrpage)                  \setlength{\footheight}{31.29665pt}
+(scrlayer-scrpage)                in your preamble.
+(scrlayer-scrpage)                I'll also increase \footskip on input line 18
+4.
+
+[7] [8] [9] [10] [11] [12] [13] [14] [15] [16] [17] [18] [19] [20] [21])
+(./АкафистБогородице.tex
+File: crossblack.png Graphic file (type bmp)
+<crossblack.png>
+ [22]
+Package lettrine.sty Info: Targeted height = 123.93834pt
+(lettrine.sty)             (for loversize=0, accent excluded),
+(lettrine.sty)             Lettrine height = 146.10126pt (В) loversize=0.18;
+(lettrine.sty)             reported on input line 16.
+ [23] [24] [25] [26] [27] [28] [29] [30] [31]
+[32] [33]) [34]
+Package tocbasic Info: character protrusion at toc deactivated on input line 31
+.
+ (./book_black.toc
+LaTeX Font Info:    External font `cmex10' loaded for size
+(Font)              <20.74> on input line 3.
+LaTeX Font Info:    External font `cmex10' loaded for size
+(Font)              <12> on input line 3.
+)
+\tf@toc=\write3
+\openout3 = `book_black.toc'.
+
+ [35
+
+
+]
+The property list \polyglossia@langsetup contains the pairs (without outer
+braces):
+>  {latex/script}  =>  {latin}
+>  {latex/lcscript}  =>  {latin}
+>  {latex/scripttag}  =>  {}
+>  {latex/language}  =>  {Latex}
+>  {latex/langtag}  =>  {ENG}
+>  {latex/bcp47}  =>  {}
+>  {latex/hyphennames}  =>  {english}
+>  {latex/direction}  =>  {LR}
+>  {latex/hyphenmins}  =>  {2,3}
+>  {latex/frenchspacing}  =>  {false}
+>  {latex/indentfirst}  =>  {false}
+>  {latex/fontsetup}  =>  {true}
+>  {latex/envname}  =>  {latex}
+>  {latex/babelname}  =>  {latex}
+>  {latex/localnumeral}  =>  {polyglossia@C@localnumeral}
+>  {latex/Localnumeral}  =>  {polyglossia@C@localnumeral}
+>  {latex/DefineCommandsCmd}  =>  {use_none:n}
+>  {churchslavonic/script}  =>  {Cyrillic}
+>  {churchslavonic/lcscript}  =>  {cyrillic}
+>  {churchslavonic/scripttag}  =>  {cyrl}
+>  {churchslavonic/language}  =>  {Churchslavonic}
+>  {churchslavonic/langtag}  =>  {CHU}
+>  {churchslavonic/bcp47}  =>  {}
+>  {churchslavonic/hyphennames}  =>  {churchslavonic}
+>  {churchslavonic/direction}  =>  {LR}
+>  {churchslavonic/hyphenmins}  =>  {1,2}
+>  {churchslavonic/frenchspacing}  =>  {true}
+>  {churchslavonic/indentfirst}  =>  {false}
+>  {churchslavonic/fontsetup}  =>  {true}
+>  {churchslavonic/envname}  =>  {churchslavonic}
+>  {churchslavonic/babelname}  =>  {churchslavonic}
+>  {churchslavonic/localnumeral}  =>  {polyglossia@C@localnumeral}
+>  {churchslavonic/Localnumeral}  =>  {polyglossia@C@localnumeral}
+>  {churchslavonic/DefineCommandsCmd}  =>  {xpg_define_language_commands:e}
+>  {russian/script}  =>  {Cyrillic}
+>  {russian/lcscript}  =>  {cyrillic}
+>  {russian/scripttag}  =>  {cyrl}
+>  {russian/language}  =>  {Russian}
+>  {russian/langtag}  =>  {RUS}
+>  {russian/bcp47}  =>  {ru}
+>  {russian/hyphennames}  =>  {russian}
+>  {russian/direction}  =>  {LR}
+>  {russian/hyphenmins}  =>  {2,2}
+>  {russian/frenchspacing}  =>  {true}
+>  {russian/indentfirst}  =>  {true}
+>  {russian/fontsetup}  =>  {true}
+>  {russian/envname}  =>  {russian}
+>  {russian/babelname}  =>  {russian}
+>  {russian/localnumeral}  =>  {russiannumerals}
+>  {russian/Localnumeral}  =>  {Russiannumerals}
+>  {russian/DefineCommandsCmd}  =>  {xpg_define_language_commands:e}
+>  {greek/script}  =>  {Greek}
+>  {greek/lcscript}  =>  {greek}
+>  {greek/scripttag}  =>  {grek}
+>  {greek/language}  =>  {Greek}
+>  {greek/langtag}  =>  {ELL}
+>  {greek/bcp47}  =>  {el-monoton}
+>  {greek/hyphennames}  =>  {}
+>  {greek/direction}  =>  {LR}
+>  {greek/hyphenmins}  =>  {2,3}
+>  {greek/frenchspacing}  =>  {true}
+>  {greek/indentfirst}  =>  {true}
+>  {greek/fontsetup}  =>  {true}
+>  {greek/envname}  =>  {greek}
+>  {greek/babelname}  =>  {greek}
+>  {greek/localnumeral}  =>  {greeknumerals}
+>  {greek/Localnumeral}  =>  {Greeknumerals}
+>  {greek/DefineCommandsCmd}  =>  {xpg_define_language_commands:e}
+>  {latin/script}  =>  {latin}
+>  {latin/lcscript}  =>  {latin}
+>  {latin/scripttag}  =>  {}
+>  {latin/language}  =>  {Latin}
+>  {latin/langtag}  =>  {LAT}
+>  {latin/bcp47}  =>  {la}
+>  {latin/hyphennames}  =>  {}
+>  {latin/direction}  =>  {LR}
+>  {latin/hyphenmins}  =>  {2,2}
+>  {latin/frenchspacing}  =>  {true}
+>  {latin/indentfirst}  =>  {false}
+>  {latin/fontsetup}  =>  {true}
+>  {latin/envname}  =>  {latin}
+>  {latin/babelname}  =>  {latin}
+>  {latin/localnumeral}  =>  {polyglossia@C@localnumeral}
+>  {latin/Localnumeral}  =>  {polyglossia@C@localnumeral}
+>  {latin/DefineCommandsCmd}  =>  {xpg_define_language_commands:e}.
+The property list \__xpg_alias contains the pairs (without outer braces):
+>  {latex/target}  =>  {latex}
+>  {churchslavonic/target}  =>  {churchslavonic}
+>  {russian/target}  =>  {russian}
+>  {ru/target}  =>  {russian}
+>  {ru-luna1918/target}  =>  {russian}
+>  {ru-luna1918/options}  =>  {spelling=modern}
+>  {ru-petr1708/target}  =>  {russian}
+>  {ru-petr1708/options}  =>  {spelling=old}
+>  {greek/target}  =>  {greek}
+>  {grc/target}  =>  {greek}
+>  {grc/variant}  =>  {ancient}
+>  {grc/options}  =>  {variant=ancient}
+>  {el-polyton/target}  =>  {greek}
+>  {el-polyton/options}  =>  {varant=polytonic}
+>  {el-monoton/target}  =>  {greek}
+>  {el-monoton/variant}  =>  {monotonic}
+>  {el-monoton/options}  =>  {variant=monotonic}
+>  {el/target}  =>  {greek}
+>  {polutonikogreek/target}  =>  {greek}
+>  {polutonikogreek/variant}  =>  {polytonic}
+>  {polutonikogreek/options}  =>  {variant=polytonic}
+>  {latin/target}  =>  {latin}
+>  {la/target}  =>  {latin}
+>  {la-x-classic/target}  =>  {latin}
+>  {la-x-classic/variant}  =>  {classic}
+>  {la-x-classic/options}  =>  {variant=classic}
+>  {la-x-ecclesia/target}  =>  {latin}
+>  {la-x-ecclesia/variant}  =>  {ecclesiastic}
+>  {la-x-ecclesia/options}  =>  {variant=ecclesiastic}
+>  {la-x-medieval/target}  =>  {latin}
+>  {la-x-medieval/variant}  =>  {medieval}
+>  {la-x-medieval/options}  =>  {variant=medieval}
+>  {classiclatin/target}  =>  {latin}
+>  {classiclatin/variant}  =>  {classic}
+>  {classiclatin/options}  =>  {variant=classic}
+>  {ecclesiasticlatin/target}  =>  {latin}
+>  {ecclesiasticlatin/variant}  =>  {ecclesiastic}
+>  {ecclesiasticlatin/options}  =>  {variant=ecclesiastic}
+>  {medievallatin/target}  =>  {latin}
+>  {medievallatin/variant}  =>  {medieval}
+>  {medievallatin/options}  =>  {variant=medieval}.
+ [36
+
+
+] (./book_black.aux)
+
+LaTeX Font Warning: Some font shapes were not available, defaults substituted.
+
+ ) 
+Here is how much of TeX's memory you used:
+ 26327 strings out of 474985
+ 591922 string characters out of 5813000
+ 1084192 words of memory out of 5000000
+ 46848 multiletter control sequences out of 15000+600000
+ 472911 words of font info for 107 fonts, out of 8000000 for 9000
+ 2816 hyphenation exceptions out of 8191
+ 122i,20n,120p,10632b,718s stack positions out of 10000i,1000n,20000p,200000b,200000s
+
+Output written on book_black.pdf (36 pages).

@@ -1,0 +1,754 @@
+\ProvidesPackage{churchslavichymn}[2022/06/06 v.0.3]
+\RequirePackage{kvoptions}
+\RequirePackage{xifthen,ifdraft}
+\RequirePackage{ifluatex}
+\RequirePackage{xparse}
+\RequirePackage{indentfirst}
+\RequirePackage{xstring}
+\SetupKeyvalOptions{
+  family=PROP,
+  prefix=PROP@
+}
+\newboolean{single}% часть книги или отдельный самостоятельный док-т.
+\newboolean{nodigraphkinovar}%
+\newboolean{hebrew}%
+\DeclareBoolOption{nodigraphkinovar}%
+\DeclareBoolOption{hebrew}%
+\DeclareStringOption[red]{kinovarcolor}%
+\DeclareStringOption[20.0pt]{basefontsize}%
+\DeclareStringOption[1.15]{linespread}%
+\DeclareBoolOption{single}%
+\ExecuteOptions{%
+  kinovarcolor,
+  nodigraphkinovar,
+  single,
+  hebrew,
+  basefontsize,
+  linespread,
+}
+% !!! проверять на \setboolean
+\ProcessKeyvalOptions*
+
+\ifPROP@nodigraphkinovar
+  \setboolean{nodigraphkinovar}{true}\fi
+\ifPROP@single
+  \setboolean{single}{true}\fi
+\ifPROP@hebrew
+  \setboolean{hebrew}{true}\fi
+     
+\RequirePackage{fontspec}
+\ifluatex
+  \RequirePackage{luacolor}
+  \RequirePackage{graphicx}
+\else
+  \RequirePackage{xunicode} % some extra unicode support
+\fi
+
+\RequirePackage{polyglossia}
+\setdefaultlanguage{churchslavonic}
+
+\RequirePackage{microtype} % XXX: works fine here
+\IfStrEqCase{\PROP@kinovarcolor}{%
+  {red}{\RequirePackage{churchslavonic}}%
+  {grey}{\RequirePackage[gray]{churchslavonic}}%
+  {boldblack}{\RequirePackage{churchslavonic}}}%
+  [\RequirePackage{churchslavonic}]%
+\RequirePackage{microtype} % XXX: errors out here
+\RequirePackage{lettrine}% буквицы
+% доступ к первому слову на странице
+\RequirePackage{fwlw}
+\RequirePackage{xspace}
+\RequirePackage{nameref}
+\usepackage[unicode]{hyperref}
+\usepackage{bookmark}
+\usepackage{float}
+\setlength\parindent{4ex}
+
+\newcommand{\ShIh}{\kern1.5pt}
+\newcommand{\ShIp}{\kern1pt}
+\newcommand{\ShHp}{\kern.5pt}
+\newcommand{\ShTp}{\kern.3pt}
+\newcommand{\ShHpN}{\kern-.5pt}
+\newcommand{\ShTpN}{\kern-.3pt}
+\newcommand{\ShMpN}{\kern-.1pt}
+
+\setmainlanguage{churchslavonic}
+\ifthenelse{\boolean{hebrew}}%
+  {%
+    \setotherlanguages{russian,hebrew,greek,latin}%
+    \newfontfamily\hebrewfont[Script=Hebrew]{Arial}%
+  }
+  {\setotherlanguages{russian,greek,latin}}
+
+\newfontfamily\russianfont{Noto Serif SemiBold}
+\newfontfamily{\greekfont}{Noto Serif SemiBold}
+\newfontfamily{\latinfont}{Noto Serif SemiBold}
+\newfontfamily\indiction{IndictionUnicode.otf}
+\newfontfamily\Vertograd{VertogradUnicode.otf}
+% TODO: Для Vertograd попробовать FakeBold
+\newfontfamily\OrthodoxTTeRoos{Orthodox.tt eRoos}
+\newfontfamily\Valaam{Valaam}
+\newfontfamily\Bukvica{Bukvica UCS}
+\newfontfamily{\NotoSerifSemiBold}{Noto Serif SemiBold}
+\newfontfamily{\NotoSerifBlack}{Noto Serif Black}% for bold black
+
+\ifluatex
+  \newfontfamily\churchslavonicfont[%
+    Script = Cyrillic,Ligatures = TeX]{PonomarUnicode.otf}
+  %вместо этого м.б. лучше microtype-разрядку?
+  \newfontfamily\ponomarexpandedfont[Script=Cyrillic,Ligatures=TeX,LetterSpace=10.0]{PonomarUnicode.otf}
+  \newfontfamily\PonomarBold[Script=Cyrillic,Ligatures=TeX,FakeBold=2]{PonomarUnicode.otf}
+  \selectlanguage{churchslavonic}
+  \prehyphenchar=`\_
+\else
+  \newfontfamily\churchslavonicfont[%
+    Script = Cyrillic,Ligatures = TeX,HyphenChar = _ ]{PonomarUnicode.otf}
+  %вместо этого м.б. лучше microtype-разрядку?
+  \newfontfamily\ponomarexpandedfont[Script=Cyrillic,Ligatures=TeX,HyphenChar="005F,LetterSpace=10.0]{PonomarUnicode.otf}
+  \newfontfamily\PonomarBold[Script=Cyrillic,Ligatures=TeX,HyphenChar="005F,FakeBold=2]{PonomarUnicode.otf}
+\fi
+
+% Шрифт для Буквицы.
+\let\LettrineFontName\indiction
+% Варианты:
+%\let\LettrineFontName\Vertograd
+%\let\LettrineFontName\churchslavonicfont
+
+
+% Киноварь для диграфа Оу - только для первого символа.
+\ifthenelse{\boolean{nodigraphkinovar}}{%
+\renewcommand\cu@tokenizeletter[1]{%
+    \bgroup
+    \def\@accum{}%
+    \def\cu@collectworker{%
+        \cu@ifnextaccent{%
+            \cu@collectworker@one
+        }{%
+            \expandafter \egroup \expandafter #1\expandafter {\@accum}%
+        }%
+    }%
+    \def\cu@collectworker@one##1{%
+        \edef\@accum{\@accum ##1}%
+        \cu@collectworker
+    }%
+    \def\cu@collectworker@two##1##2{%
+        \edef\@accum{\@accum ##1##2}%
+        \cu@collectworker
+    }%
+    \cu@ifnextbgroup{\egroup #1}{%
+        \cu@collectworker@one% %<-- CHANGED HERE.
+    }%
+}}{}
+
+% Установка размера шрифта явно. 
+% В качестве параметра - длина с указанием pt (или только число).
+% Межстрочный интервал задан жестко как 1.2,
+% TODO: задать его как параметр (при отсутствии использовать это default значение).
+\newlength{\mylength}
+\newcommand{\mycfs}[1]{%
+  \normalsize
+  \@defaultunits\mylength=#1pt\relax\@nnil
+  \edef\@tempa{{\strip@pt\mylength}}%
+  \ifx\protect\@typeset@protect
+     \edef\@currsize{\noexpand\mycfs\@tempa}% store calculated size
+  \fi
+  \mylength=1.2\mylength
+  \edef\@tempa{\@tempa{\strip@pt\mylength}}%
+  %\@tempa% print size
+  \expandafter\fontsize\@tempa
+  \selectfont
+}
+
+% ЦВЕТ КИНОВАРЬ
+%BEGIN_FOLD
+\newcommand{\DefKinovarColorRED}{\definecolor{kinovar}{rgb}{1,0,0}}
+% Варианты: 
+%\newcommand{\DefKinovarColorRED}{\definecolor{kinovar}{rgb}{1,0.03,0.01}}
+\newcommand{\DefKinovarColorBLACK}{\definecolor{kinovar}{rgb}{1,1,1}}
+
+% Переопределение в CMYK:
+%\newcommand{\DefKinovarColorRED}{\definecolor{kinovar}{cmyk}{0,1,1,0}}
+%\newcommand{\DefKinovarColorBLACK}{\definecolor{kinovar}{cmyk}{1,1,1,1}}
+%  \definecolor{kinovar}{cmyk}{1,1,1,1}}{%BLACK - для ч\б печати
+%  \definecolor{kinovar}{cmyk}{0,1,1,0}}%RED - для цветной печати
+
+% Цвет киновари.
+\IfStrEqCase{\PROP@kinovarcolor}{%
+  {red}{\DefKinovarColorRED}%
+  {grey}{\DefKinovarColorRED}% за счет опции [grey]
+  {boldblack}{%
+    \DefKinovarColorBLACK%
+    \let\cuKinovarColor\PonomarBold%
+    \renewcommand{\cu@kinovar}[1]{{\PonomarBold ##1}}%
+  }}%
+  [\DefKinovarColorRED]% default
+
+%END_FOLD
+
+% БУКВИЦЫ
+%BEGIN_FOLD
+%% Стиль буквиц: размер - две строки
+\def\cu@lettrine{\lettrine[lines=2,findent=0pt,nindent=0pt,loversize=0.35]}
+\def\cuLettrine{\cu@tokenizeletter\cu@lettrine}
+
+\renewcommand{\LettrineFontHook}{\LettrineFontName\cuKinovarColor\fontshape{n}}
+\renewcommand{\LettrineTextFont}{\normalfont}% отмена scshape (default) для второй части
+
+\newcommand{\cuL}[1]{\cu@lettrine{#1}}
+\let\CUL\cuLettrine
+\newcommand{\cul}[1]{\CUL #1}
+%END_FOLD
+
+\hyphenpenalty=7000 % если увеличить этот параметр, то будет меньше переносов. По умолчанию 1000
+\setlength\emergencystretch{0.75em}% разрешим растягивать пробелы между словами, чтобы избежать переносов
+
+\clubpenalty=10000
+\widowpenalty=10000
+% Разрешать перенос с отрывом 3 букв
+\lefthyphenmin=3% вверху
+\righthyphenmin=3% внизу
+\finalhyphendemerits=1000000%def=5000
+
+% Немного растянем межстрочное расстояния - для лучшей читабельности
+% Default = 1.15%
+\linespread{\PROP@linespread}
+\raggedbottom%
+
+\ifthenelse{\boolean{single}}{
+  \typeout{******* SINGLE  ******}
+  \setcounter{secnumdepth}{-1}
+  \setcounter{tocdepth}{3}
+}{
+  \typeout{###### BOOK ##########}
+  \setcounter{secnumdepth}{0} % не нумеровать в тексте
+  \setcounter{tocdepth}{1} % только \section
+}
+
+\setkomafont{disposition}{\churchslavonicfont}
+\usepackage[automark,markcase=ignoreuppercase]{scrlayer-scrpage}
+% \automark*[RIGHT-ODD]{LEFT-EVEN}%
+% Общий случай.
+\ifthenelse{\boolean{single}}
+  {\automark*[section]{section}}
+  {\automark*[section]{chapter}}
+% Если есть разделы \hI \hII:
+% Справа раздел верхнего уровня из \hI.
+\newcommand{\MarkRightSubsection}{%
+  \ifthenelse{\boolean{single}}%
+    {\automark*[subsection]{section}}%
+    {}%
+}
+% Справа раздел верхнего уровня из \hII.
+\newcommand{\MarkRightSubsubsection}{%
+  \ifthenelse{\boolean{single}}%
+    {\automark*[subsubsection]{section}}%
+    {}%
+}
+
+\newcommand{\Author}{}
+\newcommand{\AuthorShort}{}
+\newcommand{\Title}{Бг҃ослꙋже́бный сбо́рникъ}
+\newcommand{\BookTitle}[1]{%
+  {\centering\Large\cuKinovarColor%
+   \vspace*{2ex}%
+%   \Author\par%
+%   \vspace*{2ex}%
+   \Title\par%
+   \vspace*{5ex}%
+   {\huge #1}\par}
+}
+\newcommand{\Year}[1]{{\centering\KI{лѣ́та #1}\par}}
+%\setheadsepline{.4pt}
+\pagestyle{scrheadings}
+\cohead{% нечетные (section)
+  \headmark%
+}
+\cehead{% четные (chapter)
+  \ifthenelse{\boolean{single}}
+    {}% ОТДЕЛЬНЫЙ ДОКУМЕНТ
+    {\Title.\ }% КНИГА 
+  \headmark%
+}
+
+\ohead{}
+\cfoot{}%
+\rofoot{\normalcolor\usebox\NextWordBox}
+\refoot{\normalcolor\usebox\NextWordBox}
+\lefoot*{}
+\lofoot*{} % * - для plain стиля то же самое что и для scrheadings
+\ohead{\pagemark}
+%-------------------------------------------
+% При совместном использовании fwlw и scrbook 
+% \part{} дает ошибку (из-за \newpage).
+\renewcommand*{\partheadendvskip}{%
+ \vskip\@tempskipa%
+% \newpage%
+}
+\renewcommand*{\scr@@endpart}[1]{%
+  \vbox to\z@{\use@preamble{#1@u}\vss}%
+  \@tempskipa=\glueexpr\csname scr@#1@afterskip\endcsname\relax\relax
+  \ifdim\@tempskipa<\z@\@tempskipa-\@tempskipa\fi
+  \partheadendvskip
+  \partheademptypage
+  \if@tempswa
+    \twocolumn
+  \fi
+  \cleardoubleoddpage
+  \thispagestyle{empty}
+}
+%-------------------------------------------
+% не отбражать кустоду в нижн. колонтитуле.
+\newpairofpagestyles[scrheadings]{NoFootStyle}{%
+  \rofoot{}%
+  \refoot{}%
+}%
+% для первой страницы \section  не отбражать верхн. колонтитулы  
+\newpairofpagestyles[scrheadings]{FirstPageSecStyle}{%
+  \cohead{}% четные (слово)
+  \cehead{}% нечетные (глава)
+  \ohead*{}% 
+}%
+% вставить стиль для первой страницы длѧ \section
+\renewcommand{\sectionlinesformat}[4]{%
+  \Ifstr{#1}{section}{% only for \section
+  \@hangfrom{\hskip #2#3}{#4}% default
+  \thispagestyle{FirstPageSecStyle}% <- added
+  }{%
+    \@hangfrom{\hskip #2#3}{#4}%
+  }
+}
+%-------------------------------------------
+% КИНОВАРЬ ДЛЯ РАЗЛИЧНЫХ ЭЛЕМЕНТОВ
+\addtokomafont{pageheadfoot}{\footnotesize}
+\addtokomafont{pagehead}{\cuKinovarColor}
+
+% Размер шрифтов для заголовков.
+% Основной шрифт задается опцией 'basefontsize' (default=20.0pt).
+\newlength{\len@section@font}
+\newlength{\len@subsection@font}
+\newlength{\len@subsubsection@font}
+\len@section@font=\PROP@basefontsize
+\len@subsection@font=\PROP@basefontsize
+\len@subsubsection@font=\PROP@basefontsize
+% Увеличение размера с шагом 2pt.
+\addtolength{\len@section@font}{6pt}
+\addtolength{\len@subsection@font}{4pt}
+\addtolength{\len@subsubsection@font}{2pt}
+% Применение новых размеров.
+\addtokomafont{section}{\mycfs{\len@section@font}\centering\cuKinovarColor}%
+\addtokomafont{subsection}{\mycfs{\len@subsection@font}\centering\cuKinovarColor}%
+\addtokomafont{subsubsection}{\mycfs{\len@subsubsection@font}\centering\cuKinovarColor}%
+
+% Заголовок chapter в тексте.
+\addtokomafont{chapter}{\LARGE\centering\cuKinovarColor}%
+\RedeclareSectionCommand[%
+  afterskip=2.3ex plus .2ex,%
+  beforeskip=-3.5ex plus -1ex minus -.2ex,%
+]{chapter}
+\let\raggedchapter\centering%
+% Start new chapter on same page:
+% https://tex.stackexchange.com/questions/24066/start-new-chapter-on-same-page  
+\patchcmd{\scr@startchapter}{\if@openright\cleardoublepage\else\clearpage\fi}{}{}{}%
+
+\deffootnote[1em]{1.5em}{1em}{%
+   \textsuperscript{\thefootnotemark\hspace*{1em}}% добавлен пробел
+}
+\addtokomafont{footnoterule}{\cuKinovarColor}
+\addtokomafont{footnote}{\cuKinovarColor}
+\addtokomafont{footnotereference}{\cuKinovarColor}
+
+% For page-numbering (in TOC and text, running-header, NOT in Titles).
+\let\savedpage\thepage
+\renewcommand{\thepage}{\texorpdfstring{\cuNum{\savedpage}}{\savedpage}}
+\AtBeginDocument{\addtocontents{toc}{\protect\thispagestyle{empty}}} 
+
+\newcommand{\MRKIGHT}[1]{\markright{\footnotesize\hfil\cuKinovarColor{{#1}}}}
+
+\addto\captionschurchslavonic{%
+  \renewcommand{\contentsname}{\large Ѡ҆главле́нїе}}
+
+\newcommand*\ifcounter[1]{%
+  \ifcsname c@#1\endcsname
+    \expandafter\@firstoftwo
+  \else
+    \expandafter\@secondoftwo
+  \fi
+}
+
+\let\old@theenumi\theenumi
+\renewcommand{\theenumi}{\cuKinovarColor\cuNum{\old@theenumi}}
+
+% ОГЛАВЛЕНИЕ
+\BeforeStartingTOC[toc]{%
+  % Пустые колонтитулы после текста. Включая и оглавление.
+  % !!! Уточнить для оглавления ПЕРЕД основным текстом.
+  \rofoot{}\refoot{}\chead{}\ohead{}%
+    \small%
+}
+
+\newcommand{\UNDERSCORE}{\catcode`\_=12\relax}
+% Разделитель строф
+\newcommand{\StDivider}{/}%{*}
+\newcommand{\Dv}{~\StDivider\ }
+\newcommand{\DC}{~\StDivider\kern-.1em\StDivider\xspace}
+\newcommand{\AR}{\KI{*}\xspace}
+\newcommand{\AB}{*\xspace}
+\newcommand{\Ki}[1]{\cuKinovar{#1}}
+%\let\KI\cuKinovar%
+\def\KI{\xspace\cuKinovar}% Возникли проблемы при сочетании "\DC \KI Text"
+
+\newcommand{\TITLE}{}%
+\newcommand{\TITLERU}{}%
+\newcommand{\TOCENTRY}{\texorpdfstring{\KI \TITLE}{\TITLERU}}
+
+%!!!!!!!!!!!!!!!!!!!!!!!!
+% Макросы - аналоги абзацных стилей.
+%BEGIN_FOLD
+% "Text body" 
+\newcommand{\Txt}[1]{{#1\par}}
+\newcommand{\TxtC}[1]{{\centering#1\par}}
+
+\let\sTitle\section
+\let\hI\subsection% Заголовок 1
+\let\hII\subsubsection% Заголовок 2
+\newcommand{\sSubtitle}[1]{{\centering\small{\cuKinovar{#1}}\par}}
+
+% для Абзац с большой буквицей
+\def\chhmns@color@lettrine{\renewcommand{\LettrineFontHook}{\Bukvica\cuKinovarColor\fontshape{n}}}
+\newcommand{\culB}[1]{%
+  \renewcommand{\LettrineFontHook}{%
+    \Bukvica%
+    \IfEq{\PROP@kinovarcolor}{boldblack}{}{\cuKinovarColor}% red, gray
+    \fontshape{n}}%
+  \def\cu@lettrine{\lettrine[lines=5,findent=4pt,nindent=0pt,loversize=0.18]}%
+  \CUL #1\par%
+}
+% для "Абзац с большой буквицей и надстрочник" и "Абзац с большой буквицей и два надстрочника"
+\newcommand{\culs}[1]{%
+  \renewcommand{\LettrineFontHook}{%
+    \Bukvica%
+    \IfEq{\PROP@kinovarcolor}{boldblack}{}{\cuKinovarColor}% red, gray
+    \fontshape{n}}%
+  \def\cu@lettrine{\lettrine[lines=5,findent=4pt,nindent=0pt,loversize=0.18]}%
+  \def\CULS{\lettrine[lines=5,findent=4pt,nindent=0pt,loversize=0.18]}%
+  #1\par%
+}
+
+% "Глас".
+\newcommand{\glas}[1]{%
+  \smallskip{\centering\small{\cuKinovar{#1}}\\*\par}}
+
+% "Заголовок 3". как "Глас", только с отступами.
+\newcommand{\hIII}[1]{%
+  \bigskip{\centering\small{\cuKinovar{#1}}\\*\par}\medskip}
+
+% "Устав".
+\newcommand{\ustav}[1]{{\small{\cuKinovar{#1}}\par}}
+% "Устав по центру".
+\newcommand{\ustavC}[1]{{\centering\small{\cuKinovar{#1}}\par}}
+
+% "Устав влево".
+\newcommand{\ustavL}[1]{{\raggedright\small{\cuKinovar{#1}}\par}}
+  
+% "Дата и место".
+\NewDocumentCommand{\DateAndPlace}{ s m }{%
+  % if asterisk    
+  \IfBooleanTF{#1}%
+    {}%
+    {\vspace{\baselineskip}}%
+  {\smallskip\raggedleft\small{\cuKinovar{#2}}\par}%
+}
+
+% "Дата и место в тексте".
+\NewDocumentCommand{\DateAndPlaceInText}{ s m }{%
+  \def\DAPIT@main##1{{\raggedleft\small{\cuKinovar{##1}}\par}}%
+  \def\DAPIT@starred##1{%
+    \vspace{.25\baselineskip}%
+    \DAPIT@main{##1}%
+    \vspace{.25\baselineskip}%
+  }%
+  \def\DAPIT@nostar##1{%
+    \smallskip%
+    \DAPIT@main{##1}%
+    \smallskip%
+  }%
+  % if asterisk    
+  \IfBooleanTF{#1}%
+    {\DAPIT@starred{#2}}%
+    {\DAPIT@nostar{#2}}%
+}
+
+% Добавляет к последнему абзацу, без отрыва от него, 
+% строку даты (#1) с выключкой справа .
+% TODO: протестировать.
+\newcommand{\DateAtEnd}[1]{%
+	\nobreak%
+	\vskip\baselineskip%
+	\hfill%
+	{\raggedleft\small{\cuKinovar{#1}}\par}%
+}
+
+% Русский текст.
+% Абзац
+\newcommand{\TxtRU}[1]{{\selectlanguage{russian}\small#1\par}}
+% Символ
+\newcommand{\TxtRUchar}[1]{{\selectlanguage{russian}\small#1}}
+\newcommand{\SinaksarRU}[1]{{{{\selectlanguage{russian}\footnotesize#1\par}}}}
+\newcommand{\SinaksarRUL}[1]{%
+  \renewcommand{\LettrineFontHook}{%
+    \NotoSerifSemiBold%
+    \IfEq{\PROP@kinovarcolor}{boldblack}{}{\cuKinovarColor}%
+    \fontshape{n}}
+  \def\cu@lettrine{\lettrine[lines=2,findent=4pt,nindent=0pt,loversize=0.18]}%
+  \addtokomafont{pageheadfoot}{\churchslavonicfont}
+  \addtokomafont{pagenumber}{\churchslavonicfont}
+  {{{\selectlanguage{russian}%
+  \footnotesize%
+  \CUL #1\par%
+  }}}}
+
+\newcommand{\KondUstavInsertKin}[1]{%
+  \vspace{.5\baselineskip}%
+  \hspace{1em}\parbox{.8\textwidth}{%
+    \small\ponomarexpandedfont\cUstav{#1}}}
+
+% "Вставка узкая"
+% Абзац с гориз.размером 0.85\textwidth.
+\newlength{\HangP}% Для выноса скобки
+\settowidth{\HangP}{\,[}
+\newlength{\NarrowIndent}
+\NarrowIndent=\textwidth
+\addtolength{\NarrowIndent}{-0.85\textwidth}
+\NarrowIndent=0.5\NarrowIndent
+\newcommand{\NarrowPar}{%
+  \advance\leftskip by \NarrowIndent%
+  \advance\rightskip by \NarrowIndent%
+}
+
+\newcommand{\FrameNarrow}[1]{%
+  \bgroup%
+  \NarrowPar%
+  \addfontfeature{LetterSpace=5.0}%
+  \hangindent=\HangP%
+  \noindent%
+  #1\par%
+  \egroup%
+}
+
+\let\KondUstavInsert\FrameNarrow
+
+\newcommand{\NoFW}{\mbox{} }% "отмена" кустоды (в кустоду попадает пробел).
+%END_FOLD
+
+% Макросы - аналоги символьных стилей.
+%BEGIN_FOLD
+\newcommand*{\cub}[1]{%
+  % Отменяет красный цвет внутри \KI{}.
+  {\IfEq{\PROP@kinovarcolor}{boldblack}{\churchslavonicfont}{}%
+  \textcolor{black}{#1}}%
+}
+\newcommand*{\cuB}[1]{%
+  % Отменяет красный цвет внутри \KI{} кроме первой буквы.
+  \textcolor{black}{%
+    \IfEq{\PROP@kinovarcolor}{boldblack}{\churchslavonicfont}{}%
+    \cu@tokenizeletter\cu@kinovar#1}%
+}
+
+\IfEq{\PROP@kinovarcolor}{boldblack}%
+  {\newcommand{\KiSin}[1]{{\NotoSerifBlack\fontshape{n}#1}}}% boldblack
+  {\let\KiSin\KI}% red, grey
+
+%\let\Small\small
+\newcommand{\Small}[1]{{\small#1}}
+% для \KIsmaller и \Smaller внутри \ustavC и \ustavL (если через \\) то, в отличии от \ustav необходимо .3em для корректного верт. промежутка.
+\newcommand{\Smaller}[1]{{\footnotesize\vspace*{.3em}#1}}
+\newcommand{\KIsmaller}[1]{{\footnotesize\vspace*{.3em}{\cuKinovar{#1}}}}
+\newcommand{\KIsmall}[1]{{\small\vspace*{.1em}{\cuKinovar{#1}}}}
+
+\newcommand{\CharSpacedBold}[1]{%
+  {\PonomarBold\addfontfeature{LetterSpace=10.0}#1}}
+
+% Hebrew (bidi) text.
+\ifthenelse{\boolean{hebrew}}%
+  {\newcommand{\Hebr}[1]{{\texthebrew{#1}}}}{}
+%Пост-загрузка (для single) 
+\newcommand{\LoadHebrew}{%
+  \setotherlanguages{russian,hebrew,greek,latin}%
+  \newfontfamily\hebrewfont[Script=Hebrew]{Arial}%
+  \newcommand{\Hebr}[1]{{\texthebrew{##1}}}%
+}  
+% Greek text.
+\newcommand{\Greek}[1]{{\textgreek{#1}}}
+% Latin text
+\newcommand{\Latin}[1]{{\textlatin{#1}}}
+
+%END_FOLD
+% !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+\def\hh@insert@color@cross{\includegraphics[width=1.2cm]{cross.png}}
+\def\hh@insert@black@cross{\includegraphics[width=1.2cm]{crossblack.png}}
+\newcommand{\Cross}{%
+  \begin{figure}[H]% Requires \usepackage{float}
+    % Requires \usepackage{graphicx}
+    \centering%
+    \IfStrEqCase{\PROP@kinovarcolor}{%    
+      {red}{\hh@insert@color@cross}%
+      {grey}{\hh@insert@black@cross}%
+      {boldblack}{\hh@insert@black@cross}}%
+      [\hh@insert@color@cross]% default.
+    \\*
+  \end{figure}
+}
+
+% OLD 
+%BEGIN_FOLD
+
+%\newenvironment{Small}{\small}{}
+\newenvironment{TxtSmall}{\small}{}
+\newcommand{\cuKI}[1]{%
+  \KI #1%
+}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% TESTING 
+\newenvironment{nscenter}
+ {\parskip=0pt\par\nopagebreak\centering}
+ {\par\ignorespacesafterend}
+ 
+%END_FOLD
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+% добавление подфрагмента напр. 
+% в 0002.tex добавляется \subfragment{0002a.tex}
+% файл подфрагмента нах-ся в src (текущая для 0002.tex)
+% в data - ссылка на него
+% в дальнейшем можно сослаться на этот отрывок: 
+% Дублирование в главе <<\nameref{0002a}>> на странице: \pageref{0002a}.
+\ifthenelse{\boolean{single}}
+  {\def\subfrag@dir{.}}
+  {\def\subfrag@dir{data}}
+
+\newcommand{\subfragment}[1]{%
+  % get file and input it and create label 
+  \def\subfrag@parse##1.tex{%
+    \input{\subfrag@dir/##1}%
+    \label{##1}}%
+  \subfrag@parse#1% run it
+}
+
+%\renewcommand*\raggedchapter{\centering}
+\let\stdl@chapter\l@chapter
+\renewcommand*{\l@chapter}[2]{\stdl@chapter{\hfill\normalsize#1\medskip}{#2}}
+\hypersetup{pdfborder=0 0 0}
+
+\newcommand{\AddHeaderToTOC}[1]{\addtocontents{toc}{\medskip{\hspace*{-4ex}\protect\centering\KI #1\\*\par}}}
+\newcommand{\TABLEOFCONTENTS}{
+  \ifthenelse{\boolean{single}}{\cleardoublepage\tableofcontents}}
+\newcommand{\ADDEVENEMPTYPAGE}{%
+  \ifthenelse{\boolean{single}}{
+    \cleardoubleevenemptypage%
+    \pagestyle{empty}%
+    \null%
+  }
+}
+\newcommand{\ADDODDEMPTYPAGE}{%
+  \ifthenelse{\boolean{single}}{%
+    \cleardoubleoddemptypage%
+    \pagestyle{empty}%
+    \null%
+  }  
+}
+
+% Нижний край абзаца, последняя строка.
+% TODO: сравнить \pie и \pih и увеличить plus компоненту в \pih
+% TODO: разобраться с \par в \Txt{} и \pie[sfh]
+\newcommand{\pie}{\parfillskip=1.5\parindent plus .9\textwidth \par} % ParIndentEnd
+\newcommand{\pis}{\parfillskip=0pt plus .9\textwidth \par} %ParIndentStart
+\newcommand{\pif}{\parfillskip=0pt \par} %ParIndentFull
+\newcommand{\pih}{\parfillskip=0pt plus .5\textwidth \par} %ParIndentHalf
+\newcommand{\lsm}{\looseness=-1}
+\newcommand{\lsp}{\looseness=+1}
+% \ParFilling{}{}{}{}{}{}%{lsp}{lsm}{pis}{pie}{pif}{pih}; 
+% 'any' - ON, empty - OFF 
+\newcommand{\ParFilling}[6]{%
+	\ifthenelse{\NOT\isempty{#1}}{\lsp}{}% increase to one line if possible
+	\ifthenelse{\NOT\isempty{#2}}{\lsm}{}% decrease to one  line if possible
+	\ifthenelse{\NOT\isempty{#3}}{{\pis}}{}% ParIndentStart
+	\ifthenelse{\NOT\isempty{#4}}{{\pie}}{}% ParIndentEnd
+	\ifthenelse{\NOT\isempty{#5}}{{\pif}}{}% ParIndentFull
+ 	\ifthenelse{\NOT\isempty{#6}}{{\pih}}{}% ParIndentHalf
+}
+    
+\newcommand{\longpage}{\enlargethispage{\baselineskip}}
+\newcommand{\shortpage}{\enlargethispage{-\baselineskip}}
+\newcommand{\longpageII}{\enlargethispage{2\baselineskip}}
+\newcommand{\shortpageII}{\enlargethispage{-2\baselineskip}}
+%----------------------------------
+
+\newcommand{\DBLBR}{%
+  \thispagestyle{empty}\cleardoubleemptypage\thispagestyle{empty}}
+
+% для замены в ODT на новый абзац
+\let\BR\\
+\let\LB\linebreak
+
+\newcommand*\NewPage{\newpage\null\thispagestyle{empty}\newpage}
+
+\newcommand{\BRI}{\\\indent}
+
+\newcommand{\VSPACE}[2]{%
+  \ifthenelse{\boolean{single}}
+  {%
+    \vspace{#1\baselineskip}% для ОТДЕЛЬНОГО ДОКУМЕНТА
+  }{%
+    \vspace{#2\baselineskip}% для книги
+  }%
+}
+
+\newcommand{\NOM}[1]{%
+ % отменяет действие макроса #1
+ % Удобно при конвертации pandoc  
+  \renewcommand{#1}{}%
+}
+\newcommand{\THISM}[1]{%
+ % Заменяет действие макроса с одним аргументом на сам аргумент.
+ % Удобно при конвертации pandoc  
+  \renewcommand{#1}[1]{##1}%
+}
+
+%----------------------------
+% Индивидуальный керниг для некотрых надстрочников.
+
+%\XeTeXinterchartokenstate=1
+%% char class for Тr
+%\newXeTeXintercharclass \mycharclassTr
+%\XeTeXcharclass `Т \mycharclassTr
+%\XeTeXcharclass `р \mycharclassTr
+%% char class for OTitlo
+%\newXeTeXintercharclass \mycharclassOTitlo
+%\XeTeXcharclass `ⷪ \mycharclassOTitlo
+%\XeTeXcharclass `҇ \mycharclassOTitlo
+%% char class for STitlo
+%\newXeTeXintercharclass \mycharclassSTitlo
+%\XeTeXcharclass `ⷭ \mycharclassSTitlo
+%\XeTeXcharclass `҇ \mycharclassSTitlo
+
+% def interchartokes
+%\XeTeXinterchartoks \mycharclassTr \mycharclassOTitlo = {\kern4pt}
+%\XeTeXinterchartoks \mycharclassTr \mycharclassSTitlo = {\kern4pt}
+
+%\newcommand{\Troi}[1]{Трⷪ҇\kern-3.5pt #1}
+%\newcommand{\Trisvjat}[1]{Трⷭ҇\kern-3.5pt т#1}
+% !! Нет смысла, т.к. нельзя для всего слова сделать 
+% автоматическую коррекцию в двух ПЕРЕКРЫВАЮЩИХСЯ фрагментах.
+% Второй кернинг все равно приходится вставлять вручную.
+
+%\newXeTeXintercharclass \mycharclassya
+%\XeTeXcharclass `ѧ \mycharclassya
+%\newXeTeXintercharclass \mycharclassKamora
+%\XeTeXcharclass `̑ \mycharclassKamora
+%\XeTeXinterchartoks \mycharclassya \mycharclassKamora = {\kern-2pt}
+% Как оказалось, в отличие от LibreOffice `ѧ + камора` 
+% в TeX отображается корректно. 
+
+\newcommand{\Troic}[1]{Тр\kern4ptⷪ҇\kern-3.5ptц#1}
+% Для Киновари у первой буквы: \expandafter\KI\Troic{а} 
+\newcommand{\Trisvjat}[1]{Тр\kern4ptⷭ҇\kern-3.5pt т#1}

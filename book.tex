@@ -1,0 +1,34 @@
+% !TeX program = xelatex
+%% spellcheck-off
+% ТОЛЬКО АКАФИСТЫ hymns_Akafists.tex
+\documentclass[
+dtp=false,
+pwidth=210mm,%A4
+pheight=297mm,%A4
+toppmarg=1.7cm,
+botpmarg=2.0cm,
+outpmarg=2.0cm,
+innpmarg=2.0cm,
+cover=0mm,% припуск под корешок
+trimbox=0mm,% не нужен, равен MediaBox
+bleedbox=5mm,% привязка к trimbox.
+]{churchslavichymnsbook}
+\usepackage{churchslavichymn}
+
+\hfuzz=5pt
+
+\begin{document}
+
+\input{СлужбаГосподу.tex}
+\pagebreak
+
+\input{АкафистБогородице.tex}
+
+\cleardoubleoddemptypage
+
+\tableofcontents
+
+\DBLBR
+
+\end{document}
+
