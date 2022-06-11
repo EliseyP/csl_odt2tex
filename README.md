@@ -211,4 +211,6 @@ Odt файл `filename.odt` конвертируется в TeX файл `filena
 - `make_book.sh`
 
 **Шрифты**
+- `Arial.ttf`
+- `NotoSerif-SemiBold.ttf`
 - `Bukvica.ttf`
