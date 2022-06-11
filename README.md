@@ -185,3 +185,5 @@ Odt файл `filename.odt` конвертируется в TeX файл `filena
 - `make_single.sh`
 - `make_book.sh`
 
+**Шрифты**
+- `Bukvica.ttf`
