@@ -172,14 +172,21 @@ Odt файл `filename.odt` конвертируется в TeX файл `filena
 ### TeX 
 - Класс документа `churchslavichymnsbook.cls`   
 - Стилевой файл `churchslavichymn.sty`
-- Для компилирования отдельным документом `single.tex`, `single_black.tex`  
-- Для компилирования книги `book.tex`, `book_black.tex`  
+- Для компиляции отдельным документом `single.tex`, `single_black.tex`  
+- Для компиляции книги `book.tex`, `book_black.tex`  
 
-**Компилированные файлы:**  
+**Конвертированные TeX файлы**
 - `СлужбаГосподу.init.tex`
 - `АкафистБогородице.init.tex`
 - `СлужбаГосподу.tex`
 - `АкафистБогородице.tex`
+
+**Компилированные PDF файлы:** 
+- `book.pdf` - сборник
+- `book_black.pdf`- сборник ч/б
+- `single.pdf` - Акафист Богородице отдельно
+- `single_black.pdf` - Акафист Богородице отдельно ч/б
+
  
 **Скрипты для TeX-компиляции:**  
 - `make_single.sh`
