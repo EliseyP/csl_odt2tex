@@ -25,9 +25,9 @@
 
 Для книги, состоящей из нескольких документов, разделы выше уровнем задаются командами `\chapter` или `\addchap` (`\part` также доступна).  
 Например (отвлеченный пример):   
-`\renewcommand{\TITLE}{Мл҃твы Гдⷭ҇ꙋ}%`
+`\renewcommand{\TITLE}{Мл҃твы Гдⷭ҇ꙋ}%`  
 `\renewcommand{\TITLERU}{Молитвы Господу}%`  
-`\addchap[tocentry={\TOCENTRY}, head={\TITLE}]{\TITLE}`
+`\addchap[tocentry={\TOCENTRY}, head={\TITLE}]{\TITLE}`  
 
 Кегль основного текста задается параметром `basefontsize` класса `churchslavichymnsbook.cls,` либо явно в параметре класса `scrbook`. (по умолчанию также `basefontsize=20pt.`)  
 
