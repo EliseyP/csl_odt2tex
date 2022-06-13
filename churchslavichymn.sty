@@ -411,7 +411,7 @@
 \let\sTitle\section
 \let\hI\subsection% Заголовок 1
 \let\hII\subsubsection% Заголовок 2
-\newcommand{\sSubtitle}[1]{{\centering\small{\cuKinovar{#1}}\par}}
+\newcommand{\sSubtitle}[1]{{\centering\small{\cuKinovar{#1}}\par}}% Подзаголовок
 
 % для Абзац с большой буквицей
 \def\chhmns@color@lettrine{\renewcommand{\LettrineFontHook}{\Bukvica\cuKinovarColor\fontshape{n}}}
@@ -694,6 +694,7 @@
 
 \newcommand{\BRI}{\\\indent}
 
+% Вертикальная шпация.
 \newcommand{\VSPACE}[2]{%
   \ifthenelse{\boolean{single}}
   {%
