@@ -1,4 +1,4 @@
-\ProvidesPackage{churchslavichymn}[2022/06/06 v.0.3]
+\ProvidesPackage{churchslavichymn}[2022/06/13 v.0.4]
 \RequirePackage{kvoptions}
 \RequirePackage{xifthen,ifdraft}
 \RequirePackage{ifluatex}
@@ -207,7 +207,7 @@
 % Разрешать перенос с отрывом 3 букв
 \lefthyphenmin=3% вверху
 \righthyphenmin=3% внизу
-\finalhyphendemerits=1000000%def=5000
+\finalhyphendemerits=1000000% (def=5000) - перенос в предпоследней строке абзаца.
 
 % Немного растянем межстрочное расстояния - для лучшей читабельности
 % Default = 1.15%
@@ -247,11 +247,11 @@
 
 \newcommand{\Author}{}
 \newcommand{\AuthorShort}{}
-\newcommand{\Title}{Бг҃ослꙋже́бный сбо́рникъ}
+\newcommand{\Title}{Бг҃ослꙋже́бный сбо́рникъ}% Вариант названия книги.
 \newcommand{\BookTitle}[1]{%
   {\centering\Large\cuKinovarColor%
    \vspace*{2ex}%
-%   \Author\par%
+%   \Author\par% Если авторскин тексты
 %   \vspace*{2ex}%
    \Title\par%
    \vspace*{5ex}%
@@ -272,8 +272,8 @@
 
 \ohead{}
 \cfoot{}%
-\rofoot{\normalcolor\usebox\NextWordBox}
-\refoot{\normalcolor\usebox\NextWordBox}
+\rofoot{\normalcolor\usebox\NextWordBox}% Кустода на нечетной странице
+\refoot{\normalcolor\usebox\NextWordBox}% Кустода на четной странице.
 \lefoot*{}
 \lofoot*{} % * - для plain стиля то же самое что и для scrheadings
 \ohead{\pagemark}
@@ -362,7 +362,7 @@
 \renewcommand{\thepage}{\texorpdfstring{\cuNum{\savedpage}}{\savedpage}}
 \AtBeginDocument{\addtocontents{toc}{\protect\thispagestyle{empty}}} 
 
-\newcommand{\MRKIGHT}[1]{\markright{\footnotesize\hfil\cuKinovarColor{{#1}}}}
+\newcommand{\MKRIGHT}[1]{\markright{\footnotesize\hfil\cuKinovarColor{{#1}}}}
 
 \addto\captionschurchslavonic{%
   \renewcommand{\contentsname}{\large Ѡ҆главле́нїе}}
@@ -387,7 +387,7 @@
 }
 
 \newcommand{\UNDERSCORE}{\catcode`\_=12\relax}
-% Разделитель строф
+% Разделитель строф в тропарях, стихирах и т.п.
 \newcommand{\StDivider}{/}%{*}
 \newcommand{\Dv}{~\StDivider\ }
 \newcommand{\DC}{~\StDivider\kern-.1em\StDivider\xspace}
