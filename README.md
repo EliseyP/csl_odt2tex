@@ -278,10 +278,10 @@ Odt файл `filename.odt` конвертируется в TeX файл `filena
 `filename.init.tex` копируется в файл `filename.tex`.
 
 ### TeX 
-- Класс документа [churchslavichymnsbook.cls](churchslavichymnsbook.cls)   
-- Стилевой файл [churchslavichymn.sty](churchslavichymn.sty)
-- Для компиляции отдельным документом [single.tex](single.tex), [single_black.tex](single_black.tex)  
-- Для компиляции книги [book.tex](book.tex), [book_black.tex](book_black.tex)  
+- [churchslavichymnsbook.cls](churchslavichymnsbook.cls) - класс документа   
+- [churchslavichymn.sty](churchslavichymn.sty) - стилевой файл
+- [single.tex](single.tex), [single_black.tex](single_black.tex) - для компиляции отдельным документом  
+- [book.tex](book.tex), [book_black.tex](book_black.tex) - для компиляции сборника  
 
 **Конвертированные TeX файлы**
 - [СлужбаГосподу.init.tex](СлужбаГосподу.init.tex)
@@ -290,7 +290,7 @@ Odt файл `filename.odt` конвертируется в TeX файл `filena
 - [АкафистБогородице.tex](АкафистБогородице.tex)
 
 **Компилированные PDF файлы** 
-- [book.pdf](book.pdf) - сборник
+- [book.pdf](book.pdf) - сборник (СлужбаГосподу + АкафистБогородице)
 - [book_black.pdf](book_black.pdf) - сборник ч/б
 - [single.pdf](book_black.pdf) - Акафист Богородице отдельно
 - [single_black.pdf](single_black.pdf) - Акафист Богородице отдельно ч/б
