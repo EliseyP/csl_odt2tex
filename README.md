@@ -282,6 +282,7 @@ Odt файл `filename.odt` конвертируется в TeX файл `filena
 - [churchslavichymnsbook.cls](churchslavichymnsbook.cls) - класс документа   
 - [churchslavichymn.sty](churchslavichymn.sty) - стилевой файл
 - [hyphens.tex](hyphens.tex) - пользовательские переносы
+- [hyph-utf8/hyph-cu.tex](hyph-utf8/hyph-cu.tex) - вариант правил переноса, в котором запрещены переносы например после первой **ѡ҆** (требует пересобрать форматы)    
 - [single.tex](single.tex), [single_black.tex](single_black.tex) - для компиляции отдельным документом  
 - [book.tex](book.tex), [book_black.tex](book_black.tex) - для компиляции сборника  
 
