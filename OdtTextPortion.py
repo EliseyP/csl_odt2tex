@@ -358,7 +358,7 @@ class TextPortion:
         self.endnote: bool = _footnote
         self.newpara: bool = _new_para
         self.newline: bool = _new_line
-        # Если атрибуты повторяют передыдущие/последующие.
+        # Если атрибуты повторяют предыдущие/последующие.
         # Открыт для предыдущего
         self.opened_from_start: bool = False
         # Открыт для последующего
@@ -395,7 +395,7 @@ class TextPortion:
                f'{_opened_from_end}'
 
     def open_start(self):
-        # Октрыть для предыдущего
+        # Открыть для предыдущего
         self.opened_from_start = True
 
     def close_start(self):
@@ -403,7 +403,7 @@ class TextPortion:
         self.opened_from_start = False
 
     def open_end(self):
-        # Октрыть для последующего
+        # Открыть для последующего
         self.opened_from_end = True
 
     def close_end(self):

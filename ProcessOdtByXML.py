@@ -383,7 +383,7 @@ class Odt(object):
             # return find_parent_style_for_non_styled_in_text(_parent_node)
 
         # Проход по всем параграфам и всем его элементам.
-        # Возврацщает список TexPortion
+        # Возвращает список TexPortion
         nodes_ = self.doc.body.childNodes[0].childNodes
         out_list: TpList = TpList()
 
@@ -486,7 +486,6 @@ class Odt(object):
         # NOTE: не подходит для autostyles.
         #  У них у всех родитель _parent_style_obj.tagName == TagName.AUTOSTYLES
         for _style in self.auto_styles.childNodes:  # type: Element
-            # print('ok')
             _name = _style.getAttribute('name')
             _family = _style.attributes.get((_ns_style, 'family'))
             parent_style_name = _style.attributes.get((_ns_style, 'parent-style-name'))
@@ -495,8 +494,6 @@ class Odt(object):
             assert parent_style_name, f'No parent style for autostyle: {_name}'
             style: Style = self.get_style_by_name(_name)
             assert style, f'No style(Style) for style: {_name}'
-            # if not style:
-            #     continue
             style.parent_style = parent_style_name
             if parent_style_name == 'default-style':
                 style.is_default_style = True
