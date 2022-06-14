@@ -281,6 +281,7 @@ Odt файл `filename.odt` конвертируется в TeX файл `filena
 ### TeX 
 - [churchslavichymnsbook.cls](churchslavichymnsbook.cls) - класс документа   
 - [churchslavichymn.sty](churchslavichymn.sty) - стилевой файл
+- [hyphens.tex](hyphens.tex) - пользовательские переносы
 - [single.tex](single.tex), [single_black.tex](single_black.tex) - для компиляции отдельным документом  
 - [book.tex](book.tex), [book_black.tex](book_black.tex) - для компиляции сборника  
 
@@ -305,3 +306,7 @@ Odt файл `filename.odt` конвертируется в TeX файл `filena
 - [Arial.ttf](Arial.ttf)
 - [NotoSerif-SemiBold.ttf](NotoSerif-SemiBold.ttf)
 - [Bukvica.ttf](Bukvica.ttf)
+
+**Images**
+- [cross.png](cross.png) - для "шапки"
+- [crossblack.png](crossblack.png)
