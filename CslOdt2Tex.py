@@ -118,6 +118,15 @@ def csl_odt2tex(
         [r'(\\ \\ \* %\n)\[', r'\1\\lbrack{}', 'mxs'],
         # Киноварь первой буквы в абзаце с буквицами.
         [r'(\\culB?\{%%\[BEGIN_culB?\]\n)\\KI\{(\w+?)\}', r'\1\2', 'mxs'],
+        [r'Трⷪ҇ц', r'\\Troic{}', 'x'],
+        [r'Трⷪ҇ч', r'\\Troich{}', 'x'],
+        [r'Трⷭ҇т', r'\\Trisvjat{}', 'x'],
+        [r'Прⷪ҇ро́', r'\\Proro{}', 'x'],
+        # Кроме случаев буквицы.
+        [r'\\(culB?){%%\[BEGIN_culB?\]\n\\Troic{}', r'\\\1{%%[BEGIN_\1]\nТрⷪ҇ц', 'mxs'],
+        [r'\\(culB?){%%\[BEGIN_culB?\]\n\\Troich{}', r'\\\1{%%[BEGIN_\1]\nТрⷪ҇ч', 'mxs'],
+        [r'\\(culB?){%%\[BEGIN_culB?\]\n\\Trisvjat{}', r'\\\1{%%[BEGIN_\1]\nТрⷭ҇т', 'mxs'],
+        [r'\\(culB?){%%\[BEGIN_culB?\]\n\\Proro{}', r'\\\1{%%[BEGIN_\1]\nПрⷪ҇ро́', 'mxs'],
     ]
     rus_regex_avikosuja = re.compile(_rus_regex_avikos_str)
     csl_regex_avikosuja = re.compile(_csl_regex_avikos_str)
@@ -159,10 +168,6 @@ def csl_odt2tex(
             line = re.sub(r'(?u)(renewcommand{\\TITLERU}{)(})', fr'\1{title_ru}\2', line)
             line = re.sub(r'(?u)\\CULS{}(..)', r'\\CULS{\1}', line)
             line = re.sub(r'(?u)(~[Ѽѽ])~}', r'\1}~', line)
-            line = re.sub(r'(?u)Трⷪ҇ц', r'\\Troic{}', line)
-            line = re.sub(r'(?u)Трⷪ҇ч', r'\\Troich{}', line)
-            line = re.sub(r'(?u)Трⷭ҇т', r'\\Trisvjat{}', line)
-            line = re.sub(r'(?u)Прⷪ҇ро́', r'\\Proro{}', line)
 
             # Киноварь для первой буквы греческого слова (начало).
             line = re.sub(

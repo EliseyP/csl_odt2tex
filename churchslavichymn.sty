@@ -93,20 +93,31 @@
 \newfontfamily{\NotoSerifBlack}{Noto Serif Black}% for bold black
 
 \ifluatex
-  \newfontfamily\churchslavonicfont[%
+  % Два варианта основной гарнитуры.
+  \newfontfamily\ponomar[%
     Script = Cyrillic,Ligatures = TeX]{PonomarUnicode.otf}
+  \newfontfamily{\triodion}[%
+    Script = Cyrillic,Ligatures = TeX]{TriodionUnicode.otf}
   %вместо этого м.б. лучше microtype-разрядку?
   \newfontfamily\ponomarexpandedfont[Script=Cyrillic,Ligatures=TeX,LetterSpace=10.0]{PonomarUnicode.otf}
   \newfontfamily\PonomarBold[Script=Cyrillic,Ligatures=TeX,FakeBold=2]{PonomarUnicode.otf}
   \selectlanguage{churchslavonic}
   \prehyphenchar=`\_
 \else
-  \newfontfamily\churchslavonicfont[%
+  % Два варианта основной гарнитуры.
+  \newfontfamily\ponomar[%
     Script = Cyrillic,Ligatures = TeX,HyphenChar = _ ]{PonomarUnicode.otf}
+  \newfontfamily{\triodion}[%
+      Script = Cyrillic,Ligatures = TeX,HyphenChar = _ ]{TriodionUnicode.otf}
   %вместо этого м.б. лучше microtype-разрядку?
   \newfontfamily\ponomarexpandedfont[Script=Cyrillic,Ligatures=TeX,HyphenChar="005F,LetterSpace=10.0]{PonomarUnicode.otf}
   \newfontfamily\PonomarBold[Script=Cyrillic,Ligatures=TeX,HyphenChar="005F,FakeBold=2]{PonomarUnicode.otf}
 \fi
+
+% Установка основной гарнитуры.
+\let\churchslavonicfont\ponomar
+%\let\churchslavonicfont\triodion
+
 
 % Шрифт для Буквицы.
 \let\LettrineFontName\indiction
@@ -750,9 +761,28 @@
 % Как оказалось, в отличие от LibreOffice `ѧ + камора` 
 % в TeX отображается корректно. 
 
+% Применять этот кернинг только для Ponomar Unicode.
 % Трⷪ҇ца -> \Troic{}а
-\newcommand{\Troic}{Тр\kern4ptⷪ҇\kern-3.5pt ц}
-% Для Киновари у первой буквы: \expandafter\KI\Troic{}а
-\newcommand{\Troich}{Тр\kern4ptⷪ҇\kern-3.5pt ч}
-\newcommand{\Trisvjat}{Тр\kern4ptⷭ҇\kern-3.5pt т}
-\newcommand{\Proro}{Пр\kern1.5ptⷪ҇\kern-1.7pt ро́}
+% FIXME: Для Киновари у первой буквы: \expandafter\KI\Troic{}а - больше не работает.
+\newcommand{\IfPonomar}[2]{%
+  \ifx\churchslavonicfont\ponomar#1\else#2\fi}
+\newcommand{\Troic}{%
+  \IfPonomar%
+    {Тр\kern4ptⷪ҇\kern-3.5pt ц}%
+    {Трⷪ҇ц}%
+}
+\newcommand{\Troich}{%
+  \IfPonomar%
+    {Тр\kern4ptⷪ҇\kern-3.5pt ч}%
+    {Трⷪ҇ч}%
+}
+\newcommand{\Trisvjat}{%
+  \IfPonomar%
+    {Тр\kern4ptⷭ҇\kern-3.5pt т}%
+    {Трⷭ҇т}%
+}
+\newcommand{\Proro}{%
+  \IfPonomar%
+    {Пр\kern1.5ptⷪ҇\kern-1.7pt ро́}%
+    {Прⷪ҇ро́}%
+}
