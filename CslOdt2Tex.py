@@ -115,6 +115,9 @@ def csl_odt2tex(
         \s+
     '''
     regs_multi = [
+        [r'(renewcommand{\\TITLE}{)(})', fr'\1{title}\2', 'x'],
+        [r'(renewcommand{\\TITLERU}{)(})', fr'\1{title_ru}\2', 'x'],
+
         [r'(\\ \\ \* %\n)\[', r'\1\\lbrack{}', 'mxs'],
         # Киноварь первой буквы в абзаце с буквицами.
         [r'(\\culB?\{%%\[BEGIN_culB?\]\n)\\KI\{(\w+?)\}', r'\1\2', 'mxs'],
@@ -164,8 +167,6 @@ def csl_odt2tex(
             line = re.sub(r'(?ui)(глаⷭ҇)\s+([авгдєѕзи]҃)', r'\1~\2', line)
             line = re.sub(r'(?u)^И҆\s+нн҃ѣ:$', r'И҆~нн҃ѣ:', line)
             line = re.sub(r'(?u)\\KI(?:small)?{\*}', r'\\AR', line)
-            line = re.sub(r'(?u)(renewcommand{\\TITLE}{)(})', fr'\1{title}\2', line)
-            line = re.sub(r'(?u)(renewcommand{\\TITLERU}{)(})', fr'\1{title_ru}\2', line)
             line = re.sub(r'(?u)\\CULS{}(..)', r'\\CULS{\1}', line)
             line = re.sub(r'(?u)(~[Ѽѽ])~}', r'\1}~', line)
 
