@@ -189,7 +189,7 @@
 
 <img src="images/Troica.jpeg" width="250" height="100">
 
-[Для Киновари у первой буквы: `\expandafter\KI\Troic{}а`]: #
+Для Киновари у первой буквы: `\expandafter\KI\Troic{}а`
 
 Включена автозамена при конвертации `ODT->TEX` 
 

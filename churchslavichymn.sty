@@ -763,26 +763,15 @@
 
 % Применять этот кернинг только для Ponomar Unicode.
 % Трⷪ҇ца -> \Troic{}а
-% FIXME: Для Киновари у первой буквы: \expandafter\KI\Troic{}а - больше не работает.
-\newcommand{\IfPonomar}[2]{%
-  \ifx\churchslavonicfont\ponomar#1\else#2\fi}
-\newcommand{\Troic}{%
-  \IfPonomar%
-    {Тр\kern4ptⷪ҇\kern-3.5pt ц}%
-    {Трⷪ҇ц}%
-}
-\newcommand{\Troich}{%
-  \IfPonomar%
-    {Тр\kern4ptⷪ҇\kern-3.5pt ч}%
-    {Трⷪ҇ч}%
-}
-\newcommand{\Trisvjat}{%
-  \IfPonomar%
-    {Тр\kern4ptⷭ҇\kern-3.5pt т}%
-    {Трⷭ҇т}%
-}
-\newcommand{\Proro}{%
-  \IfPonomar%
-    {Пр\kern1.5ptⷪ҇\kern-1.7pt ро́}%
-    {Прⷪ҇ро́}%
-}
+% Для Киновари у первой буквы: \expandafter\KI\Troic{}а
+\ifx\churchslavonicfont\ponomar%
+  \newcommand{\Troic}{Тр\kern4ptⷪ҇\kern-3.5pt ц}%
+  \newcommand{\Troich}{Тр\kern4ptⷪ҇\kern-3.5pt ч}%
+  \newcommand{\Trisvjat}{Тр\kern4ptⷭ҇\kern-3.5pt т}%
+  \newcommand{\Proro}{Пр\kern1.5ptⷪ҇\kern-1.7pt ро́}%
+\else
+  \newcommand{\Troic}{Трⷪ҇ц}%
+  \newcommand{\Troich}{Трⷪ҇ч}%
+  \newcommand{\Trisvjat}{Трⷭ҇т}%
+  \newcommand{\Proro}{Прⷪ҇ро́}%
+\fi
