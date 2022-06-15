@@ -156,6 +156,11 @@ def csl_odt2tex(
             line = re.sub(r'(?u)(renewcommand{\\TITLERU}{)(})', fr'\1{title_ru}\2', line)
             line = re.sub(r'(?u)\\CULS{}(..)', r'\\CULS{\1}', line)
             line = re.sub(r'(?u)(~[Ѽѽ])~}', r'\1}~', line)
+            line = re.sub(r'(?u)Трⷪ҇ц', r'\\Troic{}', line)
+            line = re.sub(r'(?u)Трⷪ҇ч', r'\\Troich{}', line)
+            line = re.sub(r'(?u)Трⷭ҇т', r'\\Trisvjat{}', line)
+            line = re.sub(r'(?u)Прⷪ҇ро́', r'\\Proro{}', line)
+
             # Киноварь для первой буквы греческого слова (начало).
             line = re.sub(
                 r'(?u)\\KI{(.)}\\Greek{',

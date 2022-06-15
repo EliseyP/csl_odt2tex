@@ -750,6 +750,9 @@
 % Как оказалось, в отличие от LibreOffice `ѧ + камора` 
 % в TeX отображается корректно. 
 
-\newcommand{\Troic}[1]{Тр\kern4ptⷪ҇\kern-3.5ptц#1}
-% Для Киновари у первой буквы: \expandafter\KI\Troic{а} 
-\newcommand{\Trisvjat}[1]{Тр\kern4ptⷭ҇\kern-3.5pt т#1}
+% Трⷪ҇ца -> \Troic{}а
+\newcommand{\Troic}{Тр\kern4ptⷪ҇\kern-3.5pt ц}
+% Для Киновари у первой буквы: \expandafter\KI\Troic{}а
+\newcommand{\Troich}{Тр\kern4ptⷪ҇\kern-3.5pt ч}
+\newcommand{\Trisvjat}{Тр\kern4ptⷭ҇\kern-3.5pt т}
+\newcommand{\Proro}{Пр\kern1.5ptⷪ҇\kern-1.7pt ро́}
