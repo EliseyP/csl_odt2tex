@@ -65,6 +65,9 @@ def csl_odt2tex(
     apostrof = '҆̀'
     cu_cap_letters_text = \
         "АБВГДЕЄѢЖЗЅꙀИІѴЙКЛМНОѺѠѾꙌѼПРСТꙊУФѲХЦЧШЩЪЫЬЮѦꙖЯѮѰ"
+    cu_small_letters_text = \
+        "абвгдеєѣжзѕꙁиіѵйклмноѻѡѿꙍѽпрстꙋуфѳхцчшщъыьюѧꙗяѯѱ"
+    cu_letters = cu_cap_letters_text + cu_small_letters_text
     # titlo = '҃'
     _accents = f'{titlo_s}|{zvatelce}|{iso}|{apostrof}'
     _rus_regex_avikos_str = \
@@ -168,7 +171,7 @@ def csl_odt2tex(
             # Извлечение из \KI{} одной (первой) буквы слова
             # (с надстрочниками).
             line = re.sub(
-                r'(?u)\\KI{([' + cu_cap_letters_text + ']' + rf'(?:{_accents})?' + r')}', r'\\KI \1', line)
+                r'(?u)\\KI{([' + cu_letters + ']' + rf'(?:{_accents})?' + r')}', r'\\KI \1', line)
 
             # Киноварь для первой буквы греческого слова (завершение).
             line = re.sub(r'(?u)\\KIGR', r'\\KI', line)
