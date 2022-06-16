@@ -125,6 +125,11 @@ def csl_odt2tex(
         [r'Трⷪ҇ч', r'\\Troich{}', 'x'],
         [r'Трⷭ҇т', r'\\Trisvjat{}', 'x'],
         [r'Прⷪ҇ро́', r'\\Proro{}', 'x'],
+        [r'\\KI\{Т\}рⷪ҇ц', r'\\expandafter\\KI\\Troic{}', 'x'],
+        [r'\\KI\{Т\}рⷪ҇ч', r'\\expandafter\\KI\\Troich{}', 'x'],
+        [r'\\KI\{Т\}рⷭ҇т', r'\\expandafter\\KI\\Trisvjat{}', 'x'],
+        [r'\\KI\{П\}рⷪ҇ро́', r'\\expandafter\\KI\\Proro{}', 'x'],
+
         # Кроме случаев буквицы.
         [r'\\(culB?){%%\[BEGIN_culB?\]\n\\Troic{}', r'\\\1{%%[BEGIN_\1]\nТрⷪ҇ц', 'mxs'],
         [r'\\(culB?){%%\[BEGIN_culB?\]\n\\Troich{}', r'\\\1{%%[BEGIN_\1]\nТрⷪ҇ч', 'mxs'],
