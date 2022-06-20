@@ -14,6 +14,7 @@ _ns_text = 'urn:oasis:names:tc:opendocument:xmlns:text:1.0'
 _ns_style = 'urn:oasis:names:tc:opendocument:xmlns:style:1.0'
 _ns_officeooo = 'http://openoffice.org/2009/office'
 _ns_fo = 'urn:oasis:names:tc:opendocument:xmlns:xsl-fo-compatible:1.0'
+_ns_meta = 'urn:oasis:names:tc:opendocument:xmlns:meta:1.0'
 
 
 class Family:
@@ -769,16 +770,55 @@ class Odt(object):
                 out_text += f'{body_text}\n'
         return out_text
 
+    def get_property_title(self):
+        """Возвращает значение свойства документа title (DocumentProperties.Title)
+
+        """
+        _meta: Element = self.doc.meta
+        _title_string = ''
+        for _node in _meta.childNodes:
+            if _node.tagName == 'dc:title':
+                _title_string = _node.firstChild.data
+                break
+        return _title_string
+
+    def get_meta_user_defiled_field(self, _meta_field_name: str = None):
+        """Возвращает значение odt meta user-defined field (UserDefinedProperties).
+
+        """
+        _meta: Element = self.doc.meta
+        _meta_string = ''
+        for _node in _meta.childNodes:
+            if _node.tagName == 'meta:user-defined':
+                _attr_dic = _node.attributes
+                _attr_name = _attr_dic.get((_ns_meta, 'name'))
+                if _attr_name == f'{_meta_field_name}':
+                    _meta_string = _node.firstChild.data
+                    break
+        return _meta_string
+
+    def get_meta_running_header(self):
+        # Колонтитул.
+        return self.get_meta_user_defiled_field('RunningHeader')
+
+    def get_meta_title_in_text(self):
+        # Заголовок в тексте.
+        return self.get_meta_user_defiled_field('TitleInText')
+
 
 if __name__ == "__main__":
-    odt = 'test.odt'
+    odt = 'АкафистБогородице.odt'
     try:
         odt_obj = Odt(odt)
     except Exception as e:
         raise e
-    tp_list: TpList = odt_obj.make_tp_list()
-    tp_list = tp_list.open_and_close()
-    all_string = tp_list.make_string()
-    print(tp_list.__repr__())
+
+    print(odt_obj.get_meta_running_header())
+    print(odt_obj.get_meta_title_in_text())
+    print(odt_obj.get_property_title())
+    # tp_list: TpList = odt_obj.make_tp_list()
+    # tp_list = tp_list.open_and_close()
+    # all_string = tp_list.make_string()
+    # print(tp_list.__repr__())
     # all_string = replace_in_string_as_one_string(all_string)
     # print(all_string)

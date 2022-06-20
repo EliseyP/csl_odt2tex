@@ -269,6 +269,30 @@ def csl_odt2tex(
         except MyError as er:
             raise er
 
+    def get_odt_title(_odt_path: Path):
+        from ProcessOdtByXML import Odt
+        try:
+            odt_obj = Odt(_odt_path)
+        except Exception as er:
+            raise er
+        _out_string = odt_obj.get_meta_title_in_text()
+        if _out_string:
+            return _out_string
+        else:
+            return ''
+
+    def get_odt_title_ru(_odt_path: Path):
+        from ProcessOdtByXML import Odt
+        try:
+            odt_obj = Odt(_odt_path)
+        except Exception as er:
+            raise er
+        _out_string = odt_obj.get_property_title()
+        if _out_string:
+            return _out_string
+        else:
+            return ''
+
     global LCIAN, GREEN, COLOR_NO, COLOR_OK, COLOR_EXLAM_MARK_PAR, \
         COLOR_MINUS_PAR, COLOR_PLUS_PAR, COLOR_EXISTS, ENDC
 
@@ -283,8 +307,8 @@ def csl_odt2tex(
     print(f'Create Init.TEX file from ODT for {lcian(odt_path.name)}')
     print('-'*20)
 
-    # title = db.get_field_value(_code=code, _field_name=Fields.TITLE_IN_TEXT)
-    # title_ru = db.get_field_value(_code=code, _field_name=Fields.TITLE)
+    # title = get_odt_title()
+    # title_ru = get_odt_title_ru()
 
     copy_odt_to_tmp()
 

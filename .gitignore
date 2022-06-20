@@ -8,7 +8,8 @@ _linux/
 templates/
 venv/
 tmp/
-gitignore
+__pycache__
+.gitignore
 colors.scheme.xml
 debugger.xml
 editor.rich.copy.xml
