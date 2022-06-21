@@ -4,6 +4,7 @@ from shutil import copy2
 from pathlib import Path
 from Utils import *
 from Colors import bcolors
+from ProcessOdtByXML import Odt
 
 OKGREEN = bcolors.OKGREEN
 GREEN = bcolors.GREEN
@@ -117,6 +118,7 @@ def csl_odt2tex(
     regs_multi = [
         [r'(renewcommand{\\TITLE}{)(})', fr'\1{title}\2', 'x'],
         [r'(renewcommand{\\TITLERU}{)(})', fr'\1{title_ru}\2', 'x'],
+        # [r'(head={\\TITLE)(})', fr'\1{title_running_header}\2', 'x'],
 
         [r'(\\ \\ \* %\n)\[', r'\1\\lbrack{}', 'mxs'],
         # Киноварь первой буквы в абзаце с буквицами.
@@ -270,7 +272,6 @@ def csl_odt2tex(
             raise er
 
     def get_odt_title(_odt_path: Path):
-        from ProcessOdtByXML import Odt
         try:
             odt_obj = Odt(_odt_path)
         except Exception as er:
@@ -282,12 +283,22 @@ def csl_odt2tex(
             return ''
 
     def get_odt_title_ru(_odt_path: Path):
-        from ProcessOdtByXML import Odt
         try:
             odt_obj = Odt(_odt_path)
         except Exception as er:
             raise er
         _out_string = odt_obj.get_property_title()
+        if _out_string:
+            return _out_string
+        else:
+            return ''
+
+    def get_odt_running_header(_odt_path: Path):
+        try:
+            odt_obj = Odt(_odt_path)
+        except Exception as er:
+            raise er
+        _out_string = odt_obj.get_meta_running_header()
         if _out_string:
             return _out_string
         else:
@@ -307,8 +318,9 @@ def csl_odt2tex(
     print(f'Create Init.TEX file from ODT for {lcian(odt_path.name)}')
     print('-'*20)
 
-    # title = get_odt_title()
-    # title_ru = get_odt_title_ru()
+    # title = get_odt_title(odt_path)
+    # title_ru = get_odt_title_ru(odt_path)
+    # title_running_header = get_odt_running_header(odt_path)
 
     copy_odt_to_tmp()
 
