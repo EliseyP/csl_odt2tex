@@ -1,4 +1,4 @@
-\ProvidesPackage{churchslavichymn}[2022/06/13 v.0.4]
+\ProvidesPackage{churchslavichymn}[2022/07/12 v.0.6]
 \RequirePackage{kvoptions}
 \RequirePackage{xifthen,ifdraft}
 \RequirePackage{ifluatex}
@@ -14,8 +14,9 @@
 \newboolean{hebrew}%
 \DeclareBoolOption{nodigraphkinovar}%
 \DeclareBoolOption{hebrew}%
+\DeclareBoolOption{comments}%
 \DeclareStringOption[red]{kinovarcolor}%
-\DeclareStringOption[20.0pt]{basefontsize}%
+\DeclareStringOption[20.0pt]{fontsize}%
 \DeclareStringOption[1.15]{linespread}%
 \DeclareBoolOption{single}%
 \ExecuteOptions{%
@@ -23,11 +24,12 @@
   nodigraphkinovar,
   single,
   hebrew,
-  basefontsize,
+  fontsize,
   linespread,
 }
 % !!! проверять на \setboolean
 \ProcessKeyvalOptions*
+\KOMAoptions{fontsize=\PROP@fontsize}
 
 \ifPROP@nodigraphkinovar
   \setboolean{nodigraphkinovar}{true}\fi
@@ -333,14 +335,14 @@
 \addtokomafont{pageheadfoot}{\footnotesize}
 \addtokomafont{pagehead}{\cuKinovarColor}
 
-% Размер шрифтов для заголовков.
-% Основной шрифт задается опцией 'basefontsize' (default=20.0pt).
+% Размер шрифтов для текста и для заголовков.
+% Основной шрифт задается опцией 'fontsize' (default=20.0pt).
 \newlength{\len@section@font}
 \newlength{\len@subsection@font}
 \newlength{\len@subsubsection@font}
-\len@section@font=\PROP@basefontsize
-\len@subsection@font=\PROP@basefontsize
-\len@subsubsection@font=\PROP@basefontsize
+\len@section@font=\PROP@fontsize
+\len@subsection@font=\PROP@fontsize
+\len@subsubsection@font=\PROP@fontsize
 % Увеличение размера с шагом 2pt.
 \addtolength{\len@section@font}{6pt}
 \addtolength{\len@subsection@font}{4pt}
@@ -725,6 +727,14 @@
  % Удобно при конвертации pandoc  
   \renewcommand{#1}[1]{##1}%
 }
+% Если нужно опционально закомментировать часть текста, -
+% новое окружение COMMENT. В зависимости от опции comments. 
+\ifPROP@comments%
+  \usepackage{verbatim}%
+  \let\COMMENT\comment%
+\else
+  \newenvironment{COMMENT}{}{}%
+\fi
 
 %----------------------------
 % Индивидуальный керниг для некотрых надстрочников.
