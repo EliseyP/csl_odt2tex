@@ -1,5 +1,5 @@
 \NeedsTeXFormat{LaTeX2e}
-\ProvidesClass{churchslavichymnsbook}[2022/05/23 v.0.1]
+\ProvidesClass{churchslavichymnsbook}[2022/07/12 v.0.2]
 % Класс для сборника (книги) гимнографических текстов
 % на ЦСЯ с использованием шрифтов семейства Ponomar (Unicode). 
 
@@ -22,7 +22,6 @@
 \newlength{\TrimMm}% привязка к \Mediabox = \paper[height|weight]
 \newlength{\BleedMm}% привязка к \TrimMm
 
-\DeclareStringOption[20pt]{basefontsize}
 \DeclareStringOption[0 mm]{trimbox}
 \DeclareStringOption[0 mm]{bleedbox}
 \DeclareStringOption[220 mm]{pwidth}%def A4
@@ -36,7 +35,6 @@
 \DeclareBoolOption{dtp}% DTP
 
 \ExecuteOptions{%
-  basefontsize,
   trimbox,% dtp only
   bleedbox,% dtp only
   cover,% dtp only
@@ -66,8 +64,6 @@
 
 \LoadClass[%
 %%hyperref,usenames,dvipsnames,svgnames,table,
-%fontsize=20.0pt,%TODO: pass as option for churchslavichymnsbook.cls
-fontsize=\BookPROP@basefontsize,
 %final=true,
 version=last,
 twoside,openright,headings=optiontoheadandtoc,
