@@ -38,6 +38,42 @@ def green(x: str) -> str:
     return GREEN + '[' + x + ']' + ENDC
 
 
+def get_odt_title(_odt_path: Path):
+    try:
+        odt_obj = Odt(_odt_path)
+    except Exception as er:
+        raise er
+    _out_string = odt_obj.get_meta_title_in_text()
+    if _out_string:
+        return _out_string
+    else:
+        return ''
+
+
+def get_odt_title_ru(_odt_path: Path):
+    try:
+        odt_obj = Odt(_odt_path)
+    except Exception as er:
+        raise er
+    _out_string = odt_obj.get_property_title()
+    if _out_string:
+        return _out_string
+    else:
+        return ''
+
+
+def get_odt_running_header(_odt_path: Path):
+    try:
+        odt_obj = Odt(_odt_path)
+    except Exception as er:
+        raise er
+    _out_string = odt_obj.get_meta_running_header()
+    if _out_string:
+        return _out_string
+    else:
+        return ''
+
+
 def csl_odt2tex(
         odt_path: Path = None,
         copy_from_init: bool = False,
@@ -115,6 +151,13 @@ def csl_odt2tex(
         )
         \s+
     '''
+
+    if not title:
+        title = get_odt_title(odt_path)
+    if not title_ru:
+        title_ru = get_odt_title_ru(odt_path)
+    # title_running_header = get_odt_running_header(odt_path)
+
     regs_multi = [
         [r'(renewcommand{\\TITLE}{)(})', fr'\1{title}\2', 'x'],
         [r'(renewcommand{\\TITLERU}{)(})', fr'\1{title_ru}\2', 'x'],
@@ -271,39 +314,6 @@ def csl_odt2tex(
         except MyError as er:
             raise er
 
-    def get_odt_title(_odt_path: Path):
-        try:
-            odt_obj = Odt(_odt_path)
-        except Exception as er:
-            raise er
-        _out_string = odt_obj.get_meta_title_in_text()
-        if _out_string:
-            return _out_string
-        else:
-            return ''
-
-    def get_odt_title_ru(_odt_path: Path):
-        try:
-            odt_obj = Odt(_odt_path)
-        except Exception as er:
-            raise er
-        _out_string = odt_obj.get_property_title()
-        if _out_string:
-            return _out_string
-        else:
-            return ''
-
-    def get_odt_running_header(_odt_path: Path):
-        try:
-            odt_obj = Odt(_odt_path)
-        except Exception as er:
-            raise er
-        _out_string = odt_obj.get_meta_running_header()
-        if _out_string:
-            return _out_string
-        else:
-            return ''
-
     global LCIAN, GREEN, COLOR_NO, COLOR_OK, COLOR_EXLAM_MARK_PAR, \
         COLOR_MINUS_PAR, COLOR_PLUS_PAR, COLOR_EXISTS, ENDC
 
@@ -317,10 +327,6 @@ def csl_odt2tex(
 
     print(f'Create Init.TEX file from ODT for {lcian(odt_path.name)}')
     print('-'*20)
-
-    # title = get_odt_title(odt_path)
-    # title_ru = get_odt_title_ru(odt_path)
-    # title_running_header = get_odt_running_header(odt_path)
 
     copy_odt_to_tmp()
 

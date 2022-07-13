@@ -24,7 +24,7 @@ if __name__ == '__main__':
     csl_odt2tex(
         odt_path=_odt,
         copy_from_init=True,
-        title='Полꙋ́нощница',
-        title_ru='Полунощница',
+        # title='Полꙋ́нощница',
+        # title_ru='Полунощница',
         color=True,
     )

@@ -793,7 +793,10 @@ class Odt(object):
                 _attr_dic = _node.attributes
                 _attr_name = _attr_dic.get((_ns_meta, 'name'))
                 if _attr_name == f'{_meta_field_name}':
-                    _meta_string = _node.firstChild.data
+                    try:
+                        _meta_string = _node.firstChild.data
+                    except AttributeError as er:
+                        pass
                     break
         return _meta_string
 
