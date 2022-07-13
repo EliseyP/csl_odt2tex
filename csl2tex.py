@@ -106,7 +106,6 @@ def main():
     _data_dir_p = Path(_data_dir)
     if _data_dir.startswith("~/"):
         _data_dir_p = Path.expanduser(_data_dir_p)
-        print(f'_data_dir_p = {_data_dir_p}')
 
     if not _data_dir_p.exists():
         print(f'No {_data_dir} directory exists!')
