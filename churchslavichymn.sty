@@ -1,4 +1,4 @@
-\ProvidesPackage{churchslavichymn}[2022/07/12 v.0.6]
+\ProvidesPackage{churchslavichymn}[2022/07/14 v.0.7]
 \RequirePackage{kvoptions}
 \RequirePackage{xifthen,ifdraft}
 \RequirePackage{ifluatex}
@@ -53,6 +53,7 @@
 \IfStrEqCase{\PROP@kinovarcolor}{%
   {red}{\RequirePackage{churchslavonic}}%
   {grey}{\RequirePackage[gray]{churchslavonic}}%
+  {gray}{\RequirePackage[gray]{churchslavonic}}%
   {boldblack}{\RequirePackage{churchslavonic}}}%
   [\RequirePackage{churchslavonic}]%
 \RequirePackage{microtype} % XXX: errors out here
@@ -606,6 +607,7 @@
     \IfStrEqCase{\PROP@kinovarcolor}{%    
       {red}{\hh@insert@color@cross}%
       {grey}{\hh@insert@black@cross}%
+      {gray}{\hh@insert@black@cross}%
       {boldblack}{\hh@insert@black@cross}}%
       [\hh@insert@color@cross]% default.
     \\*
