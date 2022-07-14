@@ -18,32 +18,6 @@ from CslOdt2Tex import csl_odt2tex
   -d DIR  - каталог с TeX стилями (churchslavichymn.sty etc) и прочими вспомогательными файлами (как правило, каталог, в котором находится этот скрипт). 
 """
 
-
-single_head = r"""\documentclass{churchslavichymnsbook}
-\usepackage[
-nodigraphkinovar=true,
-single=true,
-kinovarcolor=red,
-]{churchslavichymn}
-
-\hfuzz=5pt
-\begin{document}
-\input{hyphens.tex}
-% compile fragment only"""
-
-single_bott = r"\end{document}"
-
-# Default location - directory of this script.
-data_dir = Path(os.path.realpath(__file__)).parent.as_posix()
-
-
-tex_files = [
-    'churchslavichymnsbook.cls',
-    'churchslavichymn.sty',
-    'crossblack.png',
-    'cross.png',
-    'hyphens.tex',
-]
 dots = '.' * 5
 
 
@@ -62,6 +36,12 @@ def create_parser():
         dest='filenames',
         metavar='filename',
         nargs='+'
+    )
+    _parser.add_argument(
+        '-g', '--gui',
+        action='store_true',
+        help='Run make pdf simple dialog',
+        default=True,
     )
     _parser.add_argument(
         '-b', '--black',
@@ -91,10 +71,63 @@ def create_parser():
 
 
 def main():
+    class Params:
+        # Default values.
+        tex_file = ''
+        pwidth = '210mm'
+        pheight = '297mm'
+        toppmarg = '1.7cm'
+        botpmarg = '2.0cm'
+        outpmarg = '2.0cm'
+        innpmarg = '2.0cm'
+        cover = '0mm'
+        fontsize = '20pt'
+        nodigraphkinovar = 'true'
+        kinovarcolor = 'red'
+
+    class SingleString:
+        def __init__(self):
+            _single_string = rf"""\documentclass[
+pwidth={Params.pwidth},%A4
+pheight={Params.pheight},%A4
+toppmarg={Params.toppmarg},
+botpmarg={Params.botpmarg},
+outpmarg={Params.outpmarg},
+innpmarg={Params.innpmarg},
+cover={Params.cover},% припуск под корешок
+]{{churchslavichymnsbook}}\
+\usepackage[
+fontsize={Params.fontsize},
+nodigraphkinovar={Params.nodigraphkinovar},
+single=true,
+kinovarcolor={Params.kinovarcolor},
+]{{churchslavichymn}}
+
+\hfuzz=5pt
+\begin{{document}}
+\input{{hyphens.tex}}
+% compile single only
+\input{{{Params.tex_file}}}
+\end{{document}}"""
+            self.text = _single_string
+
+        def get_text(self):
+            return self.text
+    # Default location - directory of this script.
+    data_dir = Path(os.path.realpath(__file__)).parent.as_posix()
+    tex_files = [
+        'churchslavichymnsbook.cls',
+        'churchslavichymn.sty',
+        'crossblack.png',
+        'cross.png',
+        'hyphens.tex',
+    ]
+
     parser = create_parser()
     args = parser.parse_args()
     _black = args.black
     _pdf = args.pdf
+    _gui = args.gui
 
     # List of data tex files creation.
     data_files = []
@@ -114,7 +147,7 @@ def main():
         _data_file_p = _data_dir_p.joinpath(_data_file)
         if not _data_file_p.exists():
             print(f'ERROR! No data file {_data_file} exists!')
-            exit(1)
+            return
         else:
             data_files.append(_data_file_p)
 
@@ -134,14 +167,22 @@ def main():
 
     def make_single_tex(_odt_file: str = None):
         _tex = Path(_odt_file).with_suffix('.tex')
-        _single_string = f'{single_head}\n' \
-                         '\\input{' + str(_tex) + '}\n' \
-                         f'{single_bott}'
-        if _black:
-            _single_string = _single_string.replace('red', 'boldblack')
+        Params.tex_file = str(_tex)
 
-        with open(f'single.tex', 'wt') as f:
-            f.write(_single_string)
+        if _black:
+            Params.kinovarcolor = 'boldblack'
+
+        single_string = SingleString().get_text()
+
+        try:
+            with open(f'single.tex', 'wt') as f:
+                f.write(single_string)
+        except OSError as e:
+            print(f"ERROR! Cant't write single.tex.\n{e}")
+            exit(1)
+
+    def gui_dialog():
+        pass
 
     def make_pdf(
             _odt_file: str = None,
@@ -190,6 +231,8 @@ def main():
     for _file in args.filenames:
         make_tex_init(_file)
         if _pdf:
+            if _gui:
+                gui_dialog()
             make_single_tex(_file)
             make_pdf(_file)
 
