@@ -81,8 +81,10 @@ def main():
         # Default values.
         def __init__(self, _odt_file):
             self.odt = _odt_file
-            _tex = Path(_odt_file).with_suffix('.tex')
-            self.tex_file = f'{_tex.as_posix()}'
+            _tex_name = Path(_odt_file).with_suffix('.tex')
+            self.tex_file = _tex_name.as_posix()
+            _pdf_name = Path(_odt_file).with_suffix('.pdf')
+            self.pdf_file = _pdf_name.name  # .as_posix()
             self.pwidth = '210mm'
             self.pheight = '297mm'
             self.toppmarg = '1.7cm'
@@ -175,15 +177,15 @@ kinovarcolor={_params.kinovarcolor},
 
             # kinovarcolor.
             row_inc()
-            self.kinovarcolor = self.addLabel(text='kinovarcolor:', row=row, column=0, font=font)
-            self.colors = self.addListbox(row=row, column=1, height=3)
-            self.colors.insert(END, 'red')
-            self.colors.insert(END, 'boldblack')
-            self.colors.insert(END, 'gray')
+            self.addLabel(text='kinovarcolor:', row=row, column=0, font=font)
+            self.kinovarcolors = self.addListbox(row=row, column=1, height=3)
+            self.kinovarcolors.insert(END, 'red')
+            self.kinovarcolors.insert(END, 'boldblack')
+            self.kinovarcolors.insert(END, 'gray')
             # exportselection=False - fix this:
             #  https://stackoverflow.com/questions/30266213/tkinter-listbox-loses-its-selection-when-clicking-elsewhere-on-the-form
-            self.colors.configure(justify='right', exportselection=False)
-            self.colors.setSelectedIndex(0)
+            self.kinovarcolors.configure(justify='right', exportselection=False)
+            self.kinovarcolors.setSelectedIndex(0)
 
             # pwidth.
             row_inc()
@@ -204,6 +206,12 @@ kinovarcolor={_params.kinovarcolor},
             if self.params.nodigraphkinovar == 'true':
                 self.nodigraphkinovar.select()
 
+            # Alternate PDF name
+            row_inc()
+            self.addLabel(text='PDF name:', row=row, column=0, font=font)
+            self.pdf_name = self.addTextField(text=self.params.pdf_file, row=row, column=1)
+            self.pdf_name.configure(justify='right')
+
             # Buttons.
             row_inc()
             self.btn_make_pdf = \
@@ -215,11 +223,12 @@ kinovarcolor={_params.kinovarcolor},
             # TODO: для всей формы одной строкой?
             _widgets_4font_list = [
                 self.fontsize,
-                self.colors,
+                self.kinovarcolors,
                 self.pwidth,
                 self.pheight,
+                self.pdf_name,
                 self.btn_make_pdf,
-                self.btn_close
+                self.btn_close,
 
             ]
             for _widget in _widgets_4font_list:
@@ -234,31 +243,42 @@ kinovarcolor={_params.kinovarcolor},
             # cover = '0mm'
 
         def apply_params_changes(self):
+            def msg_wrong_format(_parameter, _string):
+                self.messageBox(message=f'Неверный формат!\n{_string}: {_parameter}')
+
             _fontsize = self.fontsize.getText()
             # validation.
             if re.match(r'\d+(\.\d+)?pt', _fontsize):
                 self.params.fontsize = _fontsize
             else:
-                self.messageBox(message=f'Неверный формат!\nfontsize: {_fontsize}')
+                msg_wrong_format(_fontsize, 'fontsize')
                 return False
 
-            self.params.kinovarcolor = self.colors.getSelectedItem()
+            self.params.kinovarcolor = self.kinovarcolors.getSelectedItem()
             _pwidth = self.pwidth.getText()
             if re.match(r'\d+(\.\d+)?(cm|mm)', _pwidth):
                 self.params.pwidth = _pwidth
             else:
-                self.messageBox(message=f'Неверный формат!\npwidth: {_pwidth}')
+                msg_wrong_format(_pwidth, 'pwidth')
                 return False
 
             _pheight = self.pheight.getText()
             if re.match(r'\d+(\.\d+)?(cm|mm)', _pheight):
                 self.params.pheight = _pheight
             else:
-                self.messageBox(message=f'Неверный формат!\npheight: {_pheight}')
+                msg_wrong_format(_pheight, 'pheight')
                 return False
 
             _nodigraphkinovar = self.nodigraphkinovar.isChecked()
             self.params.nodigraphkinovar = 'true' if _nodigraphkinovar else 'false'
+
+            _pdf_name = self.pdf_name.getText()
+            if _pdf_name:
+                if _pdf_name.endswith('.pdf'):
+                    self.params.pdf_file = _pdf_name
+                else:
+                    msg_wrong_format(_pdf_name, 'pdf_name')
+                    return False
 
             return True
 
@@ -270,8 +290,8 @@ kinovarcolor={_params.kinovarcolor},
             make_single_tex(_params=self.params)
             try:
                 _result_flag = make_pdf(_params=self.params)
-            except MyError as e:
-                raise MyErrorOperation from e
+            except MyError as er:
+                raise MyErrorOperation from er
             else:
                 if _result_flag:
                     MsgTk(_string=f'OK!\n'
@@ -298,6 +318,7 @@ kinovarcolor={_params.kinovarcolor},
     _black = args.black
     _pdf = args.pdf
     _gui = args.gui
+    _files_list = args.filenames
 
     # List of data tex files creation.
     data_files = []
@@ -390,19 +411,20 @@ kinovarcolor={_params.kinovarcolor},
 
             try:
                 subprocess.run(command_tex, stdout=subprocess.DEVNULL)
-            except subprocess.CalledProcessError as e:
+            except subprocess.CalledProcessError as er:
                 print(f'NO')
-                raise f'ERROR make PDF! {e}'
+                raise f'ERROR make PDF! {er}'
             else:
                 print(f'OK')
                 # Копирование pdf в рабочий каталог.
-                _compiled_pdf = Path(cwd).joinpath(_odt_file).with_suffix('.pdf')
+                _compiled_pdf = Path(cwd).joinpath(_params.pdf_file)
+                print(f'{_compiled_pdf}')
                 copy(_pdf_file, _compiled_pdf)
                 # Удаление временного 'single_tex'
                 Path(cwd).joinpath(_single_tex).unlink()
                 return _compiled_pdf
 
-    for _file in args.filenames:
+    for _file in _files_list:
         _init_tex = make_tex_init(_file)
         if not _init_tex:
             continue
