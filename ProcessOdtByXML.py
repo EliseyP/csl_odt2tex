@@ -415,10 +415,13 @@ class Odt(object):
             _new_para_tp = TextPortion(_string='\n', _par_style=para_style_name, _new_para=True)
             out_list.append(_new_para_tp)
 
-        def para_style_name_handler(_para_element) -> str:
+        def para_style_name_handler(_para_element):
             _para_style_name: str = ''
             _para_style_name = _para_element.getAttribute('stylename')
             _para_style: Style = self.get_style_by_name(_para_style_name)
+
+            if _para_style is None:
+                return
 
             if _para_style.is_autostyle:
                 if _para_style.is_default_style:
@@ -487,7 +490,10 @@ class Odt(object):
         # NOTE: не подходит для autostyles.
         #  У них у всех родитель _parent_style_obj.tagName == TagName.AUTOSTYLES
         for _style in self.auto_styles.childNodes:  # type: Element
-            _name = _style.getAttribute('name')
+            try:
+                _name = _style.getAttribute('name')
+            except AttributeError as er:
+                continue
             _family = _style.attributes.get((_ns_style, 'family'))
             parent_style_name = _style.attributes.get((_ns_style, 'parent-style-name'))
             if not parent_style_name:
@@ -502,7 +508,10 @@ class Odt(object):
     def autostyles_handle(self):
 
         for _style in self.auto_styles.childNodes:  # type: Element
-            _name = _style.getAttribute('name')
+            try:
+                _name = _style.getAttribute('name')
+            except AttributeError as er:
+                continue
             _family = _style.attributes.get((_ns_style, 'family'))
             _parent_style = _style.attributes.get((_ns_style, 'parent-style-name'))
 
@@ -513,7 +522,10 @@ class Odt(object):
                     _rsid = _prop_node.attributes.get((_ns_officeooo, 'paragraph-rsid'))
                 elif _family == Family.TEXT:
                     _rsid = _prop_node.attributes.get((_ns_officeooo, 'rsid'))
-                _font_name = _prop_node.attributes.get((_ns_style, 'font-name'))
+                try:
+                    _font_name = _prop_node.attributes.get((_ns_style, 'font-name'))
+                except AttributeError as er:
+                    continue
 
             if _font_name:
                 _font_name = re.sub(r'.*(Ponomar Unicode).*', r'\1', _font_name)
@@ -531,7 +543,10 @@ class Odt(object):
     def styles_handle(self):
         # print('STYLES============')
         for _st in self.styles.childNodes:
-            _style_name = _st.attributes.get((_ns_style, 'name'))
+            try:
+                _style_name = _st.attributes.get((_ns_style, 'name'))
+            except AttributeError as er:
+                continue
             _style_family = _st.attributes.get((_ns_style, 'family'))
             _parent_style_name = _st.attributes.get((_ns_style, 'parent-style-name'))
             _font_name = None
@@ -545,7 +560,11 @@ class Odt(object):
                     _parent_style_name = 'default-style'
 
                 for _elem in _st.childNodes:
-                    if _elem.qname[1] == 'text-properties':
+                    try:
+                        qname_ = _elem.qname[1]
+                    except AttributeError as er:
+                        continue
+                    if qname_ == 'text-properties':
                         _font_name = _elem.attributes.get((_ns_style, 'font-name'))
                         _font_family = _elem.attributes.get((_ns_fo, 'font-family'))
 
