@@ -60,6 +60,12 @@ def create_parser():
         default=False,
     )
     _parser.add_argument(
+        '-G', '--from_office',
+        action='store_true',
+        help='Run from LibreOffice',
+        default=False,
+    )
+    _parser.add_argument(
         '-b', '--black',
         action='store_true',
         help='Bold black color PDF',
@@ -332,6 +338,7 @@ kinovarcolor={_params.kinovarcolor},
     _black = args.black
     _pdf = args.pdf
     _gui = args.gui
+    _from_office = args.from_office
     _files_list = args.filenames
     if _odt_from_office is not None:
         _files_list = [_odt_from_office]
@@ -497,10 +504,22 @@ kinovarcolor={_params.kinovarcolor},
             single_tex = make_single_tex(_params=params)
             if not single_tex:
                 continue
+            # try:
+            #     make_pdf(_params=params)
+            # except MyError as e:
+            #     MsgTk(_title='ERROR!', _string=f'{e}')
             try:
-                make_pdf(_params=params)
-            except MyError as e:
-                MsgTk(_title='ERROR!', _string=f'{e}')
+                _result_flag = make_pdf(_params=params)
+            except MyError as er:
+                raise MyErrorOperation from er
+            else:
+                if _from_office:
+                    if _result_flag:
+                        MsgTk(_string=f'OK!\n'
+                                      f'File: {_result_flag}\n'
+                                      f'compiled ({params.kinovarcolor})!')
+                    else:
+                        MsgTk(_string=f'ERROR Pdf compling!')
 
 
 if __name__ == '__main__':
