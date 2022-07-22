@@ -100,7 +100,7 @@ def main(_odt_from_office: str = None):
                 self.parent = Path(_file).parent.as_posix()
             else:
                 self.parent = os.getcwd()
-            self.odt = _odt_file
+            self.odt: str = _odt_file
             _tex_name = Path(_odt_file).with_suffix('.tex')
             self.tex_file = _tex_name.as_posix()
             _pdf_name = Path(_odt_file).with_suffix('.pdf')
@@ -118,9 +118,16 @@ def main(_odt_from_office: str = None):
             if _black:
                 self.kinovarcolor = 'boldblack'
             self.engine = 'xelatex'
+            self.underscore: bool = False
+            if self.odt.find('_') != -1:
+                self.underscore = True
 
     class SingleString:
         def __init__(self, _params):
+            # self.underscore = _underscore
+            self.underscore_str = ''
+            if _params.underscore:
+                self.underscore_str = "\\catcode`\\_=12\\relax"
             _single_string = rf"""\documentclass[
 pwidth={_params.pwidth},%A4
 pheight={_params.pheight},%A4
@@ -129,13 +136,14 @@ botpmarg={_params.botpmarg},
 outpmarg={_params.outpmarg},
 innpmarg={_params.innpmarg},
 cover={_params.cover},% припуск под корешок
-]{{churchslavichymnsbook}}\
+]{{churchslavichymnsbook}}
 \usepackage[
 fontsize={_params.fontsize},
 nodigraphkinovar={_params.nodigraphkinovar},
 single=true,
 kinovarcolor={_params.kinovarcolor},
 ]{{churchslavichymn}}
+{self.underscore_str}
 
 \hfuzz=5pt
 \begin{{document}}
