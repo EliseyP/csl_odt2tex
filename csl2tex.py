@@ -6,7 +6,6 @@ import subprocess
 import tkinter
 from pathlib import Path
 import argparse
-import tempfile
 from shutil import copy
 from CslOdt2Tex import csl_odt2tex
 from utils.breezypythongui import EasyFrame
@@ -20,21 +19,16 @@ from Utils import *
 Использование: csl2tex.py [-b] [-p] [-d] odt-filename [odt-filename]  
   
   -g      - gui make PDF dialog.
+  -G      - только для запуска диалога из LibreOffice.
   -p      - make PDF.
   -b      - black color PDF.
-  -d DIR  - каталог с TeX стилями (churchslavichymn.sty etc) и прочими вспомогательными файлами (как правило, каталог, в котором находится этот скрипт). 
+  -T      - Не удалять TeX-каталог сборки pdf.
+  -I      - Из ODT получать только .init.tex    
+  -d DIR  - каталог с TeX стилями (churchslavichymn.sty etc) и прочими вспомогательными файлами 
+            (как правило, каталог, в котором находится этот скрипт). 
 """
 
 dots = '.' * 5
-
-log_file = '/home/user/tmp/csl2tex.log'
-
-
-def logger(_string, _log=''):
-    if not _log:
-        _log = log_file  # hh.log
-    with open(_log, 'a') as file:
-        file.write(f'{_string}\n')
 
 
 def create_parser():
@@ -77,6 +71,18 @@ def create_parser():
         help='Make PDF',
         default=False,
     )
+    _parser.add_argument(
+        '-T', '--tex_dir',
+        action='store_true',
+        help="Don't delete TeX dir",
+        default=False,
+    )
+    _parser.add_argument(
+        '-I', '--init_only',
+        action='store_true',
+        help="Only create init.tex file. No compile.",
+        default=False,
+    )
     # _parser.add_argument(
     #     '-v', '--version',
     #     help='Версия',
@@ -97,14 +103,18 @@ def main(_odt_from_office: str = None):
         # Default values.
         def __init__(self, _odt_file):
             if Path(_odt_file).is_absolute():
-                self.parent = Path(_file).parent.as_posix()
+                self.parent: str = Path(_odt_file).parent.as_posix()
+                self.odt_path = Path(_odt_file)
             else:
-                self.parent = os.getcwd()
+                self.parent: str = os.getcwd()
+                self.odt_path = Path(self.parent).joinpath(_odt_file)
             self.odt: str = _odt_file
-            _tex_name = Path(_odt_file).with_suffix('.tex')
-            self.tex_file = _tex_name.as_posix()
-            _pdf_name = Path(_odt_file).with_suffix('.pdf')
-            self.pdf_file = _pdf_name.name  # .as_posix()
+            self.tmp_dir_name: str = f'{self.odt_path.name}.tex'
+            _tex_name: Path = self.odt_path.with_suffix('.tex')
+            self.tex_file: str = \
+                _tex_name.parent.joinpath(self.tmp_dir_name).joinpath(_tex_name.name).as_posix()
+            _pdf_name: Path = self.odt_path.with_suffix('.pdf')
+            self.pdf_file: str = _pdf_name.name  # .as_posix()
             self.pwidth = '210mm'
             self.pheight = '297mm'
             self.toppmarg = '1.7cm'
@@ -121,6 +131,8 @@ def main(_odt_from_office: str = None):
             self.underscore: bool = False
             if self.odt.find('_') != -1:
                 self.underscore = True
+            self.tex_dir_keep: bool = _tex_dir_keep
+            self.init_only: bool = _init_only
 
     class SingleString:
         def __init__(self, _params):
@@ -234,6 +246,20 @@ kinovarcolor={_params.kinovarcolor},
             if self.params.nodigraphkinovar == 'true':
                 self.nodigraphkinovar.select()
 
+            # Keep TeX dir.
+            row_inc()
+            self.addLabel(text='Keep TeX dir:', row=row, column=0, font=font)
+            self.tex_dir_keep = self.addCheckbutton(text='', row=row, column=1, )
+            if self.params.tex_dir_keep:
+                self.tex_dir_keep.select()
+
+            # Make init only.
+            row_inc()
+            self.addLabel(text='Make Init TeX file only', row=row, column=0, font=font)
+            self.init_only = self.addCheckbutton(text='', row=row, column=1, )
+            if self.params.init_only:
+                self.init_only.select()
+
             # Alternate PDF name
             row_inc()
             self.addLabel(text='PDF name:', row=row, column=0, font=font)
@@ -300,6 +326,12 @@ kinovarcolor={_params.kinovarcolor},
             _nodigraphkinovar = self.nodigraphkinovar.isChecked()
             self.params.nodigraphkinovar = 'true' if _nodigraphkinovar else 'false'
 
+            tex_dir_keep_ = self.tex_dir_keep.isChecked()
+            self.params.tex_dir_keep = True if tex_dir_keep_ else False
+
+            init_only_ = self.init_only.isChecked()
+            self.params.init_only = True if init_only_ else False
+
             _pdf_name = self.pdf_name.getText()
             if _pdf_name:
                 if _pdf_name.endswith('.pdf'):
@@ -318,8 +350,9 @@ kinovarcolor={_params.kinovarcolor},
             make_single_tex(_params=self.params)
             try:
                 _result_flag = make_pdf(_params=self.params)
-            except MyError as er:
-                raise MyErrorOperation from er
+            except MyError as er_:
+                # print(f'Error making pdf:\n  {er_}')
+                raise MyErrorOperation(f'Error making pdf:\n  {er_}')
             else:
                 if _result_flag:
                     MsgTk(_string=f'OK!\n'
@@ -348,6 +381,10 @@ kinovarcolor={_params.kinovarcolor},
     _gui = args.gui
     _from_office = args.from_office
     _files_list = args.filenames
+    _tex_dir_keep = args.tex_dir
+    _init_only = args.init_only
+    if _init_only:
+        _tex_dir_keep = True
     if _odt_from_office is not None:
         _files_list = [_odt_from_office]
     # List of data tex files creation.
@@ -374,7 +411,7 @@ kinovarcolor={_params.kinovarcolor},
 
     cwd = os.getcwd()
 
-    def make_tex_init(_odt: str):
+    def make_tex_init(_odt: str, _params: Params = None):
         _odt_path = Path(cwd).joinpath(_odt)
         if not _odt_path.exists():
             _err_string = f'No file exists: {_odt_path}'
@@ -411,47 +448,70 @@ kinovarcolor={_params.kinovarcolor},
             return _single_tex.as_posix()
 
     def make_pdf(_params: Params = None, _black: bool = False):
-        """Make PDF in tmp dir, and copy pdf file to workdir.
+        """Make PDF in tmp dir, and copy pdf file to workdir. """
 
-        """
         _odt_file: str = _params.odt
         _engine = _params.engine
         _single_tex = 'single.tex'
         _parent_path = Path(_params.parent)
         _single_tex_path = _parent_path.joinpath(_single_tex)
         _src_tex = _parent_path.joinpath(_odt_file).with_suffix('.tex')
+        _src_init_tex = _parent_path.joinpath(_odt_file).with_suffix('.init.tex')
         _tmp_dir_parent = _parent_path
-        _tmp_dir_name = 'tmp~~'
-        _tmp_dir_path = Path(_tmp_dir_parent).joinpath(_tmp_dir_name)
-        try:
-            _tmp_dir_path.mkdir(exist_ok=True)
-        except Exception as _err:
-            raise MyErrorOperation from _err
-        # else:
-        #     logger(_tmp_dir_path)
+        _tmp_dir_path = Path(_tmp_dir_parent).joinpath(_params.tmp_dir_name)
+        if not (_params.init_only and _tmp_dir_path.exists()):
+            #     # Оставить возможность работать с уже отредактированным .tex файлом
+            #     # (чтобы сохранить изменения сделанные ранее вручную).
+            print(f'Create tmp dir {dots} ', end='')
+            try:
+                _tmp_dir_path.mkdir(exist_ok=True)
+            except Exception as _err:
+                print('NO')
+                raise MyErrorOperation(f'Error creating tmp dir:\n  {_err}')
+            else:
+                print('OK')
 
         for _data in data_files:
             try:
                 copy(_data, _tmp_dir_path)
             except Exception as _err:
-                raise MyErrorOperation from _err
-            # else:
-            #     logger(f'OK {_data}')
+                raise MyErrorOperation(f'Error copy {_data} file:\n  {_err}')
+
         try:
             copy(_single_tex_path, _tmp_dir_path)
-        except Exception as _err:
-            raise MyErrorOperation from _err
-        # else:
-        #     logger(f'OK {_single_tex}')
+        except FileNotFoundError as _err:
+            err_str_ = f'Error copy _single_tex_path file:\n  {_err}'
+            raise MyErrorOperation(err_str_)
 
+        init_only = _params.init_only
+        src_in_tmp = _tmp_dir_path.joinpath(_src_tex.name)
+        if (
+                not init_only
+                or (init_only and not src_in_tmp.exists())
+        ) and _tmp_dir_path.is_dir():
+            # Оставить возможность работать с уже отредактированным .tex файлом
+            # (чтобы сохранить изменения сделанные ранее вручную).
+            print(f'Copy {_src_tex.name} to tmp_dir {dots} ', end='')
+            try:
+                copy(_src_tex, _tmp_dir_path)
+            except Exception as _err:
+                print('NO')
+                raise MyErrorOperation(f'Error copy file:\n  {_err}')
+            else:
+                print('OK')
+
+        # Работать с init-файлом только в _tmp_dir_path
         try:
-            copy(_src_tex, _tmp_dir_path)
+            copy(_src_init_tex, _tmp_dir_path)
         except Exception as _err:
-            raise MyErrorOperation from _err
-        # else:
-        #     logger(f'OK {_src_tex}')
+            raise MyErrorOperation(f'Error copy file:\n  {_err}')
+        else:
+            try:
+                _src_init_tex.unlink()
+            except Exception as _err:
+                raise MyErrorOperation(f'Error deleting _src_init_tex:\n  {_err}')
 
-        _pdf_file = 'single.pdf'
+        _single_pdf_file = 'single.pdf'
         command_tex = [
             _engine,
             '-synctex=1',
@@ -464,72 +524,90 @@ kinovarcolor={_params.kinovarcolor},
 
         try:
             os.chdir(_tmp_dir_path)
-        except FileNotFoundError as _e:
-            raise MyErrorOperation from _e
-        # else:
-        #     logger('In _tmp_dir_path OK')
+        except (FileNotFoundError, NotADirectoryError) as _e:
+            raise MyErrorOperation(f'Error chdir:\n  {_e}')
 
         try:
             subprocess.run(command_tex, stdout=subprocess.DEVNULL)
-        except subprocess.CalledProcessError as er:
+        except subprocess.CalledProcessError as err:
             print(f'NO')
-            raise MyErrorOperation from er
+            raise MyErrorOperation(f'Error runing tex compliation:\n  {err}')
         else:
             print(f'OK')
             # Копирование pdf в рабочий каталог.
             _compiled_pdf = _parent_path.joinpath(_params.pdf_file)
             print(f'{_compiled_pdf}')
-            copy(_pdf_file, _compiled_pdf)
+
+            try:
+                copy(_single_pdf_file, _params.pdf_file)
+            except FileNotFoundError as e:
+                raise MyErrorOperation(f'Error copy _single_pdf to _main_pdf:\n  {e}')
+
+            try:
+                copy(_single_pdf_file, _compiled_pdf)
+            except FileNotFoundError as e:
+                raise MyErrorOperation(f'Error copy pdf to work dir:\n  {e}')
 
             # Удаление временного 'single_tex'
             try:
                 _parent_path.joinpath(_single_tex).unlink()
-            except FileNotFoundError as er:
-                raise MyErrorOperation from er
+            except FileNotFoundError as err:
+                raise MyErrorOperation(f'Error delete file:\n  {err}')
 
-            try:
-                shutil.rmtree(_tmp_dir_path)
-            except OSError as err:
-                raise MyErrorOperation from err
+            if not (_params.tex_dir_keep or _params.init_only):
+                print(f'Delete tmp dir {dots} ', end='')
+                try:
+                    shutil.rmtree(_tmp_dir_path)
+                except OSError as err:
+                    print('NO')
+                    raise MyErrorOperation(f'Error delete dir:\n  {err}')
+                else:
+                    print('OK')
 
             return _compiled_pdf
 
-    for _file in _files_list:
-        _init_tex = make_tex_init(_file)
-        if not _init_tex:
-            continue
-
-        params = Params(_odt_file=_file)
-        if not _gui:
-            _pdf_path = Path(params.pdf_file)
-            if _pdf_path.exists():
-                _pdf_path.unlink()
-
-        if _gui:
-            make_pdf_gui(_params=params)
-            break
-        if _pdf:
-            single_tex = make_single_tex(_params=params)
-            if not single_tex:
+    def main_handler():
+        for _file in _files_list:
+            params = Params(_odt_file=_file)
+            _init_tex = make_tex_init(_file, params)
+            if not _init_tex:
                 continue
-            # try:
-            #     make_pdf(_params=params)
-            # except MyError as e:
-            #     MsgTk(_title='ERROR!', _string=f'{e}')
-            try:
-                _result_flag = make_pdf(_params=params)
-            except MyError as er:
-                raise MyErrorOperation from er
-            else:
-                if _from_office:
-                    if _result_flag:
-                        MsgTk(_string=f'OK!\n'
-                                      f'File: {_result_flag}\n'
-                                      f'compiled ({params.kinovarcolor})!')
-                    else:
-                        MsgTk(_string=f'ERROR Pdf compling!')
+
+            if not _gui:
+                _pdf_path = Path(params.pdf_file)
+                if _pdf_path.exists():
+                    _pdf_path.unlink()
+
+            if _gui:
+                make_pdf_gui(_params=params)
+                break
+
+            if _pdf:
+                single_tex = make_single_tex(_params=params)
+                if not single_tex:
+                    continue
+
+                try:
+                    _result_flag = make_pdf(_params=params)
+                except MyError as er_:
+                    raise MyErrorOperation(f'{er_}')
+                else:
+                    if _from_office:
+                        if _result_flag:
+                            MsgTk(_string=f'OK!\n'
+                                          f'File: {_result_flag}\n'
+                                          f'compiled ({params.kinovarcolor})!')
+                        else:
+                            MsgTk(_string=f'ERROR Pdf compling!')
+
+    try:
+        main_handler()
+    except MyError as error_:
+        _err_str = f'{error_}'
+        print(_err_str)
+        if _gui:
+            MsgTk(_err_str)
 
 
 if __name__ == '__main__':
     main()
-

@@ -55,6 +55,12 @@ class EasyFrame(tkinter.Frame):
         # Set the background color and resizability
         self.setBackground(background)
         self.setResizable(resizable)
+        tkinter.Tk.report_callback_exception = self.show_error
+
+    def show_error(self, *args):
+        # _error = traceback.format_exception(*args)
+        _error = args[1]
+        self.messageBox(message=f'{_error}', width=60, height=15)
 
     def setBackground(self, color):
         """Resets the window's background color to color."""
