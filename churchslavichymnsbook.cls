@@ -1,5 +1,5 @@
 \NeedsTeXFormat{LaTeX2e}
-\ProvidesClass{churchslavichymnsbook}[2022/07/12 v.0.2]
+\ProvidesClass{churchslavichymnsbook}[2023/05/09 v.0.3]
 % Класс для сборника (книги) гимнографических текстов
 % на ЦСЯ с использованием шрифтов семейства Ponomar (Unicode). 
 
@@ -24,7 +24,7 @@
 
 \DeclareStringOption[0 mm]{trimbox}
 \DeclareStringOption[0 mm]{bleedbox}
-\DeclareStringOption[220 mm]{pwidth}%def A4
+\DeclareStringOption[210 mm]{pwidth}%def A4
 \DeclareStringOption[297 mm]{pheight}%def A4
 \DeclareStringOption[2.0 cm]{toppmarg}
 \DeclareStringOption[2.0 cm]{botpmarg}
