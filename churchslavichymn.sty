@@ -1,4 +1,4 @@
-\ProvidesPackage{churchslavichymn}[2022/07/14 v.0.7]
+\ProvidesPackage{churchslavichymn}[2023/07/07 v.0.9]
 \RequirePackage{kvoptions}
 \RequirePackage{xifthen,ifdraft}
 \RequirePackage{ifluatex}
@@ -17,6 +17,7 @@
 \DeclareBoolOption{comments}%
 \DeclareStringOption[red]{kinovarcolor}%
 \DeclareStringOption[20.0pt]{fontsize}%
+\DeclareStringOption[ponomar]{fontfamily}%
 \DeclareStringOption[1.15]{linespread}%
 \DeclareBoolOption{single}%
 \ExecuteOptions{%
@@ -25,10 +26,12 @@
   single,
   hebrew,
   fontsize,
+  fontfamily,
   linespread,
 }
 % !!! проверять на \setboolean
 \ProcessKeyvalOptions*
+
 \KOMAoptions{fontsize=\PROP@fontsize}
 
 \ifPROP@nodigraphkinovar
@@ -86,8 +89,11 @@
 \newfontfamily\russianfont{Noto Serif SemiBold}
 \newfontfamily{\greekfont}{Noto Serif SemiBold}
 \newfontfamily{\latinfont}{Noto Serif SemiBold}
-\newfontfamily\indiction{IndictionUnicode.otf}
+\newfontfamily\Indiction{IndictionUnicode.otf}
 \newfontfamily\Vertograd{VertogradUnicode.otf}
+\newfontfamily{\Cathisma}{CathismaUnicode.otf}
+\newfontfamily{\Oglavie}{OglavieUnicode.otf}
+\newfontfamily{\Pomorsky}{PomorskyUnicode.otf}
 % TODO: Для Vertograd попробовать FakeBold
 %\newfontfamily\OrthodoxTTeRoos{Orthodox.tt eRoos}
 %\newfontfamily\Valaam{Valaam}
@@ -96,34 +102,66 @@
 \newfontfamily{\NotoSerifBlack}{Noto Serif Black}% for bold black
 
 \ifluatex
-  % Два варианта основной гарнитуры.
+  % Варианты основной гарнитуры (luatex).
   \newfontfamily\ponomar[%
     Script = Cyrillic,Ligatures = TeX]{PonomarUnicode.otf}
   \newfontfamily{\triodion}[%
     Script = Cyrillic,Ligatures = TeX]{TriodionUnicode.otf}
+  \newfontfamily{\pochaevsk}[%
+      Script = Cyrillic,Ligatures = TeX]{PochaevskUnicode.otf}
+  \newfontfamily{\acaphist}[%
+      Script = Cyrillic,Ligatures = TeX]{Acathist-Regular.otf}
+  \newfontfamily{\fedorovsk}[%
+      Script = Cyrillic,Ligatures = TeX]{FedorovskUnicode.otf}
+  \newfontfamily{\vilnius}[%
+      Script = Cyrillic,Ligatures = TeX]{Vilnius-Regular.otf}
+
   %вместо этого м.б. лучше microtype-разрядку?
   \newfontfamily\ponomarexpandedfont[Script=Cyrillic,Ligatures=TeX,LetterSpace=10.0]{PonomarUnicode.otf}
+
+  % Только для Ч/Б текста.  
+  % TODO: уточнить для других гарнитур 
+  % (triodion, pochaevsk, acaphist, fedorovsk, vilnius)  
   \newfontfamily\PonomarBold[Script=Cyrillic,Ligatures=TeX,FakeBold=2]{PonomarUnicode.otf}
   \selectlanguage{churchslavonic}
   \prehyphenchar=`\_
 \else
-  % Два варианта основной гарнитуры.
+  % Варианты основной гарнитуры.
   \newfontfamily\ponomar[%
     Script = Cyrillic,Ligatures = TeX,HyphenChar = _ ]{PonomarUnicode.otf}
   \newfontfamily{\triodion}[%
       Script = Cyrillic,Ligatures = TeX,HyphenChar = _ ]{TriodionUnicode.otf}
+  \newfontfamily{\pochaevsk}[%
+      Script = Cyrillic,Ligatures = TeX,HyphenChar = _ ]{PochaevskUnicode.otf}
+  \newfontfamily{\acaphist}[%
+      Script = Cyrillic,Ligatures = TeX,HyphenChar = _ ]{Acathist-Regular.otf}
+  \newfontfamily{\fedorovsk}[%
+      Script = Cyrillic,Ligatures = TeX,HyphenChar = _ ]{FedorovskUnicode.otf}
+  \newfontfamily{\vilnius}[%
+      Script = Cyrillic,Ligatures = TeX,HyphenChar = _ ]{Vilnius-Regular.otf}
+  
   %вместо этого м.б. лучше microtype-разрядку?
   \newfontfamily\ponomarexpandedfont[Script=Cyrillic,Ligatures=TeX,HyphenChar="005F,LetterSpace=10.0]{PonomarUnicode.otf}
+
+  % Только для Ч/Б текста.  
+  % TODO: уточнить для других гарнитур 
+  % (triodion, pochaevsk, acaphist, fedorovsk, vilnius). 
+  % М.б. применить LetterSpace=10.0 и FakeBold=2 к уже выбранной гарнитуре "на ходу"?
   \newfontfamily\PonomarBold[Script=Cyrillic,Ligatures=TeX,HyphenChar="005F,FakeBold=2]{PonomarUnicode.otf}
 \fi
 
 % Установка основной гарнитуры.
-\let\churchslavonicfont\ponomar
-%\let\churchslavonicfont\triodion
-
+\IfStrEqCase{\PROP@fontfamily}{%
+  {ponomar}{\let\churchslavonicfont\ponomar}%
+  {triodion}{\let\churchslavonicfont\triodion}%
+  {pochaevsk}{\let\churchslavonicfont\pochaevsk}%
+  {acaphist}{\let\churchslavonicfont\acaphist}
+  {fedorovsk}{\let\churchslavonicfont\fedorovsk}
+  {vilnius}{\let\churchslavonicfont\vilnius}}%
 
 % Шрифт для Буквицы.
-\let\LettrineFontName\indiction
+\let\LettrineFontName\Indiction
+%\let\LettrineFontName\Oglavie
 % Варианты:
 %\let\LettrineFontName\Vertograd
 %\let\LettrineFontName\churchslavonicfont
@@ -259,14 +297,14 @@
     {}%
 }
 
-\newcommand{\Author}{}
-\newcommand{\AuthorShort}{}
-\newcommand{\Title}{Бг҃ослꙋже́бный сбо́рникъ}% Вариант названия книги.
+\newcommand{\Author}{Схїигꙋ́менъ Серафі́мъ (Покро́вскїй)}
+\newcommand{\AuthorShort}{Схїиг.\,Серафі́мъ (Покро́вскїй)}
+\newcommand{\Title}{Бг҃ослꙋже́бные трꙋды̀}
 \newcommand{\BookTitle}[1]{%
   {\centering\Large\cuKinovarColor%
    \vspace*{2ex}%
-%   \Author\par% Если авторскин тексты
-%   \vspace*{2ex}%
+   \Author\par%
+   \vspace*{2ex}%
    \Title\par%
    \vspace*{5ex}%
    {\huge #1}\par}
@@ -341,13 +379,16 @@
 \newlength{\len@section@font}
 \newlength{\len@subsection@font}
 \newlength{\len@subsubsection@font}
+\newlength{\len@footnote@font}
 \len@section@font=\PROP@fontsize
 \len@subsection@font=\PROP@fontsize
 \len@subsubsection@font=\PROP@fontsize
+\len@footnote@font=\PROP@fontsize
 % Увеличение размера с шагом 2pt.
 \addtolength{\len@section@font}{6pt}
 \addtolength{\len@subsection@font}{4pt}
 \addtolength{\len@subsubsection@font}{2pt}
+\addtolength{\len@footnote@font}{-6pt}
 % Применение новых размеров.
 \addtokomafont{section}{\mycfs{\len@section@font}\centering\cuKinovarColor}%
 \addtokomafont{subsection}{\mycfs{\len@subsection@font}\centering\cuKinovarColor}%
@@ -368,7 +409,7 @@
    \textsuperscript{\thefootnotemark\hspace*{1em}}% добавлен пробел
 }
 \addtokomafont{footnoterule}{\cuKinovarColor}
-\addtokomafont{footnote}{\cuKinovarColor}
+\addtokomafont{footnote}{\mycfs{\len@footnote@font}\cuKinovarColor}
 \addtokomafont{footnotereference}{\cuKinovarColor}
 
 % For page-numbering (in TOC and text, running-header, NOT in Titles).
@@ -729,6 +770,7 @@
  % Удобно при конвертации pandoc  
   \renewcommand{#1}[1]{##1}%
 }
+
 % Если нужно опционально закомментировать часть текста, -
 % новое окружение COMMENT. В зависимости от опции comments. 
 \ifPROP@comments%
@@ -773,6 +815,7 @@
 % Как оказалось, в отличие от LibreOffice `ѧ + камора` 
 % в TeX отображается корректно. 
 
+
 % Применять этот кернинг только для Ponomar Unicode.
 % Трⷪ҇ца -> \Troic{}а
 % Для Киновари у первой буквы: \expandafter\KI\Troic{}а
@@ -787,3 +830,4 @@
   \newcommand{\Trisvjat}{Трⷭ҇т}%
   \newcommand{\Proro}{Прⷪ҇ро́}%
 \fi
+
