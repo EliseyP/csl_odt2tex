@@ -118,10 +118,15 @@ def main(_odt_from_office: str = None):
             self.pwidth = '210mm'
             self.pheight = '297mm'
             self.toppmarg = '1.7cm'
+            self.toppmarg_num: float = 1.7  # cm
             self.botpmarg = '2.0cm'
+            self.botpmarg_num: float = 2.0  # cm
             self.outpmarg = '2.0cm'
+            self.outpmarg_num: float = 2.0  # cm
             self.innpmarg = '2.0cm'
+            self.innpmarg_num: float = 2.0  # cm
             self.cover = '0mm'
+            self.cover_num: float = 0  # mm
             self.fontsize = '20pt'
             self.nodigraphkinovar = 'true'
             self.kinovarcolor = 'red'
@@ -228,6 +233,42 @@ fontfamily={_params.fontfamily},%ponomar,triodion,pochaevsk,acaphist,fedorovsk,v
             self.kinovarcolors.configure(justify='right', exportselection=False)
             self.kinovarcolors.setSelectedIndex(0)
 
+            # Margins.
+            # Top pmargin.
+            row_inc()
+            self.addLabel(text='Top margin (cm):', row=row, column=0, font=font)
+            self.tf_topmargin = self.addFloatField(
+                value=self.params.toppmarg_num, row=row, column=1)
+            self.tf_topmargin.configure(justify='right')
+
+            # Bot pmargin.
+            row_inc()
+            self.addLabel(text='Bottom margin (cm):', row=row, column=0, font=font)
+            self.tf_botmargin = self.addFloatField(
+                value=self.params.botpmarg_num, row=row, column=1)
+            self.tf_botmargin.configure(justify='right')
+
+            # Out pmargin.
+            row_inc()
+            self.addLabel(text='Outer margin (cm):', row=row, column=0, font=font)
+            self.tf_outmargin = self.addFloatField(
+                value=self.params.outpmarg_num, row=row, column=1)
+            self.tf_outmargin.configure(justify='right')
+
+            # Inner pmargin.
+            row_inc()
+            self.addLabel(text='Inner margin (cm):', row=row, column=0, font=font)
+            self.tf_innmargin = self.addFloatField(
+                value=self.params.innpmarg_num, row=row, column=1)
+            self.tf_innmargin.configure(justify='right')
+
+            # Cover pmargin.
+            row_inc()
+            self.addLabel(text='Cover (mm):', row=row, column=0, font=font)
+            self.tf_cover = self.addFloatField(
+                value=self.params.cover_num, row=row, column=1)
+            self.tf_cover.configure(justify='right')
+
             # fontfamily
             row_inc()
             self.addLabel(text='fontfamily:', row=row, column=0, font=font)
@@ -313,6 +354,11 @@ fontfamily={_params.fontfamily},%ponomar,triodion,pochaevsk,acaphist,fedorovsk,v
             _widgets_4font_list = [
                 self.fontsize,
                 self.kinovarcolors,
+                self.tf_topmargin,
+                self.tf_botmargin,
+                self.tf_outmargin,
+                self.tf_innmargin,
+                self.tf_cover,
                 self.fontfamily,
                 self.rb_a4,
                 self.rb_a5,
@@ -366,6 +412,13 @@ fontfamily={_params.fontfamily},%ponomar,triodion,pochaevsk,acaphist,fedorovsk,v
                 return False
 
             self.params.kinovarcolor = self.kinovarcolors.getSelectedItem()
+
+            self.params.toppmarg = f'{self.tf_topmargin.getValue()}cm'
+            self.params.botpmarg = f'{self.tf_botmargin.getValue()}cm'
+            self.params.outpmarg = f'{self.tf_outmargin.getValue()}cm'
+            self.params.innpmarg = f'{self.tf_innmargin.getValue()}cm'
+            self.params.cover = f'{self.tf_cover.getValue()}mm'
+
             self.params.fontfamily = self.fontfamily.getSelectedItem()
 
             self.rb_selected_init()
