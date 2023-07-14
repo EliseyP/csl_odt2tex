@@ -153,8 +153,8 @@ cover={_params.cover},% припуск под корешок
 fontsize={_params.fontsize},
 nodigraphkinovar={_params.nodigraphkinovar},
 single=true,
-kinovarcolor={_params.kinovarcolor},
-fontfamily={_params.fontfamily},
+kinovarcolor={_params.kinovarcolor},%red,boldblack,grey
+fontfamily={_params.fontfamily},%ponomar,triodion,pochaevsk,acaphist,fedorovsk,vilnius
 ]{{churchslavichymn}}
 {self.underscore_str}
 
