@@ -141,8 +141,8 @@ def main(_odt_from_office: str = None):
             if _params.underscore:
                 self.underscore_str = "\\catcode`\\_=12\\relax"
             _single_string = rf"""\documentclass[
-pwidth={_params.pwidth},%A4
-pheight={_params.pheight},%A4
+pwidth={_params.pwidth},%A4=210x297; A5=148x210
+pheight={_params.pheight},%A4=210x297; A5=148x210
 toppmarg={_params.toppmarg},
 botpmarg={_params.botpmarg},
 outpmarg={_params.outpmarg},
@@ -153,7 +153,8 @@ cover={_params.cover},% припуск под корешок
 fontsize={_params.fontsize},
 nodigraphkinovar={_params.nodigraphkinovar},
 single=true,
-kinovarcolor={_params.kinovarcolor},
+kinovarcolor={_params.kinovarcolor},\
+fontfamily={_params.fontfamily},\
 ]{{churchslavichymn}}
 {self.underscore_str}
 
@@ -227,6 +228,19 @@ kinovarcolor={_params.kinovarcolor},
             self.kinovarcolors.configure(justify='right', exportselection=False)
             self.kinovarcolors.setSelectedIndex(0)
 
+            # fontfamily
+            row_inc()
+            self.addLabel(text='fontfamily:', row=row, column=0, font=font)
+            self.fontfamily = self.addListbox(row=row, column=1, height=6)
+            self.fontfamily.insert(END, 'ponomar')
+            self.fontfamily.insert(END, 'triodion')
+            self.fontfamily.insert(END, 'pochaevsk')
+            self.fontfamily.insert(END, 'acaphist')
+            self.fontfamily.insert(END, 'fedorovsk')
+            self.fontfamily.insert(END, 'vilnius')
+            self.fontfamily.configure(justify='right', exportselection=False)
+            self.fontfamily.setSelectedIndex(0)
+
             # pwidth.
             row_inc()
             self.addLabel(text='page width:', row=row, column=0, font=font)
@@ -278,6 +292,7 @@ kinovarcolor={_params.kinovarcolor},
             _widgets_4font_list = [
                 self.fontsize,
                 self.kinovarcolors,
+                self.fontfamily,
                 self.pwidth,
                 self.pheight,
                 self.pdf_name,
@@ -309,6 +324,8 @@ kinovarcolor={_params.kinovarcolor},
                 return False
 
             self.params.kinovarcolor = self.kinovarcolors.getSelectedItem()
+            self.params.fontfamily = self.fontfamily.getSelectedItem()
+
             _pwidth = self.pwidth.getText()
             if re.match(r'\d+(\.\d+)?(cm|mm)', _pwidth):
                 self.params.pwidth = _pwidth
