@@ -4,11 +4,15 @@ import re
 import shutil
 import subprocess
 import tkinter
+from tkinter import (
+    HORIZONTAL, VERTICAL, DISABLED, NORMAL, NONE, N, S, E, W, CHAR
+
+)
 from pathlib import Path
 import argparse
 from shutil import copy
 from CslOdt2Tex import csl_odt2tex
-from utils.breezypythongui import EasyFrame
+from utils.breezypythongui import EasyFrame, TextArea
 from Utils import *
 
 
@@ -29,6 +33,39 @@ from Utils import *
 """
 
 dots = '.' * 5
+
+
+class MyEasyFrame(EasyFrame):
+    """Небольшие изменения"""
+
+    def addTextArea(self, text, row, column, rowspan=1, columnspan=1,
+                    width=80, height=5, wrap=NONE, no_x_scrollbar=False):
+        # ADD - без скроллбара по горизонтали.
+        """Creates and inserts a multiline text area at the row and column,
+        and returns the text area.  Vertical and horizontal scrollbars are
+        provided."""
+
+        Tkinter = tkinter
+        frame = Tkinter.Frame(self)
+        frame.grid(row=row, column=column,
+                   columnspan=columnspan, rowspan=rowspan,
+                   sticky=N+S+E+W)
+        self.columnconfigure(column, weight=1)
+        self.rowconfigure(row, weight=1)
+        xScroll = Tkinter.Scrollbar(frame, orient=HORIZONTAL)
+        if not no_x_scrollbar:
+            xScroll.grid(row=1, column=0, sticky=E+W)
+        yScroll = Tkinter.Scrollbar(frame, orient=VERTICAL)
+        yScroll.grid(row=0, column=1, sticky=N+S)
+        area = TextArea(frame, text, width, height,
+                        xScroll.set, yScroll.set, wrap)
+        area.grid(row=0, column=0,
+                  padx=5, pady=5, sticky=N+S+E+W)
+        frame.columnconfigure(0, weight=1)
+        frame.rowconfigure(0, weight=1)
+        xScroll["command"] = area.xview
+        yScroll["command"] = area.yview
+        return area
 
 
 def create_parser():
@@ -128,6 +165,7 @@ def main(_odt_from_office: str = None):
             self.cover = '0mm'
             self.cover_num: float = 0  # mm
             self.fontsize = '20pt'
+            self.fontfamily = 'ponomar'
             self.nodigraphkinovar = 'true'
             self.kinovarcolor = 'red'
             if _black:
@@ -184,7 +222,7 @@ fontfamily={_params.fontfamily},%ponomar,triodion,pochaevsk,acaphist,fedorovsk,v
             self.messageBox(title=_title, message=_string, width=_w)
             root.destroy()
 
-    class MakePdfDialog(EasyFrame):
+    class MakePdfDialog(MyEasyFrame):
         def __init__(self, _title='Csl_odt2TeX', _params: Params = None):
             from tkinter import END
             from tkinter.font import Font
@@ -194,12 +232,15 @@ fontfamily={_params.fontfamily},%ponomar,triodion,pochaevsk,acaphist,fedorovsk,v
                 nonlocal row
                 row += 1
 
-            super().__init__()
+            super().__init__(
+                # width=MAIN_WINDOW_WIDTH,
+                # resizable=False
+            )
             self.params = _params
             font = Font(family="Verdana", size=12)
 
             # Main window parameters.
-            self.setResizable(False)
+            # self.setResizable(False)
             self.setTitle('Csl_odt2tex - Make PDF')
             root = self.master
             _crossblack_img = _data_dir_p.joinpath("crossblack.png")
@@ -212,26 +253,33 @@ fontfamily={_params.fontfamily},%ponomar,triodion,pochaevsk,acaphist,fedorovsk,v
             # tex_file.
             row = 0
             self.addLabel(text='TeX File:', row=row, column=0, font=font)
+
+            row_inc()
             tex_file_path = Path(self.params.parent).joinpath(self.params.tex_file).as_posix()
-            self.addLabel(text=f'{tex_file_path}', row=0, column=1, font=font)
+            self.ta_tex_file_path = self.addTextArea(
+                text=f'{tex_file_path}',
+                row=row, column=0, columnspan=2,
+                height=3,  # 3 строки.
+                wrap=CHAR,
+                no_x_scrollbar=True,
+            )
 
             # fontsize.
             row_inc()
-            self.addLabel(text='fontsize:', row=row, column=0, font=font)
-            self.fontsize = self.addTextField(text=self.params.fontsize, row=row, column=1, width=10)
-            self.fontsize.configure(justify='right')
+            self.addLabel(text='Fontsize:', row=row, column=0, font=font)
+            self.tf_fontsize = self.addTextField(
+                text=self.params.fontsize, row=row, column=1, width=10)
+            self.tf_fontsize.configure(justify='right')
 
             # kinovarcolor.
             row_inc()
-            self.addLabel(text='kinovarcolor:', row=row, column=0, font=font)
-            self.kinovarcolors = self.addListbox(row=row, column=1, height=3)
-            self.kinovarcolors.insert(END, 'red')
-            self.kinovarcolors.insert(END, 'boldblack')
-            self.kinovarcolors.insert(END, 'gray')
-            # exportselection=False - fix this:
-            #  https://stackoverflow.com/questions/30266213/tkinter-listbox-loses-its-selection-when-clicking-elsewhere-on-the-form
-            self.kinovarcolors.configure(justify='right', exportselection=False)
-            self.kinovarcolors.setSelectedIndex(0)
+            self.addLabel(text='Kinovarcolor:', row=row, column=0, font=font)
+            self.cb_kinovarcolors = self.addCombobox(
+                text="",
+                values=("red", "boldblack", "gray"),
+                row=row, column=1,
+            )
+            self.cb_kinovarcolors.setText(self.params.kinovarcolor)
 
             # Margins.
             # Top pmargin.
@@ -271,29 +319,27 @@ fontfamily={_params.fontfamily},%ponomar,triodion,pochaevsk,acaphist,fedorovsk,v
 
             # fontfamily
             row_inc()
-            self.addLabel(text='fontfamily:', row=row, column=0, font=font)
-            self.fontfamily = self.addListbox(row=row, column=1, height=6)
-            self.fontfamily.insert(END, 'ponomar')
-            self.fontfamily.insert(END, 'triodion')
-            self.fontfamily.insert(END, 'pochaevsk')
-            self.fontfamily.insert(END, 'acaphist')
-            self.fontfamily.insert(END, 'fedorovsk')
-            self.fontfamily.insert(END, 'vilnius')
-            self.fontfamily.configure(justify='right', exportselection=False)
-            self.fontfamily.setSelectedIndex(0)
+            self.addLabel(text='Font family:', row=row, column=0, font=font)
+            self.cb_fontfamily = self.addCombobox(
+                text="",
+                values=("ponomar", "triodion", "pochaevsk", 'acaphist', 'fedorovsk', 'vilnius'),
+                row=row, column=1,
+            )
+            self.cb_fontfamily.setText(self.params.fontfamily)
 
             # Page format a4 a5, own
             row_inc()
             self.addLabel(text='Page format:', row=row, column=0, font=font)
-            self.rb_group = self.addRadiobuttonGroup(row=row, column=1)
+            self.rb_group = self.addRadiobuttonGroup(
+                row=row, column=1,
+                orient=HORIZONTAL,
+            )
             self.rb_a4 = self.rb_group.addRadiobutton(
                 "A4", command=self.rb_a5_selected_handler)
             self.rb_a5 = self.rb_group.addRadiobutton(
                 "A5", command=self.rb_a5_selected_handler)
             self.rb_other = self.rb_group.addRadiobutton(
                 "Другой", command=self.rb_other_selected_handler)
-            # NOT WORKING! self.rb_group.configure(justify='right')
-            # rb_a4.config(sticky=tkinter.N+tkinter.W)
             # Select one of the buttons in the group
             self.rb_group.setSelectedButton(self.rb_a4)
             self.rb_selected = self.rb_a4
@@ -301,46 +347,62 @@ fontfamily={_params.fontfamily},%ponomar,triodion,pochaevsk,acaphist,fedorovsk,v
 
             # pwidth.
             row_inc()
-            self.addLabel(text='page width:', row=row, column=0, font=font)
+            self.addLabel(text='Page width:', row=row, column=0, font=font)
             # TODO: addFloatField()
-            self.pwidth = self.addTextField(
-                text=self.params.pwidth, row=row, column=1, state='disabled')
-            self.pwidth.configure(justify='right')
+            self.tf_pwidth = self.addTextField(
+                text=self.params.pwidth, row=row, column=1, state=DISABLED)
+            self.tf_pwidth.configure(justify='right')
 
             # pheight.
             row_inc()
-            self.addLabel(text='page height:', row=row, column=0, font=font)
+            self.addLabel(text='Page height:', row=row, column=0, font=font)
             # TODO: addFloatField()
-            self.pheight = self.addTextField(
-                text=self.params.pheight, row=row, column=1, state='disabled')
-            self.pheight.configure(justify='right')
+            self.tf_pheight = self.addTextField(
+                text=self.params.pheight, row=row, column=1, state=DISABLED)
+            self.tf_pheight.configure(justify='right')
 
             # nodigraphkinovar.
             row_inc()
-            self.addLabel(text='nodigraphkinovar:', row=row, column=0, font=font)
-            self.nodigraphkinovar = self.addCheckbutton(text='', row=row, column=1, )
+            self.addLabel(text='Nodigraphkinovar:', row=row, column=0, font=font)
+            self.chb_nodigraphkinovar = self.addCheckbutton(text='', row=row, column=1, )
             if self.params.nodigraphkinovar == 'true':
-                self.nodigraphkinovar.select()
+                self.chb_nodigraphkinovar.select()
 
             # Keep TeX dir.
             row_inc()
             self.addLabel(text='Keep TeX dir:', row=row, column=0, font=font)
-            self.tex_dir_keep = self.addCheckbutton(text='', row=row, column=1, )
+            self.chb_tex_dir_keep = self.addCheckbutton(text='', row=row, column=1, )
             if self.params.tex_dir_keep:
-                self.tex_dir_keep.select()
+                self.chb_tex_dir_keep.select()
 
             # Make init only.
             row_inc()
             self.addLabel(text='Make Init TeX file only', row=row, column=0, font=font)
-            self.init_only = self.addCheckbutton(text='', row=row, column=1, )
+            self.chb_init_only = self.addCheckbutton(text='', row=row, column=1, )
             if self.params.init_only:
-                self.init_only.select()
+                self.chb_init_only.select()
+
+            # Engine
+            row_inc()
+            self.addLabel(text='TeX Engine:', row=row, column=0, font=font)
+            self.cb_engine = self.addCombobox(
+                text="",
+                values=("xelatex", "lualatex"),
+                row=row, column=1,
+            )
+            self.cb_engine.setText(self.params.engine)
 
             # Alternate PDF name
             row_inc()
             self.addLabel(text='PDF name:', row=row, column=0, font=font)
-            self.pdf_name = self.addTextField(text=self.params.pdf_file, row=row, column=1)
-            self.pdf_name.configure(justify='right')
+            row_inc()
+            self.ta_pdf_name = self.addTextArea(
+                text=self.params.pdf_file,
+                row=row, column=0, columnspan=2,
+                height=2,  # 2 строки.
+                wrap=CHAR,
+                no_x_scrollbar=True,
+            )
 
             # Buttons.
             row_inc()
@@ -352,34 +414,28 @@ fontfamily={_params.fontfamily},%ponomar,triodion,pochaevsk,acaphist,fedorovsk,v
             # Список виджетов, для которых нужно установить шрифт.
             # TODO: для всей формы одной строкой?
             _widgets_4font_list = [
-                self.fontsize,
-                self.kinovarcolors,
+                self.ta_tex_file_path,
+                self.tf_fontsize,
+                self.cb_kinovarcolors,
                 self.tf_topmargin,
                 self.tf_botmargin,
                 self.tf_outmargin,
                 self.tf_innmargin,
                 self.tf_cover,
-                self.fontfamily,
+                self.cb_fontfamily,
                 self.rb_a4,
                 self.rb_a5,
                 self.rb_other,
-                self.pwidth,
-                self.pheight,
-                self.pdf_name,
+                self.tf_pwidth,
+                self.tf_pheight,
+                self.ta_pdf_name,
+                self.cb_engine,
                 self.btn_make_pdf,
                 self.btn_close,
 
             ]
             for _widget in _widgets_4font_list:
                 _widget['font'] = font
-
-            # TODO:
-            # engine = 'xelatex'
-            # toppmarg = '1.7cm'
-            # botpmarg = '2.0cm'
-            # outpmarg = '2.0cm'
-            # innpmarg = '2.0cm'
-            # cover = '0mm'
 
         def rb_selected_init(self):
             self.rb_selected = self.rb_group.getSelectedButton()
@@ -395,15 +451,15 @@ fontfamily={_params.fontfamily},%ponomar,triodion,pochaevsk,acaphist,fedorovsk,v
 
         def tf_page_geometry_turner(self, _state: bool = True):
             # По умолчанию - отключены.
-            _state_str = 'disabled' if _state else 'normal'
-            self.pwidth.config(state=_state_str)
-            self.pheight.config(state=_state_str)
+            _state_str = DISABLED if _state else NORMAL
+            self.tf_pwidth.config(state=_state_str)
+            self.tf_pheight.config(state=_state_str)
 
         def apply_params_changes(self):
             def msg_wrong_format(_parameter, _string):
                 self.messageBox(message=f'Неверный формат!\n{_string}: {_parameter}')
 
-            _fontsize = self.fontsize.getText()
+            _fontsize = self.tf_fontsize.getText()
             # validation.
             if re.match(r'\d+(\.\d+)?pt', _fontsize):
                 self.params.fontsize = _fontsize
@@ -411,7 +467,7 @@ fontfamily={_params.fontfamily},%ponomar,triodion,pochaevsk,acaphist,fedorovsk,v
                 msg_wrong_format(_fontsize, 'fontsize')
                 return False
 
-            self.params.kinovarcolor = self.kinovarcolors.getSelectedItem()
+            self.params.kinovarcolor = self.cb_kinovarcolors.getText()
 
             self.params.toppmarg = f'{self.tf_topmargin.getValue()}cm'
             self.params.botpmarg = f'{self.tf_botmargin.getValue()}cm'
@@ -419,7 +475,7 @@ fontfamily={_params.fontfamily},%ponomar,triodion,pochaevsk,acaphist,fedorovsk,v
             self.params.innpmarg = f'{self.tf_innmargin.getValue()}cm'
             self.params.cover = f'{self.tf_cover.getValue()}mm'
 
-            self.params.fontfamily = self.fontfamily.getSelectedItem()
+            self.params.fontfamily = self.cb_fontfamily.getText()
 
             self.rb_selected_init()
             if self.rb_selected == self.rb_a4:
@@ -429,30 +485,32 @@ fontfamily={_params.fontfamily},%ponomar,triodion,pochaevsk,acaphist,fedorovsk,v
                 self.params.pwidth = '148mm'
                 self.params.pheight = '210mm'
             elif self.rb_selected == self.rb_other:
-                _pwidth = self.pwidth.getText()
+                _pwidth = self.tf_pwidth.getText()
                 if re.match(r'\d+(\.\d+)?(cm|mm)', _pwidth):
                     self.params.pwidth = _pwidth
                 else:
                     msg_wrong_format(_pwidth, 'pwidth')
                     return False
 
-                _pheight = self.pheight.getText()
+                _pheight = self.tf_pheight.getText()
                 if re.match(r'\d+(\.\d+)?(cm|mm)', _pheight):
                     self.params.pheight = _pheight
                 else:
                     msg_wrong_format(_pheight, 'pheight')
                     return False
 
-            _nodigraphkinovar = self.nodigraphkinovar.isChecked()
+            _nodigraphkinovar = self.chb_nodigraphkinovar.isChecked()
             self.params.nodigraphkinovar = 'true' if _nodigraphkinovar else 'false'
 
-            tex_dir_keep_ = self.tex_dir_keep.isChecked()
+            tex_dir_keep_ = self.chb_tex_dir_keep.isChecked()
             self.params.tex_dir_keep = True if tex_dir_keep_ else False
 
-            init_only_ = self.init_only.isChecked()
+            init_only_ = self.chb_init_only.isChecked()
             self.params.init_only = True if init_only_ else False
 
-            _pdf_name = self.pdf_name.getText()
+            self.params.engine = self.cb_engine.getText()
+
+            _pdf_name = self.ta_pdf_name.getText().strip()
             if _pdf_name:
                 if _pdf_name.endswith('.pdf'):
                     self.params.pdf_file = _pdf_name
