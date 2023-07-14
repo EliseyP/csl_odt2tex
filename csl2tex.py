@@ -153,8 +153,8 @@ cover={_params.cover},% припуск под корешок
 fontsize={_params.fontsize},
 nodigraphkinovar={_params.nodigraphkinovar},
 single=true,
-kinovarcolor={_params.kinovarcolor},\
-fontfamily={_params.fontfamily},\
+kinovarcolor={_params.kinovarcolor},
+fontfamily={_params.fontfamily},
 ]{{churchslavichymn}}
 {self.underscore_str}
 
@@ -241,16 +241,37 @@ fontfamily={_params.fontfamily},\
             self.fontfamily.configure(justify='right', exportselection=False)
             self.fontfamily.setSelectedIndex(0)
 
+            # Page format a4 a5, own
+            row_inc()
+            self.addLabel(text='Page format:', row=row, column=0, font=font)
+            self.rb_group = self.addRadiobuttonGroup(row=row, column=1)
+            self.rb_a4 = self.rb_group.addRadiobutton(
+                "A4", command=self.rb_a5_selected_handler)
+            self.rb_a5 = self.rb_group.addRadiobutton(
+                "A5", command=self.rb_a5_selected_handler)
+            self.rb_other = self.rb_group.addRadiobutton(
+                "Другой", command=self.rb_other_selected_handler)
+            # NOT WORKING! self.rb_group.configure(justify='right')
+            # rb_a4.config(sticky=tkinter.N+tkinter.W)
+            # Select one of the buttons in the group
+            self.rb_group.setSelectedButton(self.rb_a4)
+            self.rb_selected = self.rb_a4
+            self.rb_selected_init()
+
             # pwidth.
             row_inc()
             self.addLabel(text='page width:', row=row, column=0, font=font)
-            self.pwidth = self.addTextField(text=self.params.pwidth, row=row, column=1)
+            # TODO: addFloatField()
+            self.pwidth = self.addTextField(
+                text=self.params.pwidth, row=row, column=1, state='disabled')
             self.pwidth.configure(justify='right')
 
             # pheight.
             row_inc()
             self.addLabel(text='page height:', row=row, column=0, font=font)
-            self.pheight = self.addTextField(text=self.params.pheight, row=row, column=1)
+            # TODO: addFloatField()
+            self.pheight = self.addTextField(
+                text=self.params.pheight, row=row, column=1, state='disabled')
             self.pheight.configure(justify='right')
 
             # nodigraphkinovar.
@@ -293,6 +314,9 @@ fontfamily={_params.fontfamily},\
                 self.fontsize,
                 self.kinovarcolors,
                 self.fontfamily,
+                self.rb_a4,
+                self.rb_a5,
+                self.rb_other,
                 self.pwidth,
                 self.pheight,
                 self.pdf_name,
@@ -311,6 +335,24 @@ fontfamily={_params.fontfamily},\
             # innpmarg = '2.0cm'
             # cover = '0mm'
 
+        def rb_selected_init(self):
+            self.rb_selected = self.rb_group.getSelectedButton()
+
+        def rb_a4_selected_handler(self):
+            self.tf_page_geometry_turner(True)
+
+        def rb_a5_selected_handler(self):
+            self.tf_page_geometry_turner(True)
+
+        def rb_other_selected_handler(self):
+            self.tf_page_geometry_turner(False)
+
+        def tf_page_geometry_turner(self, _state: bool = True):
+            # По умолчанию - отключены.
+            _state_str = 'disabled' if _state else 'normal'
+            self.pwidth.config(state=_state_str)
+            self.pheight.config(state=_state_str)
+
         def apply_params_changes(self):
             def msg_wrong_format(_parameter, _string):
                 self.messageBox(message=f'Неверный формат!\n{_string}: {_parameter}')
@@ -326,19 +368,27 @@ fontfamily={_params.fontfamily},\
             self.params.kinovarcolor = self.kinovarcolors.getSelectedItem()
             self.params.fontfamily = self.fontfamily.getSelectedItem()
 
-            _pwidth = self.pwidth.getText()
-            if re.match(r'\d+(\.\d+)?(cm|mm)', _pwidth):
-                self.params.pwidth = _pwidth
-            else:
-                msg_wrong_format(_pwidth, 'pwidth')
-                return False
+            self.rb_selected_init()
+            if self.rb_selected == self.rb_a4:
+                self.params.pwidth = '210mm'
+                self.params.pheight = '297mm'
+            elif self.rb_selected == self.rb_a5:
+                self.params.pwidth = '148mm'
+                self.params.pheight = '210mm'
+            elif self.rb_selected == self.rb_other:
+                _pwidth = self.pwidth.getText()
+                if re.match(r'\d+(\.\d+)?(cm|mm)', _pwidth):
+                    self.params.pwidth = _pwidth
+                else:
+                    msg_wrong_format(_pwidth, 'pwidth')
+                    return False
 
-            _pheight = self.pheight.getText()
-            if re.match(r'\d+(\.\d+)?(cm|mm)', _pheight):
-                self.params.pheight = _pheight
-            else:
-                msg_wrong_format(_pheight, 'pheight')
-                return False
+                _pheight = self.pheight.getText()
+                if re.match(r'\d+(\.\d+)?(cm|mm)', _pheight):
+                    self.params.pheight = _pheight
+                else:
+                    msg_wrong_format(_pheight, 'pheight')
+                    return False
 
             _nodigraphkinovar = self.nodigraphkinovar.isChecked()
             self.params.nodigraphkinovar = 'true' if _nodigraphkinovar else 'false'
