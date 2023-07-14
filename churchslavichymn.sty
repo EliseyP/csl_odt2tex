@@ -1,4 +1,4 @@
-\ProvidesPackage{churchslavichymn}[2023/07/07 v.0.9]
+\ProvidesPackage{churchslavichymn}[2023/07/14 v.0.10]
 \RequirePackage{kvoptions}
 \RequirePackage{xifthen,ifdraft}
 \RequirePackage{ifluatex}
@@ -116,13 +116,6 @@
   \newfontfamily{\vilnius}[%
       Script = Cyrillic,Ligatures = TeX]{Vilnius-Regular.otf}
 
-  %вместо этого м.б. лучше microtype-разрядку?
-  \newfontfamily\ponomarexpandedfont[Script=Cyrillic,Ligatures=TeX,LetterSpace=10.0]{PonomarUnicode.otf}
-
-  % Только для Ч/Б текста.  
-  % TODO: уточнить для других гарнитур 
-  % (triodion, pochaevsk, acaphist, fedorovsk, vilnius)  
-  \newfontfamily\PonomarBold[Script=Cyrillic,Ligatures=TeX,FakeBold=2]{PonomarUnicode.otf}
   \selectlanguage{churchslavonic}
   \prehyphenchar=`\_
 \else
@@ -139,25 +132,44 @@
       Script = Cyrillic,Ligatures = TeX,HyphenChar = _ ]{FedorovskUnicode.otf}
   \newfontfamily{\vilnius}[%
       Script = Cyrillic,Ligatures = TeX,HyphenChar = _ ]{Vilnius-Regular.otf}
-  
-  %вместо этого м.б. лучше microtype-разрядку?
-  \newfontfamily\ponomarexpandedfont[Script=Cyrillic,Ligatures=TeX,HyphenChar="005F,LetterSpace=10.0]{PonomarUnicode.otf}
-
-  % Только для Ч/Б текста.  
-  % TODO: уточнить для других гарнитур 
-  % (triodion, pochaevsk, acaphist, fedorovsk, vilnius). 
-  % М.б. применить LetterSpace=10.0 и FakeBold=2 к уже выбранной гарнитуре "на ходу"?
-  \newfontfamily\PonomarBold[Script=Cyrillic,Ligatures=TeX,HyphenChar="005F,FakeBold=2]{PonomarUnicode.otf}
 \fi
 
 % Установка основной гарнитуры.
 \IfStrEqCase{\PROP@fontfamily}{%
-  {ponomar}{\let\churchslavonicfont\ponomar}%
-  {triodion}{\let\churchslavonicfont\triodion}%
-  {pochaevsk}{\let\churchslavonicfont\pochaevsk}%
-  {acaphist}{\let\churchslavonicfont\acaphist}
-  {fedorovsk}{\let\churchslavonicfont\fedorovsk}
-  {vilnius}{\let\churchslavonicfont\vilnius}}%
+  {ponomar}{%
+    \def\CSL@FontFileName{PonomarUnicode.otf}%
+    \let\churchslavonicfont\ponomar
+  }%
+  {triodion}{%
+    \let\churchslavonicfont\triodion
+    \def\CSL@FontFileName{TriodionUnicode.otf}%
+  }%
+  {pochaevsk}{%
+    \let\churchslavonicfont\pochaevsk%
+    \def\CSL@FontFileName{PochaevskUnicode.otf}%
+  }%
+  {acaphist}{%
+    \let\churchslavonicfont\acaphist%
+    \def\CSL@FontFileName{Acathist-Regular.otf}%
+  }
+  {fedorovsk}{%
+    \let\churchslavonicfont\fedorovsk%
+    \def\CSL@FontFileName{FedorovskUnicode.otf}%
+  }
+  {vilnius}{%
+    \def\CSL@FontFileName{Vilnius-Regular.otf}%
+    \let\churchslavonicfont\vilnius
+  }}%
+  
+\ifluatex
+  %вместо этого м.б. лучше microtype-разрядку?
+  \newfontfamily\cslexpandedfont[Script=Cyrillic,Ligatures=TeX,LetterSpace=10.0]{\CSL@FontFileName}%
+  % Только для Ч/Б текста.  
+  \newfontfamily\FakeBold[Script=Cyrillic,Ligatures=TeX,FakeBold=2]{\CSL@FontFileName}%
+\else
+  \newfontfamily\cslexpandedfont[Script=Cyrillic,Ligatures=TeX,HyphenChar="005F,LetterSpace=10.0]{\CSL@FontFileName}
+  \newfontfamily\FakeBold[Script=Cyrillic,Ligatures=TeX,HyphenChar="005F,FakeBold=2]{\CSL@FontFileName}%
+\fi  
 
 % Шрифт для Буквицы.
 \let\LettrineFontName\Indiction
@@ -230,8 +242,8 @@
   {grey}{\DefKinovarColorRED}% за счет опции [grey]
   {boldblack}{%
     \DefKinovarColorBLACK%
-    \let\cuKinovarColor\PonomarBold%
-    \renewcommand{\cu@kinovar}[1]{{\PonomarBold ##1}}%
+    \let\cuKinovarColor\FakeBold%
+    \renewcommand{\cu@kinovar}[1]{{\FakeBold ##1}}%
   }}%
   [\DefKinovarColorRED]% default
 
@@ -565,7 +577,7 @@
 \newcommand{\KondUstavInsertKin}[1]{%
   \vspace{.5\baselineskip}%
   \hspace{1em}\parbox{.8\textwidth}{%
-    \small\ponomarexpandedfont\cUstav{#1}}}
+    \small\cslexpandedfont\cUstav{#1}}}
 
 % "Вставка узкая"
 % Абзац с гориз.размером 0.85\textwidth.
@@ -621,7 +633,7 @@
 \newcommand{\KIsmall}[1]{{\small\vspace*{.1em}{\cuKinovar{#1}}}}
 
 \newcommand{\CharSpacedBold}[1]{%
-  {\PonomarBold\addfontfeature{LetterSpace=10.0}#1}}
+  {\FakeBold\addfontfeature{LetterSpace=10.0}#1}}
 
 % Hebrew (bidi) text.
 \ifthenelse{\boolean{hebrew}}%
