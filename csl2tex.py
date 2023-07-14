@@ -263,6 +263,7 @@ fontfamily={_params.fontfamily},%ponomar,triodion,pochaevsk,acaphist,fedorovsk,v
                 wrap=CHAR,
                 no_x_scrollbar=True,
             )
+            self.ta_tex_file_path.configure(state=DISABLED)
 
             # fontsize.
             row_inc()
